@@ -1,0 +1,179 @@
+
+  <div class="container-fluid screen-wrapper">
+    <app-admin-header></app-admin-header>
+    <div class="row body-section">
+      <div class="col-md-12">
+        <div class="row form-wrapper-row py-5">
+          <div class="offset-md-1 col-md-10">
+            <div class="row sign-in-row">
+              <div class="offset-md-2 col-md-8 sign-in-col">
+                <form #registerForm="ngForm" class="common-form" novalidate>
+                  <div class="text-center mb-5 page-primary-title-34"> Admin Sign Up</div>
+                  <div class="row">
+                    <div class="col-md-6">
+                      <div class="row">
+                        <div class="col-md-12 form-block-heading mb-2">Personal Details:</div>
+                        <div class="col-md-12 form-label-group mb-4">
+                          <input pattern="[a-zA-Z]*" type="text" class="form-control form-input" [(ngModel)]="registerdto.firstName" minlength="3" name="userFirstName" #userFirstName="ngModel" maxlength="15" placeholder="First Name" autofocus>
+                          <div *ngIf="userFirstName.errors && (userFirstName.dirty || userFirstName.touched)" class="alert alert-danger">
+                            <div [hidden]="!userFirstName.errors.required">
+                              First Name is required!
+                            </div>
+                            <div [hidden]="!userFirstName.errors.minlength">
+                              First Name must be at least 3 characters long.
+                            </div>
+                            <div [hidden]="!userFirstName.errors.maxlength">
+                              First Name cannot be more than 15 characters long.
+                            </div>
+                            <div [hidden]="!userFirstName.errors.pattern">
+                              First Name is not valid!
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-md-12 form-label-group mb-4">
+                          <input pattern="[a-zA-Z]*" type="text" minlength="3" name="userMiddleName" #userMiddleName="ngModel" maxlength="15" class="form-control form-input" [(ngModel)]="registerdto.middleName" placeholder="Middle Name">
+                          <div *ngIf="userMiddleName.errors && (userMiddleName.dirty || userMiddleName.touched)" class="alert alert-danger">
+                            <div [hidden]="!userMiddleName.errors.required">
+                              Middle Name is required!
+                            </div>
+                            <div [hidden]="!userMiddleName.errors.minlength">
+                              Middle Name must be at least 3 characters long.
+                            </div>
+                            <div [hidden]="!userMiddleName.errors.maxlength">
+                              Middle Name cannot be more than 15 characters long.
+                            </div>
+                            <div [hidden]="!userMiddleName.errors.pattern">
+                              Space and special character not Allowed!
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-md-12 form-label-group mb-4">
+                          <input pattern="[a-zA-Z0-9_]*" type="text" minlength="3" name="userLastName" #userLastName="ngModel" maxlength="15" class="form-control form-input" [(ngModel)]="registerdto.lastName"  placeholder="Last Name" required>
+                          <div *ngIf="userLastName.errors && (userLastName.dirty || userLastName.touched)" class="alert alert-danger">
+                            <div [hidden]="!userLastName.errors.required">
+                              Last Name is required!
+                            </div>
+                            <div [hidden]="!userLastName.errors.minlength">
+                              Last Middle Name must be at least 3 characters long.
+                            </div>
+                            <div [hidden]="!userLastName.errors.maxlength">
+                              Last Name cannot be more than 15 characters long.
+                            </div>
+                            <div [hidden]="!userLastName.errors.pattern">
+                              Space and special character not Allowed!
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="row">
+                        <div class="col-md-12 form-block-heading mb-2">Account Details:</div>
+                        <div class="col-md-12 form-label-group mb-4">
+                          <input pattern="[a-zA-Z0-9_]*" type="text" class="form-control form-input" minlength="8" name="userName" #userName="ngModel" maxlength="15" [(ngModel)]="registerdto.userName"  placeholder="Create Username" required>
+                          <div *ngIf="userName.errors && (userName.dirty || userName.touched)" class="alert alert-danger">
+                            <div [hidden]="!userName.errors.required">
+                              Username is required!
+                            </div>
+                            <div [hidden]="!userName.errors.minlength">
+                              Username must be at least 8 characters long.
+                            </div>
+                            <div [hidden]="!userName.errors.maxlength">
+                              Username cannot be more than 15 characters long.
+                            </div>
+                            <div [hidden]="!userName.errors.pattern">
+                              Space and special character not Allowed!
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-md-12 form-label-group mb-4">
+                          <input  (focus)="passwordFocus1()" #userPassword="ngModel"  type="password" class="form-control form-input" name="userPassword" [(ngModel)]="registerdto.userPassword" placeholder="Create Password" required>
+                      <div *ngIf="bar1">
+                          <ng2-password-strength-bar
+                          [passwordToCheck]="registerdto.userPassword"
+                          [barLabel]="barLabel"
+                          [barColors]="myColors"
+                          [strengthLabels]="strengthLabels">
+                        </ng2-password-strength-bar>
+                      </div>
+                          <div *ngIf="userPassword.errors && (userPassword.dirty || userPassword.touched)" class="alert alert-danger">
+                            <div [hidden]="!userPassword.errors.required">
+                              User Password is required!
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-md-12 form-label-group mb-4">
+                          <input (focus)="passwordFocus2()" #userConfirmPassword="ngModel"  type="password" class="form-control form-input" name="userConfirmPassword" [(ngModel)]="registerdto.confirmPassword"  [equal]="registerdto.userPassword" placeholder="Confirm Password" required>
+                          <p style="color:red" *ngIf="userConfirmPassword.errors?.equal">Password not match</p>
+                      <div *ngIf="bar2">
+                          <ng2-password-strength-bar
+                          [passwordToCheck]="registerdto.confirmPassword"
+                          [barLabel]="barLabel"
+                          [barColors]="myColors"
+                          [strengthLabels]="strengthLabels">
+                        </ng2-password-strength-bar>
+                      </div>
+                        <div *ngIf="userConfirmPassword.errors && (userConfirmPassword.dirty || userConfirmPassword.touched)" class="alert alert-danger">
+                            <div [hidden]="!userConfirmPassword.errors.required">
+                              Confirm Password is required!
+                            </div>
+
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row mt-3">
+                    <div class="col-md-12 form-block-heading mb-2">Contact Details:</div>
+                    <div class="col-md-6 form-label-group mb-4">
+                      <input type="email" pattern="[^ @]*@[^ @]*" class="form-control form-input" #userEmail="ngModel" [(ngModel)]="registerdto.userEmail" name="userEmail" placeholder="Your Email" required>
+                      <div *ngIf="userEmail.errors && (userEmail.dirty || userEmail.touched)" class="alert alert-danger">
+                        <div [hidden]="!userEmail.errors.required">
+                          Email must be like name@gmail.com
+                        </div>
+                        <div [hidden]="!userEmail.errors.pattern">
+                          Enter valid email
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-6 form-label-group mb-4">
+                      <input type="number" max="16" class="form-control form-input" #mobileNo="ngModel"  name="mobileNo" [(ngModel)]="registerdto.mobileNo" placeholder="Mobile Number" required>
+                      <div *ngIf="mobileNo.errors && (mobileNo.dirty || mobileNo.touched)" class="alert alert-danger">
+                        <div [hidden]="!mobileNo.errors.required">
+                          Mobile number is required!
+                        </div>
+                        <div [hidden]="!mobileNo.errors.maxlength">
+                          Please enter a 16 digit number.
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-md-6 form-label-group mb-4">
+                        <select [(ngModel)]="registerdto.role" name="role" class="form-control common-select placeholder'Select User Role'">
+                          <option>Select User Role</option>
+                          <option>admin</option>
+                          <option>x</option>
+                          <option>y</option>
+                          <option>z</option>
+                        </select>
+                      </div>
+                  </div>
+                   <div class="row">
+                    <div class="col-md-6">
+                      <button  class="btn form-btn" (click)="onRegisterAdmin()" type="submit">Register</button>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- <app-footer></app-footer> -->
+  </div>
+

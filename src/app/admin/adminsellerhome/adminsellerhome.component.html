@@ -1,0 +1,47 @@
+
+
+
+<div  class="example-container mat-elevation-z8">
+    <div class="example-header">
+      <mat-form-field class="ml-4">
+        <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Search">
+      </mat-form-field>
+    </div>
+    <mat-table #table [dataSource]="dataSource" matSort>
+
+      <ng-container matColumnDef="Sr">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> # </mat-header-cell>
+        <mat-cell *matCellDef="let element; let i = index;"> {{i+1}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="userName">
+        <mat-header-cell *matHeaderCellDef> SellerUserName </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.sellerUserName}} </mat-cell>
+      </ng-container>
+
+       <ng-container matColumnDef="lastActionPerformed">
+        <mat-header-cell *matHeaderCellDef>  Last Action Performed </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.lastActionPerformed}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="dateReceived">
+        <mat-header-cell *matHeaderCellDef> Date Received  </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.dateReceived | date: 'dd/MM/yyyy'}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="lastAction">
+        <mat-header-cell *matHeaderCellDef> Last Action</mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.lastAction|date: 'dd/MM/yyyy'}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="actionPerformedBy">
+        <mat-header-cell *matHeaderCellDef> By </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.actionPerformedBy}} </mat-cell>
+      </ng-container>
+
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;" (click) = "rowClicked(row)" ></mat-row>
+    </mat-table>
+    <mat-paginator [length]="5" [pageSize]="4" [pageSizeOptions]="[5, 10, 25]">
+    </mat-paginator>
+  </div>

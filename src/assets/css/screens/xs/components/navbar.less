@@ -1,0 +1,76 @@
+@media (max-width: 991px) {
+  .navbar-wrap-row {
+    &.navbar-wrap-row-xs {
+      .navbar-row-wrapper {
+        display: flex;
+        align-items: flex-start;
+        padding: 0 15px;
+        .navbar-col {
+          display: flex;
+          justify-content: flex-end;
+          padding-right: 0; 
+          .navbar {
+            justify-content: flex-end;
+            .navbar-toggler {
+              border: 1px solid transparent;
+              &:focus {
+                outline: none;
+              }
+            }
+            .navbar-collapse  {
+              width: 100vw;
+              padding: 1em 0;
+              margin-top: 1em;
+              border-top: 1px solid @seprator-color;
+              .navbar-nav {
+                .nav-item {
+                  display: flex;
+                  width: 100%;
+                  margin-bottom: 1em;
+                  &.reg-sign-in-item {
+                    margin-bottom: 0; 
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  .header {
+    &.shrink {
+      margin-top: 0;
+      transition: all 0.5s;
+    }
+  }
+  .ud-navbar {
+    height: 3em;
+    .ud-navbar-row {
+      .ud-navbar-col {
+        .ud-nav-tabs {
+          .ud-nav-item {
+            font-size: 0.875em;
+            min-width: 33.33%;
+            a {
+              &.account-link {
+                &::before {
+                  padding: 22px;
+                  margin-left: -2em;
+                  margin-right: 5px;
+                  zoom: 0.6;
+                }  
+              }
+              &.activity-link {
+                .account-link;
+              }
+              &.inbox-link {
+                .account-link;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+} 

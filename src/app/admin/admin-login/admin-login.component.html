@@ -1,0 +1,78 @@
+
+  <div class="container-fluid screen-wrapper">
+    <app-admin-header></app-admin-header>
+    <div class="row body-section">
+      <div class="col-md-12">
+        <div class="row form-wrapper-row py-5">
+          <div class="offset-md-1 col-md-10">
+            <div class="row sign-in-row">
+              <div class="offset-md-4 col-md-4 sign-in-col">
+                <form #loginForm="ngForm" class="common-form" novalidate>
+                  <div class="text-center mb-5 page-primary-title-34">Admin Sign In</div>
+                  <div class="input-wrapper form-label-group mb-4">
+                    <input  pattern="[a-zA-Z0-9_]*" minlength="8" name="userName" #userName="ngModel" maxlength="15" id="stuff" type="text"  [(ngModel)]="logindto.userName" class="form-control form-input" placeholder="Username" autofocus>
+                    <label for="stuff" class="fa fa-user input-icon"></label>
+
+                    <div *ngIf="userName.errors && (userName.dirty || userName.touched)" class="alert alert-danger">
+                      <div [hidden]="!userName.errors.required">
+                        User Name is required!
+                      </div>
+                      <div [hidden]="!userName.errors.minlength">
+                        User Name must be at least 8 characters long.
+                      </div>
+                      <div [hidden]="!userName.errors.maxlength">
+                        user Name cannot be more than 16 characters long.
+                      </div>
+                      <div [hidden]="!userName.errors.pattern">
+                        Must be a valid User Name!
+                      </div>
+
+                    </div>
+                  </div>
+                  <div class="input-wrapper form-label-group mb-4">
+                    <input  minlength="8"  #userPassword="ngModel" maxlength="15" type="password" class="form-control form-input" name="userPassword" [(ngModel)]="logindto.userPassword" placeholder="Password" required>
+                    <!-- <ng2-password-strength-bar
+                    [passwordToCheck]="logindto.userPassword"
+                    [barLabel]="barLabel"
+                    [barColors]="myColors"
+
+                    [strengthLabels]="strengthLabels">
+                  </ng2-password-strength-bar> -->
+                    <label for="stuff" class="fa fa-lock input-icon"></label>
+
+                    <div *ngIf="userPassword.errors && (userPassword.dirty || userPassword.touched)" class="alert alert-danger">
+                      <div [hidden]="!userPassword.errors.required">
+                        User Password is required!
+                      </div>
+                      <div [hidden]="!userPassword.errors.minlength">
+                        User Password must be at least 8 characters long.
+                      </div>
+                      <div [hidden]="!userPassword.errors.maxlength">
+                        user Password cannot be more than 16 characters long.
+                      </div>
+                      <div [hidden]="!userPassword.errors.pattern">
+                        Must be a valid User Password!
+                      </div>
+                    </div>
+
+                  </div>
+                  <button  [disabled]="!loginForm.form.valid" class="btn form-btn mb-4" (click)="loginAdminUser()" type="submit">Sign In</button>
+                  <div class="common-checkbox sign-in-remeber-div mb-4">
+                    <label>
+                      <input type="checkbox"><span class="checkbox-material"><span class="check mr-2"></span></span> Remember Me
+                    </label>
+                    <a routerLink="../forgotPasswordRequest" class="forgot-pwd-link">Forgot Password?</a>
+                  </div>
+                  <div class="not-registered-div">
+                    <a routerLink="../register" class="learn-more-link">Sign Up for Free</a>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <!-- <app-footer></app-footer> -->
+  </div>

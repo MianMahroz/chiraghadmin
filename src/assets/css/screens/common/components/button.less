@@ -1,0 +1,92 @@
+.common-btn {
+  background-color: @primary-color;
+  color: @white-color;
+  border-radius: 4px;
+  transition: .5s;
+  &:hover {
+    background-color: @light-black-color;
+    color: @white-color;
+  }
+  &.btn {
+    &:focus {
+      box-shadow: none;
+    }
+  }
+}
+.common-btn-18 {
+  .common-btn;
+  font-size: 18px;
+  height: 45px;
+  width: 100%;
+}
+.btn-view-images {
+  background-color: @white-color;
+  color: @primary-color;
+  border-radius: 4px;
+  transition: .5s;
+  text-transform: uppercase; 
+  font-size: 1.125em;
+  padding: 13px 26px;
+  &:hover {
+    background-color: @primary-color;
+    color: @white-color;
+  }
+  &.btn {
+    &:focus {
+      box-shadow: none;
+    }
+  }  
+}
+.learn-more-link {
+  font-size: 0.875em;
+  color: @primary-color;
+  padding: 7px 4.3em;
+  border: 1px solid @seprator-color;
+  transition: .5s;
+  border-radius: 2px;
+  &:hover {
+    background-color: @primary-color;
+    color: @white-color;
+    border: 1px solid transparent;
+  }
+}
+
+.learn-more-btn {
+  .learn-more-link;
+  padding: 0 1em;
+  height: 45px;
+  min-width: 155px;
+  background-color: transparent;
+  font-size: 16px;
+  border-radius: 2px;
+  &.btn {
+    &:focus {
+      box-shadow: none;
+    }
+  }
+}
+
+.footer-btn {
+  font-size: 0.875em;
+  font-weight: 900;
+  min-width: 120px;
+}
+
+.evaluate-btn {
+  height: 56px;
+  min-width: 165px;
+}
+
+.form-btn {
+  .common-btn;
+  font-size: 18px;
+  width: 100%;
+  height: 45px;
+  border-radius: 2px;
+}
+
+.btn-dropdown {
+  .learn-more-btn;
+  width: 100%;
+  min-width: 100%; 
+}

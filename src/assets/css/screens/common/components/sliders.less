@@ -1,0 +1,280 @@
+@-webkit-keyframes zoom {
+  from {
+    -webkit-transform: scale(1, 1);
+  }
+  to {
+    -webkit-transform: scale(1.5, 1.5);
+    opacity: 0.3;
+  }
+}
+
+@keyframes zoom {
+  from {
+    transform: scale(1, 1);
+  }
+  to {
+    transform: scale(1.5, 1.5);
+    opacity: 0.5;
+  }
+}
+
+.home-slider-row {
+  position: relative;
+  .home-slider-col {
+    .carousel-fade {
+      .carousel-inner {
+        .carousel-item {
+          height: 500px;
+          img {
+            -webkit-animation: zoom 15s;
+            animation: zoom 15s;
+            object-fit: cover;
+            max-width: 100%;
+          }
+        }
+      }
+    }
+  }
+  .main-search-row {
+    position: absolute;
+    right: 0;
+    left: 0;
+    bottom: 8%;
+    padding-top: 80px;
+    .slider-search-btn {
+      position: absolute;
+      right: 32px;
+      top: 16%;
+      font-size: 1.125em;
+      height: 56px;
+      min-width: 160px;
+      z-index: 3;
+      text-transform: uppercase;
+    }
+    .advance-search-link {
+      position: absolute;
+      top: 36%;
+      font-size: 1.25em;
+      height: 24px;
+      z-index: 3;
+      right: -2px;
+      width: 24px;
+      &.circle-plus {
+        &.closed {
+          .vertical {
+            transition: all 0.5s ease-in-out;
+            transform: rotate(-90deg);
+          }
+          .horizontal {
+            transition: all 0.5s ease-in-out;
+            transform: rotate(-90deg);
+            opacity: 1;
+          }
+        }
+        &.opened {
+          opacity: 1;
+          .vertical {
+            transition: all 0.5s ease-in-out;
+            transform: rotate(90deg);
+          }
+          .horizontal {
+            transition: all 0.5s ease-in-out;
+            transform: rotate(90deg);
+            opacity: 0;
+          }
+        }
+        .circle {
+          .horizontal {
+            position: absolute;
+            background-color: @primary-color;
+            width: 16px;
+            height: 2px;
+            left: 50%;
+            margin-left: -15px;
+            top: 50%;
+            margin-top: -2.5px;
+          }
+          .vertical {
+            position: absolute;
+            background-color: @primary-color;
+            width: 2px;
+            height: 16px;
+            left: 50%;
+            margin-left: -7.2px;
+            top: 50%;
+            margin-top: -9px;
+          }
+        } 
+      } 
+    }
+    .advance-search-body {
+      position: absolute;
+      top: 80px;
+      right: 0;
+      left: 0;
+      background-color: @white-color;
+      z-index: 2;
+      padding: 1rem 1rem 4rem 1rem;
+      border: 1px solid transparent;
+      margin: 0px -9px;
+      .search-heading {
+        font-size: 1.5em;
+        color: @secondary-color;
+      }
+      .advance-options-wrap {
+        border: 1px solid @seprator-color;
+        padding: 1rem;
+      }
+      .slider-search-btn {
+        position: static;
+      }
+    }
+  }
+}
+
+.listing-slider-row {
+  .listing-slider-col {
+    .btn-view-images-row {
+      margin-top: -4rem;
+      margin-bottom: 2rem;
+    }
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1;
+      padding-top: 80px;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%; 
+      background-color: rgba(0,0,0,0.75);
+      padding-bottom: 3rem;
+      z-index: 9999;
+      overflow-y: auto;
+      &::-webkit-scrollbar { 
+        display: none; 
+      }
+    }
+    .modal-content {
+      position: relative;
+      background-color: transparent;
+      margin: auto;
+      padding: 0;
+      width: 90%;
+      max-width: 1024px;
+      border: none;
+      .mySlides {
+        .slider-imgs {
+          max-height: 400px;
+          max-width: 1024px;
+        }
+      }
+      .thumbnail-imgs-wrap {
+        justify-content: center;
+        display: flex;
+        .demo {
+          opacity: .5;
+          max-width: 70px;
+          max-height: 50px;
+          margin: 0 5px;
+          &:hover {
+            opacity: 1;
+          }
+          &.active {
+            opacity: 1;
+          }
+        }
+      }
+    }
+    .close {
+      color: @white-color;
+      position: absolute;
+      top: 15px;
+      right: 25px;
+      font-size: 35px;
+      font-weight: bold;
+      opacity: 1;
+      &:hover {
+        color: @color_2;
+        text-decoration: none;
+        cursor: pointer;
+      }
+      &:focus {
+        color: @color_2;
+        text-decoration: none;
+        cursor: pointer;
+      }
+    }
+    .mySlides {
+      display: none;
+      text-align: center;
+    }
+    .cursor {
+      cursor: pointer;
+    }
+    .prev {
+      cursor: pointer;
+      position: absolute;
+      top: 50%;
+      padding: 40px 20px;
+      margin-top: -50px;
+      user-select: none;
+      -webkit-user-select: none;
+      left: -10vw;
+      background: url('../../assets/images/sprite-image.png') no-repeat -26px -320px;
+    }
+    .next {
+      cursor: pointer;
+      position: absolute;
+      top: 50%;
+      padding: 40px 20px;
+      margin-top: -50px;
+      user-select: none;
+      -webkit-user-select: none;
+      right: 0;
+      border-radius: 4px;
+      right: -10vw;
+      background: url('../../assets/images/sprite-image.png') no-repeat -72px -320px;
+    }    
+    .caption-container {
+      background-color: transparent;
+      padding: 2px 0;
+      color: @white-color;
+      display: flex;
+      justify-content: center;
+      text-align: left;
+      .img-info {
+        width: 100%;
+        margin-bottom: 5px;
+        #caption {
+          margin: 0;
+          font-weight: 600;
+        }
+        .photo-status {
+          color: @secondary-color;
+          font-size: 12px;
+          font-weight: 600;
+        }
+      }
+    }
+    .active {
+      opacity: 1;
+    }
+    .main-image-wrap {
+      position: relative;
+      .hover-shadow {
+        transition: 0.3s;
+        height: 100%;
+        max-height: 530px;
+        object-fit: cover;
+      }    
+    }
+    .hover-shadow {
+      &:hover {
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+      }
+    }
+  }
+}
+
+

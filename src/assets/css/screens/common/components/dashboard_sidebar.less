@@ -1,0 +1,86 @@
+.ud-sidebar {
+  border-right: 1px solid @seprator-color;
+  .imgae-upload {
+    background: url("../../assets/images/upload-pic.png") no-repeat 0 0;
+    background-position: center;
+    position: relative;
+    height: 155px;
+    input {
+      position: absolute;
+      width: 250px;
+      opacity: 0;
+      right: 0;
+      top: 0;
+      bottom: 0
+    }
+  }
+  .ud-sidebar-links-wrap {
+    padding-left: 0;
+    list-style: none;
+    border-bottom: none;
+    li {
+      width: 100%;
+      a {
+        font-size: 1.15em;
+        color: @secondary-color; 
+        min-height: 2.7em;
+        display: flex;
+        align-items: center;
+        padding: 0 1em;
+        img {
+          margin-right: 1rem;
+        }
+        &.ud-pers-info {
+          &::before {
+            content: "";
+            background: url("../../assets/images/sprite-image.png") no-repeat -27px -284px;
+            padding: 15px;
+            margin-right: 0.8rem;
+          }
+        }
+        &.ud-buyers {
+          .ud-pers-info;
+          &::before {
+            background: url("../../assets/images/sprite-image.png") no-repeat -68px -284px;
+          }
+        }
+        &.ud-seller {
+          .ud-pers-info;
+          &::before {
+            background: url("../../assets/images/sprite-image.png") no-repeat -102px -284px;
+          }
+        }
+        &.active {
+          background-color: @light-mono-color;
+        }       
+        &:hover {
+          background-color: @light-mono-color;
+        }       
+      }
+    }
+    .sub-links-wrap {
+      list-style: disc;
+      margin-bottom: 7px;
+      li {
+        .sub-links {
+          font-size: 14px;
+          min-height: 2em;   
+        }
+        .sub-prop-links-wrap {
+          list-style: none;
+          padding: 0;
+          li {
+            .sub-prop-links{
+              font-size: 14px;
+              color: @mono-color;
+              &.active {
+                color: @secondary-color;
+                font-weight: 800;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

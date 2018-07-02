@@ -1,0 +1,222 @@
+.navbar-wrap-row {
+  background-color: @white-color;
+  border-bottom: 1px solid @seprator-color;
+  .navbar-row-wrapper {
+    align-items: center;
+    .logo-sec-col {
+      .site-logo  {
+        img {
+          max-width: 237px;
+          max-height: 48px;
+        }
+      }
+    }
+    .navbar-col {
+      .navbar {
+        padding: 0;
+        .navbar-collapse {
+          .navbar-nav {
+            justify-content: flex-end;
+            .nav-item {
+              position: relative;
+              &.active {
+                .nav-link {
+                  &:after{
+                    content: '';
+                    position: absolute;
+                    width: 0; 
+                    height: 2px;
+                    display: block;
+                    margin-top: 2px;
+                    right: 0;
+                    background: @secondary-color;
+                    width: 100%;
+                    left: 0;
+                    transition: width .5s ease;
+                    -webkit-transition: width .5s ease;
+                  }
+                }  
+              }
+              .nav-link {
+                color: @primary-color;
+                font-size: 0.875em;
+                position: relative;
+                padding: 0;
+                margin-left: 1.5rem;
+                text-transform: uppercase; 
+                &:after{
+                  content: '';
+                  position: absolute;
+                  width: 0; 
+                  height: 2px;
+                  display: block;
+                  margin-top: 2px;
+                  right: 0;
+                  background: @secondary-color;
+                  transition: width .5s ease;
+                  -webkit-transition: width .5s ease;
+                }
+                &:hover:after{
+                  width: 100%;
+                  left: 0;
+                  background: @secondary-color;
+                  color: @primary-color;
+                }
+              }
+              &.reg-sign-in-item {
+                .reg-sign-in-block {
+                  font-size: 0.875em;
+                  margin-left: 1.5rem;
+                  height: 2.42em;
+                  display: flex;
+                  align-items: center;
+                  a {
+                    color: @white-color;
+                    text-transform: capitalize;
+                    &.register-link {
+                      border-right: 1px solid;
+                    }
+                    &:hover{
+                      text-decoration: underline;
+                    }
+                  }
+                }
+              }
+              &.nav-dropdown {
+                border-left: 1px solid @seprator-color;
+                flex-direction: column;
+                .user-id-link {
+                  font-size: 0.875em;
+                  font-weight: bold;
+                  cursor: pointer;
+                  .user-id {
+                    &::after {
+                      content: "";
+                      background: url("../../assets/images/dropdown-arrow.png") no-repeat center;
+                      padding: 0px 14px;
+                    }
+                  }
+                  .fa-bell {
+                    font-size: 20px;
+                    color: @secondary-color;
+                  }
+                }
+                .dropdown-menu  {
+                  padding: 0;
+                  margin: 0.5rem 0 0;
+                  font-size: 0.875em;
+                  transition: all 0.8s;
+                  .dropdown-item {
+                    &:hover {
+                      background-color: @primary-color;
+                      color: @white-color;
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+.ud-navbar {
+  background-color: @navbar-bg-color;
+  height: 3.9375em;
+  align-items: center;
+  .ud-navbar-row {
+    .ud-navbar-col {
+      .ud-nav-tabs {
+        border-bottom: none;
+        .ud-nav-item {
+          font-size: 1.25em;
+          color: @nav-item-color;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          min-width: 10.42em;
+          a {
+            display: flex;
+            flex: 1;
+            height: 100%;
+            align-items: center;
+            justify-content: center;
+            &.active {
+              background-color: @navbar-active-color !important;
+            }
+            &.account-link {
+              &::before {
+                content: "";
+                background: url("../../assets/images/sprite-image.png") no-repeat -363px -215px;
+                padding: 20px;
+                margin-left: -2em;
+                margin-right: 12px;
+              }  
+            }
+            &.activity-link {
+              .account-link;
+              &::before {
+                background: url("../../assets/images/sprite-image.png") no-repeat -416px -215px;
+              }
+            }
+            &.inbox-link {
+              .account-link;
+              &::before {
+                background: url("../../assets/images/sprite-image.png") no-repeat -470px -215px;  
+              }
+            }
+            &:hover {
+              color: @primary-color;
+              background-color: @navbar-active-color;
+            }  
+          }
+        }
+      }
+    }
+  }
+}
+
+.auc-index-slider {
+  .carousel-inner {
+    width: auto;
+  }  
+  .carousel-control-prev {
+    left: -120px;
+    top: 65px;
+    bottom: auto;
+    .carousel-control-prev-icon {
+      background: url("../../assets/images/sprite-image.png") no-repeat -385px -262px;  
+      width: 50px;
+      height: 70px;
+    }
+  }
+  .carousel-control-next {
+    right: -120px;
+    top: 65px;
+    bottom: auto;
+    .carousel-control-next-icon {
+      background: url("../../assets/images/sprite-image.png") no-repeat -426px -262px;  
+      width: 50px;
+      height: 70px;
+    }
+  }
+}
+
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  -webkit-transition: height 0.5s;
+  -moz-transition: height 0.5s;
+  transition: height 0.5s;
+  &.shrink {
+    margin-top: -35px;
+    transition: all 0.5s;
+  }
+}
+
+

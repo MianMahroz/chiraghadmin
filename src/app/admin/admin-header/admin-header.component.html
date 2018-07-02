@@ -1,0 +1,77 @@
+
+
+<header class="row header">
+    <div class="col-md-12">
+      <div class="row info-header-row">
+        <div class="offset-md-1 col-md-10 info-header-col d-flex justify-content-end align-items-center">
+          <div class="chiragh-info-mail py-2 pr-3">info@chiragh.com</div>
+          <div class="chiragh-contact py-2 ml-3 pr-3">
+            <a class="whatsapp-icon ml-2">Dubai +971 4 1234 5678</a>
+          </div>
+          <div class="language-flags ml-3">
+            <span class="mr-1 country-flags uae-flag"></span>
+            <span class="mr-1 country-flags active uk-flag"></span>
+            <span class="mr-1 country-flags french-flag"></span>
+            <span class="mr-1 country-flags spanish-flag"></span>
+          </div>
+          <div class="social-media-nav ml-3 pl-3 py-2">
+            <a href="#" class="social-links mr-3"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="social-links mr-3"><i class="fab fa-twitter"></i></a>
+            <a href="#" class="social-links mr-3"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="social-links"><i class="fab fa-google-plus-g"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="row navbar-wrap-row navbar-wrap-row-xs">
+        <div class="offset-md-1 col-md-10">
+          <div class="row navbar-row-wrapper my-2">
+            <div class="col-md-3 col-8 logo-sec-col">
+              <a href="#" class="site-logo d-block"><img src="./assets/images/mainlogo.jpg" class="w-100" alt="Logo"></a>
+            </div>
+            <div class="col-md-9 col-4 navbar-col">
+              <nav class="navbar navbar-expand-lg navbar-light">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                  <ul class="navbar-nav d-flex w-100 align-items-center">
+                    <li class="nav-item" routerLinkActive="active">
+                      <a class="nav-link" routerLink="/adminverificationhome">Verification<span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="#">Valuation</a>
+                    </li>
+                    <li class="nav-item" routerLinkActive="active">
+                      <a class="nav-link" routerLink="#">Brokrage</a>
+                    </li>
+                    <li class="nav-item" routerLinkActive="active">
+                      <a class="nav-link" routerLink="#">Finance</a>
+                    </li>
+                    <li class="nav-item" routerLinkActive="active">
+                      <a class="nav-link" routerLink="#">Super Admin</a>
+                    </li>
+
+                    <li *ngIf="!userName" class="nav-item reg-sign-in-item">
+                      <div class="common-btn reg-sign-in-block px-3">
+                        <a class="register-link pr-2" routerLinkActive="active" routerLink="/adminsignup">Register</a><a class="sign-in pl-2" routerLink="/adminsignin">Sign in</a>
+                      </div>
+                    </li>
+
+                    <li *ngIf="userName" class="nav-item nav-dropdown dropdown ml-3 pl-3 reg-sign-in-item">
+                      <a class="user-id-link" data-toggle="dropdown">
+                        <a class="user-id">{{userName}}</a><i class="far fa-bell"></i>
+                      </a>
+                      <div class="dropdown-menu">
+                          <a class="dropdown-item" routerLink="#">Profile</a>
+                        <a class="dropdown-item" routerLink="/adminsignout">Sign out</a>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>

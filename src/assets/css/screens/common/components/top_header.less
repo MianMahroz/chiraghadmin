@@ -1,0 +1,64 @@
+.info-header-row {
+  background-color: @light-mono-color;
+  border-bottom: 1px solid @seprator-color;
+  .info-header-col {
+    color: @mono-color;
+    font-size: 0.75em;
+    .chiragh-info-mail {
+      border-right: 1px solid @seprator-color;
+    }
+    .chiragh-contact {
+      .chiragh-info-mail;
+      display: flex;
+      align-items: center;
+      .whatsapp-icon {
+        cursor: pointer;
+        text-decoration: underline;
+        color: @mono-color;
+        &::before {
+          content: "";
+          background: url("../../assets/images/sprite-image.png") no-repeat -226px -220px;
+          padding: 8px 16px;
+        }
+      }
+    }
+    .social-media-nav {
+      .social-links {
+        .svg-inline--fa  {
+          color: @mono-color;
+          &:hover {
+            color: @light-black-color;
+          }
+        }
+      }
+    }
+    .language-flags {
+      display: none;
+      .country-flags {
+        opacity: 0.2;
+        cursor: pointer;
+        width: 26px;
+        height: 26px;
+        &.uae-flag {
+          background: url("../../assets/images/sprite-image.png") no-repeat;
+          background-position: -631px -135px;
+        }
+        &.uk-flag {
+          background: url("../../assets/images/sprite-image.png") no-repeat;
+          background-position: -664px -135px;
+        }
+        &.french-flag {
+          background: url("../../assets/images/sprite-image.png") no-repeat;
+          background-position: -559px -135px;
+        }
+        &.spanish-flag {
+          background: url("../../assets/images/sprite-image.png") no-repeat;
+          background-position: -594px -135px;
+        }
+        &.active {
+          opacity: 1;
+        }
+      }
+    }
+  }
+}
