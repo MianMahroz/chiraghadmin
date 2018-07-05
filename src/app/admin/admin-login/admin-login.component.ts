@@ -19,6 +19,9 @@ export class AdminLoginComponent implements OnInit {
 
 
   ngOnInit() {
+    if(this.token.getAdminuserName()){
+      this.router.navigate(['/adminhome']);
+    }
   }
   constructor(private mytoastr:ToasterServiceService,private userService:UserService,private http: HttpClient,private router: Router, public dialog: MatDialog, private authService: AuthService, private token: TokenStorage) {
 
@@ -40,7 +43,7 @@ export class AdminLoginComponent implements OnInit {
                         // this.mytoastr.Success('Login',data1.msg);
                            this.token.saveAdminUserName(this.logindto.userName);
                            this.token.saveUserRole(data1.role);
-                           this.router.navigate(['/adminhome']);
+                           this.router.navigate(['/adminverificationhome']);
                          }
                        }//end of if
                     }//end of inner data predicate

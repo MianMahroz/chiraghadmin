@@ -1,6 +1,6 @@
-export class OwnerDetails{
-	userName:string;
-	propertyId:number;
+export class AdminDTO{
+
+
 	propertySellerId :number;
 	firstName:string;
 	middleName:string;

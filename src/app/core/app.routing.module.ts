@@ -14,6 +14,7 @@ const routes: Routes = [
   { path: 'user', component: UserComponent },
 
   //admin module path
+  {path:'',component:AdminLoginComponent},
   {path:'adminsignin',component:AdminLoginComponent},
   {path:'adminsignup',component:AdminRegisterComponent},
   {path:'adminhome',component:AdminhomeComponent},

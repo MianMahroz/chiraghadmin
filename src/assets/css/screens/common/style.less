@@ -5,7 +5,7 @@ body {
 }
 a {
 	text-decoration: none;
-	color: @primary-color; 
+	color: @primary-color;
 	&:hover {
 		text-decoration: none;
 		color: @light-black-color;
@@ -22,11 +22,19 @@ a {
 		}
 	}
 }
+.verification-list-col {
+  .verification-list {
+    display: flex;
+    justify-content: space-between;
+    color: @secondary-color;
+font-size: 17px;
+}
+ }
 .view-all-link {
 	font-size: 0.875em;
 	border-bottom: 2px solid @mono-color;
 	&:hover {
-		color: @primary-color;		
+		color: @primary-color;
 	}
 }
 .title-primary-26 {
@@ -81,8 +89,8 @@ a {
           .page-link {
             background-color: @mono-color;
             border-radius: 50%;
-            color: @white-color; 
-          } 
+            color: @white-color;
+          }
         }
         .page-link {
           border-radius: 50%;
@@ -117,14 +125,14 @@ a {
             }
           }
         }
-      } 
+      }
     }
   }
 }
 
 
 .ca-blocks-row {
-  
+
   .carousel-inner {
     .carousel-item.active {
       display: flex;
@@ -195,12 +203,12 @@ img {
     .process-heading {
       font-size: 1.25em;
       margin-bottom: 1rem;
-      color: @secondary-color;    
+      color: @secondary-color;
     }
     .StepProgress {
       position: relative;
       padding-left: 35px;
-      list-style: none;  
+      list-style: none;
       a {
         color: @placeholder-color;
       }
@@ -214,15 +222,15 @@ img {
         height: 100%;
         border-left: 2px solid @placeholder-color;
       }
-      
+
       &-item {
         position: relative;
         counter-increment: list;
-        
+
         &:not(:last-child) {
           padding-bottom: 10px;
         }
-        
+
         &::before {
           display: inline-block;
           content: '';
@@ -232,7 +240,7 @@ img {
           width: 10px;
           top: 4px;
         }
-        
+
         &::after {
           content: '';
           display: inline-block;
@@ -245,7 +253,7 @@ img {
           border-radius: 50%;
           background-color: @white-color;
         }
-        
+
         &.is-done {
           a {
             color: @primary-color;
@@ -266,7 +274,7 @@ img {
             &::after {
               top: 4px;
             }
-          }  
+          }
           &::after {
             content: "✔";
             font-size: 10px;
@@ -277,7 +285,7 @@ img {
             top: 0;
           }
         }
-        
+
         &.current {
           &:last-child {
             &::before {
@@ -313,7 +321,7 @@ img {
           }
         }
       }
-      
+
       strong {
         display: block;
       }

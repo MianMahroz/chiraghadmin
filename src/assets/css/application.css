@@ -353,6 +353,12 @@
   text-align: center;
   font-size: 0.875em;
 }
+.screen-wrapper .form-wrapper-row .sign-in-row .sign-in-col .common-form .verification-list-col .verification-list {
+  display: flex;
+  justify-content: space-between;
+  color: #606060;
+  font-size: 17px;
+}
 .screen-wrapper .form-wrapper-row .sign-in-row .sign-in-col .common-form .sign-in-remeber-div {
   display: flex;
   align-items: center;
@@ -694,6 +700,20 @@
 .screen-wrapper .form-wrapper-row .confirmation-msg-row .confirmation-msg-col .confirmation-msg {
   color: #7e7e7e;
   font-size: 0.875em;
+}
+.screen-wrapper .ud-body-row .tab-content .tab-pane .property-sell-tabs-wrap {
+  border: none;
+}
+.screen-wrapper .ud-body-row .tab-content .tab-pane .property-sell-tabs-wrap li {
+  margin-top: 2rem;
+  margin-left: -1px;
+}
+.screen-wrapper .ud-body-row .tab-content .tab-pane .property-sell-tabs-wrap li .sub-prop-links {
+  border: 1px solid #e3e3e3;
+  padding: 10px 20px;
+}
+.screen-wrapper .ud-body-row .tab-content .tab-pane .property-sell-tabs-wrap li .sub-prop-links.active {
+  background-color: #f8f8f8;
 }
 .screen-wrapper .ud-body-row .tab-content .tab-pane .sub-prop-mutliple {
   margin-top: -1.5rem;
@@ -1254,6 +1274,12 @@ a:hover {
 .read-link-div .read-more-link .fa-chevron-right {
   margin-left: 5px;
   font-size: 12px;
+}
+.verification-list-col .verification-list {
+  display: flex;
+  justify-content: space-between;
+  color: #606060;
+  font-size: 17px;
 }
 .view-all-link {
   font-size: 0.875em;

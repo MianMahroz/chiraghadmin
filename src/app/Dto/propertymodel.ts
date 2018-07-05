@@ -128,4 +128,5 @@ export class PropertyDetailsDto {
  description:string;
  areaUnit:string;
  isPropertyDetailsVerified:string;
+ sellerUserName:string;
 }

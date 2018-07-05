@@ -14,6 +14,18 @@ import { Component, OnInit,Input } from '@angular/core';
   styleUrls: ['./admin-seller-details.component.css']
 })
 export class AdminSellerDetailsComponent implements OnInit {
+  async ngAfterViewInit() {
+		await this.loadScript('./assets/js/common.js');
+	}
+
+  private loadScript(scriptUrl: string) {
+    return new Promise((resolve, reject) => {
+      const scriptElement = document.createElement('script');
+      scriptElement.src = scriptUrl;
+      scriptElement.onload = resolve;
+      document.body.appendChild(scriptElement);
+    })
+  }
   constructor(private route:ActivatedRoute,private propertyService:PropertyService,private mytoastr:ToasterServiceService,private userService:UserService,private http: HttpClient,private router: Router, public dialog: MatDialog, private authService: AuthService, private token: TokenStorage) {
   }
   @Input() propertyId:any;

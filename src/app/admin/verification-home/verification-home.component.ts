@@ -1,3 +1,4 @@
+import { AdminDTO } from './../../Dto/adminDto';
 import { personalInfoDTO } from './../../Dto/personalInfoDTO';
 import { PropertyFinancialDTO } from './../../Dto/propertyfinancialDTO';
 import { PropertyRentalDetailDTO } from './../../Dto/propertyRentalDTO';
@@ -21,6 +22,19 @@ import { Component, OnInit ,Input } from '@angular/core';
   styleUrls: ['./verification-home.component.css']
 })
 export class VerificationHomeComponent implements OnInit {
+  async ngAfterViewInit() {
+    await this.loadScript('./assets/js/common.js');
+	}
+
+  private loadScript(scriptUrl: string) {
+    return new Promise((resolve, reject) => {
+      const scriptElement = document.createElement('script');
+      scriptElement.src = scriptUrl;
+      scriptElement.onload = resolve;
+      document.body.appendChild(scriptElement);
+    })
+  }
+
   completePropertiesList:any;
   currentProperty:any;
   showsellerdetails=false;
@@ -52,6 +66,53 @@ export class VerificationHomeComponent implements OnInit {
   editRentalDetails=false;
   scannedTenentContractFile:File;
   selectedscannedTenentContract: FileList;
+   myObj=new AdminDTO();
+//checklist fields
+isPersonalDetailsVerified:string;
+isPOADetailsVerified:string;
+isPropertyDetailsVerified:string;
+acknowledgmentCall:string;
+myclassName:string;
+// myclassName='row tab-pane fade sign-in-row';
+// myclassNameActive='row tab-pane fade sign-in-row-active show';
+
+
+
+checklistData(data:any):void{
+  this.myclassName='row tab-pane fade sign-in-row';
+//   console.log('admin data')
+//   console.log(data);
+//   this.isPersonalDetailsVerified=null;
+//   Array.from(data.propertysellerdetailses).forEach((obj) => {
+//     if(obj.ownerType=='owner'){
+//       console.log('owner');
+//       this.isPersonalDetailsVerified=obj.isPersonalDetailsVerified;
+//       console.log(this.isPersonalDetailsVerified);
+//    }
+//   else if(obj.ownerType=='poa'){
+//     console.log('poa');
+//     this.isPOADetailsVerified=obj.isPersonalDetailsVerified;
+//     console.log(this.isPOADetailsVerified);
+//   }
+
+//     // eachObj.name = that.firms[data.firmid - 1].name;
+// });
+//   this.isPropertyDetailsVerified=data.isPropertyDetailsVerified;
+
+//  if(this.isPersonalDetailsVerified=='false'){
+//   this.isPersonalDetailsVerified='';
+// }
+// if(this.isPOADetailsVerified=='false'){
+//   this.isPOADetailsVerified='';
+// }
+// if(this.isPropertyDetailsVerified=='false'){
+//   this.isPropertyDetailsVerified='';
+// }
+}//end of checklist
+
+
+
+
 
   grantEditAccessToFinancialDetails():void{
     this.editFinancialDetails=true;
@@ -103,7 +164,7 @@ selectMorgageNoc(event) {
         this.token.saveToken(data.access_token,data.refresh_token,data.expires_in);
         if(this.token.getToken()!=null){
           this.ownerDto.isPersonalDetailsVerified=isVerified;
-          this.ownerDto.userName=this.token.getuserName();
+          this.ownerDto.userName=this.token.getAdminuserName();
           this.ownerDto.propertyId=this.currentPropertyId;
          this.sellerService.updateOwner(this.ownerDto).subscribe(
            data=>{
@@ -125,7 +186,7 @@ selectMorgageNoc(event) {
         this.token.saveToken(data.access_token,data.refresh_token,data.expires_in);
         if(this.token.getToken()!=null){
           this.propertyFinancialDTO.isPropertyFinancialDetailsVerified=isVerified;
-          this.propertyFinancialDTO.userName=this.token.getuserName();
+          this.propertyFinancialDTO.userName=this.token.getAdminuserName();
           this.propertyFinancialDTO.propertyId=this.currentPropertyId;
           this.propertyService.updatePropertyFinancials(this.propertyFinancialDTO).subscribe(
            data=>{
@@ -147,7 +208,7 @@ selectMorgageNoc(event) {
         this.token.saveToken(data.access_token,data.refresh_token,data.expires_in);
         if(this.token.getToken()!=null){
           this.propertyRentalDetailDTO.isPropertyRentalDetailsVerified=isVerified;
-          this.propertyRentalDetailDTO.userName=this.token.getuserName();
+          this.propertyRentalDetailDTO.userName=this.token.getAdminuserName();
           this.propertyRentalDetailDTO.propertyId=this.currentPropertyId;
           this.propertyService.updatePropertyRental(this.propertyRentalDetailDTO).subscribe(
            data=>{
@@ -169,7 +230,8 @@ selectMorgageNoc(event) {
         this.token.saveToken(data.access_token,data.refresh_token,data.expires_in);
         if(this.token.getToken()!=null){
           this.propertyDetailsDto.isPropertyDetailsVerified=isVerified;
-          this.propertyDetailsDto.userName=this.token.getuserName();
+          this.propertyDetailsDto.sellerUserName=this.propertyDetailsDto.sellerUserName;
+          this.propertyDetailsDto.userName=this.token.getAdminuserName();
           this.propertyDetailsDto.propertyId=this.currentPropertyId;
           this.propertyService.updateProperty(this.propertyDetailsDto).subscribe(
            data=>{
@@ -201,6 +263,7 @@ selectMorgageNoc(event) {
   }//end of refresh dto
 
   setCurrentProperty(prop:any){
+
     this.currentPropertyId=prop.propertyId;
     this.currentProperty=prop;
     console.log(this.currentProperty);
@@ -341,6 +404,7 @@ getPropertyRentalDetailsImages():void{
     this.showsellerhome=true;
       }
   ngOnInit() {
+    this.myclassName='row tab-pane fade sign-in-row-active show';
     if(this.token.getAdminuserName()==null){
       console.log('Invalid Session');
       this.mytoastr.Error('','Invalid Session!')
@@ -401,6 +465,7 @@ getPropertyRentalDetailsImages():void{
 //code of ngx-galary
 
 loadData(){
+  this.currentProperty='';
   // this.mytoastr.Success('','Properties loaded Successfully');
 }
 

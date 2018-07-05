@@ -54,8 +54,8 @@ $(document).ready(function(){
       next.children(':first-child').clone().appendTo($(this));
     }
   });
-  
-  var date_input=$('input[for="date"]'); 
+
+  var date_input=$('input[for="date"]');
   var container=$('.bootstrap-iso').length>0 ? $('.bootstrap-iso').parent() : "body";
   var options={
     format: 'mm/dd/yyyy',
@@ -155,10 +155,14 @@ $(document).ready(function(){
   $('.btn-view-images').click(function(){
     $('body').addClass('overflow-hidden');
   });
+
+  $('.bester-call').click(function(){
+    $('.bester-form').addClass('d-none');
+  });
+
   $('.close').click(function(){
     $('body').removeClass('overflow-hidden');
   });
-
 
   $('select').change(function() {
     if ($(this).children('option:first-child').is(':selected')) {

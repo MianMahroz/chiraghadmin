@@ -9,12 +9,13 @@ const TOKEN_EXPIRES_IN = 'expires_in';
 @Injectable()
 export class TokenStorage {
 
-  serverPath:string='http://18.218.221.103/ChiraghServer';
-  // serverPath:string='http://localhost:8082';
+  // serverPath:string='http://18.218.221.103/ChiraghServer';
+  serverPath:string='http://localhost:8082';
   imagepath:string='http://demo.chiragh.com/ChiraghDocuments/';
-  // imagepath:string='D:/workspace/ChiraghDocuments/';
+  // imagepath:string='http://localhost:8082/ChiraghDocuments/';
 
   constructor() { }
+
 
   signOut() {
     window.sessionStorage.removeItem(TOKEN_KEY);
