@@ -717,11 +717,14 @@
         .property-sell-tabs-wrap {
           border: none;
           li {
-            margin-top: 2rem;
-            margin-left: -1px; 
+            margin-bottom: 1rem;
+            margin-left: -1px;
+            min-width: 150px;
+            text-align: center; 
             .sub-prop-links {
               border: 1px solid @seprator-color;
               padding: 10px 20px;
+              display: block;
               &.active {
                 background-color: @light-mono-color;
               }
@@ -852,6 +855,23 @@
                 .edit-form-link;
                 background: url("../../assets/images/sprite-image.png") no-repeat -622px -218px;
                 margin-left: 1rem;
+              }
+            }
+            .dsahboard-tbl {
+              height: 350px;
+              overflow-y: auto; 
+              .scroll {
+                tr {
+                  th {
+                    white-space: nowrap;
+                  }
+                  td {
+                    white-space: nowrap;
+                    a {
+                      cursor: pointer;
+                    }
+                  }
+                }
               }
             }
             .form-label-group {

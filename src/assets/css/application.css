@@ -705,12 +705,15 @@
   border: none;
 }
 .screen-wrapper .ud-body-row .tab-content .tab-pane .property-sell-tabs-wrap li {
-  margin-top: 2rem;
+  margin-bottom: 1rem;
   margin-left: -1px;
+  min-width: 150px;
+  text-align: center;
 }
 .screen-wrapper .ud-body-row .tab-content .tab-pane .property-sell-tabs-wrap li .sub-prop-links {
   border: 1px solid #e3e3e3;
   padding: 10px 20px;
+  display: block;
 }
 .screen-wrapper .ud-body-row .tab-content .tab-pane .property-sell-tabs-wrap li .sub-prop-links.active {
   background-color: #f8f8f8;
@@ -822,6 +825,19 @@
   width: 32px;
   background: url("../../assets/images/sprite-image.png") no-repeat -622px -218px;
   margin-left: 1rem;
+}
+.screen-wrapper .ud-body-row .tab-content .sign-in-row .sign-in-col .common-form .dsahboard-tbl {
+  height: 350px;
+  overflow-y: auto;
+}
+.screen-wrapper .ud-body-row .tab-content .sign-in-row .sign-in-col .common-form .dsahboard-tbl .scroll tr th {
+  white-space: nowrap;
+}
+.screen-wrapper .ud-body-row .tab-content .sign-in-row .sign-in-col .common-form .dsahboard-tbl .scroll tr td {
+  white-space: nowrap;
+}
+.screen-wrapper .ud-body-row .tab-content .sign-in-row .sign-in-col .common-form .dsahboard-tbl .scroll tr td a {
+  cursor: pointer;
 }
 .screen-wrapper .ud-body-row .tab-content .sign-in-row .sign-in-col .common-form .form-label-group .form-label-value {
   color: #7c7c7c;
@@ -2724,6 +2740,28 @@ input[type="file"] {
   align-items: center;
   padding: 0 1em;
 }
+.ud-sidebar .ud-sidebar-links-wrap li a.side-link-no-img {
+  font-size: 1em;
+}
+.ud-sidebar .ud-sidebar-links-wrap li a.side-link-no-img::before {
+  background: none !important;
+  padding: 0 !important;
+  margin-right: 0 !important;
+}
+.ud-sidebar .ud-sidebar-links-wrap li a.side-link-active-no-bg {
+  font-size: 1em;
+  padding-left: 3rem;
+}
+.ud-sidebar .ud-sidebar-links-wrap li a.side-link-active-no-bg::before {
+  background: none !important;
+  padding: 0 !important;
+  margin-right: 0 !important;
+}
+.ud-sidebar .ud-sidebar-links-wrap li a.side-link-active-no-bg.active {
+  background-color: transparent;
+  color: #212121;
+  font-weight: bold;
+}
 .ud-sidebar .ud-sidebar-links-wrap li a img {
   margin-right: 1rem;
 }
@@ -2760,6 +2798,10 @@ input[type="file"] {
 .ud-sidebar .ud-sidebar-links-wrap .sub-links-wrap {
   list-style: disc;
   margin-bottom: 7px;
+}
+.ud-sidebar .ud-sidebar-links-wrap .sub-links-wrap.link-wrap-no-bullets {
+  padding: 0;
+  list-style: none;
 }
 .ud-sidebar .ud-sidebar-links-wrap .sub-links-wrap li .sub-links {
   font-size: 14px;

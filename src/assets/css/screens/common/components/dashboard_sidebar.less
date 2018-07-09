@@ -27,6 +27,23 @@
         display: flex;
         align-items: center;
         padding: 0 1em;
+        &.side-link-no-img {
+          font-size: 1em;
+          &::before {
+            background: none !important;
+            padding: 0 !important;
+            margin-right: 0 !important;
+          }
+        }
+        &.side-link-active-no-bg {
+          .side-link-no-img;
+          padding-left: 3rem;
+          &.active {
+            background-color: transparent;
+            color: @primary-color;
+            font-weight: bold;
+          }
+        }
         img {
           margin-right: 1rem;
         }
@@ -61,6 +78,10 @@
     .sub-links-wrap {
       list-style: disc;
       margin-bottom: 7px;
+      &.link-wrap-no-bullets {
+        padding: 0;
+        list-style: none;
+      }
       li {
         .sub-links {
           font-size: 14px;

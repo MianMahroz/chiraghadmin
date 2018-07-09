@@ -156,6 +156,7 @@ $(document).ready(function(){
     $('body').addClass('overflow-hidden');
   });
 
+
   $('.bester-call').click(function(){
     $('.bester-form').addClass('d-none');
   });
@@ -175,6 +176,11 @@ $(document).ready(function(){
   $('.ud-sidebar > ul > li').click(function(){
     $('a').removeClass('active show');
     $(this).addClass('active show');
+  });
+
+  $('.side-link-no-img').click(function(){
+    $('.side-link-no-img').removeClass('bg-secondary text-white');
+    $(this).addClass('bg-secondary text-white');
   });
 });
 

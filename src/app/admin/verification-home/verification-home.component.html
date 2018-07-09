@@ -7,8 +7,7 @@
           <div class="row ud-header-wrapper">
             <div class="offset-md-1 col-md-10">
             <br>
-          <br>
-            <div class="text-center mb-5 page-primary-title-34"> Admin Verification Department Portal</div>
+            <div class="title-secondary-26 mb-4">Verification Department </div>
             </div>
           </div>
 
@@ -17,16 +16,16 @@
               <div class="row ud-body-row">
                 <div class="col-md-3 p-xs-0 ud-sidebar-col">
                   <div class="ud-sidebar">
-                    <div class="file imgae-upload my-4">
+                    <!-- <div class="file imgae-upload my-4">
                       <input type="file" name="file"/>
-                    </div>
+                    </div> -->
                     <ul class="nav nav-tabs ud-sidebar-links-wrap">
                       <li>
-                       <a class="ud-seller" data-toggle="collapse" href="#sell-links1">Leads</a>
-                        <ul class="collapse sub-links-wrap" id="sell-links1">
+                       <a class="ud-seller side-link-no-img bg-secondary text-white" data-toggle="collapse" href="#sell-links1">Leads</a>
+                        <ul class="collapse sub-links-wrap link-wrap-no-bullets show" id="sell-links1">
 
                           <li>
-                            <a class="ud-seller" (click)="loadData()" data-toggle="tab" href="#property-list">Sell</a>
+                            <a class="ud-seller side-link-active-no-bg active show" (click)="loadData()" data-toggle="tab" href="#property-list">Sell</a>
                             <ul class="collapse sub-links-wrap pl-2" id="sell-links">
                                 <li *ngFor="let propertyArr of completePropertyArr">
                                     <a class="sub-links" data-toggle="tab" (click)="setCurrentProperty(propertyArr)" >{{propertyArr.sellerUserName}}  P_Id({{propertyArr.propertyId}})</a>
@@ -37,18 +36,18 @@
 
                           <!-- end of seller admin changes -->
                           <li>
-                            <a class="ud-seller" data-toggle="collapse" href="#sell-links">Buy</a>
+                            <a class="ud-seller side-link-active-no-bg" data-toggle="collapse" href="#sell-links">Buy</a>
 
                           </li>
                         </ul>
                       </li>
-                      <li><a class="ud-seller" data-toggle="collapse" href="#">Task</a></li>
-                      <li><a class="ud-seller" data-toggle="collapse" href="#">Notifications</a></li>
-                      <li><a class="ud-seller" data-toggle="collapse" href="#">Pending Deals</a></li>
-                      <li><a class="ud-seller" data-toggle="collapse" href="#">Upcomming Listings</a></li>
-                      <li><a class="ud-seller" data-toggle="collapse" href="#">Calendar</a></li>
-                      <li><a class="ud-seller" data-toggle="collapse" href="#">Contact Search</a></li>
-                      <li><a class="ud-seller" data-toggle="collapse" href="#">Property Search</a></li>
+                      <li><a class="ud-seller side-link-no-img" data-toggle="collapse" href="#">Task</a></li>
+                      <li><a class="ud-seller side-link-no-img" data-toggle="collapse" href="#">Notifications</a></li>
+                      <li><a class="ud-seller side-link-no-img" data-toggle="collapse" href="#">Pending Deals</a></li>
+                      <li><a class="ud-seller side-link-no-img" data-toggle="collapse" href="#">Upcomming Listings</a></li>
+                      <li><a class="ud-seller side-link-no-img" data-toggle="collapse" href="#">Calendar</a></li>
+                      <li><a class="ud-seller side-link-no-img" data-toggle="collapse" href="#">Contact Search</a></li>
+                      <li><a class="ud-seller side-link-no-img" data-toggle="collapse" href="#">Property Search</a></li>
                     </ul>
                   </div>
                 </div>
@@ -56,7 +55,7 @@
 
   <!-- my code start from here -->
 
-  <div *ngIf="showsellerhome" class="col-md-9 tab-content mt-5">
+  <div *ngIf="showsellerhome" class="col-md-9 tab-content">
     <!-- in active show -->
       <div id="admin-seller-home" class="row tab-pane fade sign-in-row">
           <div class="offset-md-1 col-md-11 sign-in-col">
@@ -87,10 +86,10 @@
 
 
  <!-- Dasboard options Content Here -->
- <div class="col-md-9 tab-content mt-5">
+ <div class="col-md-9 tab-content">
     <div id="personal-info1" class="row tab-pane fade sign-in-row ">
       <div class="offset-md-1 col-md-11 sign-in-col">
-        <form class="common-form">
+        <form class="common-form mb-4">
           <div class="row">
             <div class="col-md-12 form-block-heading mb-2">
               Personal Details:
@@ -266,7 +265,7 @@
                 </div>
             </div>
             <div class="col-md-4 form-label-group mb-4 mt-5 m-xs-0">
-              <button routerLink="/changepassword"  class="btn form-btn">Change Password</button>
+              <button routerLink="/changepassword"  class="btn w-100 form-btn">Change Password</button>
             </div>
           </div>
         </form>
@@ -283,7 +282,7 @@
             <div class="prop-pic-div thumbnail-1 mb-3"></div>
             <div class="prop-title">Property Title</div>
             <div class="prop-id">Property ID</div>
-            <button class="btn learn-more-btn my-2">Remove from list</button>
+            <button class="btn w-100 learn-more-btn my-2">Remove from list</button>
           </div>
         </div>
         <div class="col-md-4 watch-prop-col">
@@ -291,7 +290,7 @@
             <div class="prop-pic-div thumbnail-2 mb-3"></div>
             <div class="prop-title">Property Title</div>
             <div class="prop-id">Property ID</div>
-            <button class="btn learn-more-btn my-2">Remove from list</button>
+            <button class="btn w-100 learn-more-btn my-2">Remove from list</button>
           </div>
         </div>
         <div class="col-md-4 watch-prop-col">
@@ -299,7 +298,7 @@
             <div class="prop-pic-div thumbnail-3 mb-3"></div>
             <div class="prop-title">Property Title</div>
             <div class="prop-id">Property ID</div>
-            <button class="btn learn-more-btn my-2">Remove from list</button>
+            <button class="btn w-100 learn-more-btn my-2">Remove from list</button>
           </div>
         </div>
       </div>
@@ -309,7 +308,7 @@
             <div class="prop-pic-div thumbnail-1 mb-3"></div>
             <div class="prop-title">Property Title</div>
             <div class="prop-id">Property ID</div>
-            <button class="btn learn-more-btn my-2">Remove from list</button>
+            <button class="btn w-100 learn-more-btn my-2">Remove from list</button>
           </div>
         </div>
         <div class="col-md-4 watch-prop-col">
@@ -317,7 +316,7 @@
             <div class="prop-pic-div thumbnail-2 mb-3"></div>
             <div class="prop-title">Property Title</div>
             <div class="prop-id">Property ID</div>
-            <button class="btn learn-more-btn my-2">Remove from list</button>
+            <button class="btn w-100 learn-more-btn my-2">Remove from list</button>
           </div>
         </div>
         <div class="col-md-4 watch-prop-col">
@@ -325,7 +324,7 @@
             <div class="prop-pic-div thumbnail-3 mb-3"></div>
             <div class="prop-title">Property Title</div>
             <div class="prop-id">Property ID</div>
-            <button class="btn learn-more-btn my-2">Remove from list</button>
+            <button class="btn w-100 learn-more-btn my-2">Remove from list</button>
           </div>
         </div>
       </div>
@@ -351,7 +350,7 @@
             <div class="prop-pic-div thumbnail-1 mb-3"></div>
             <div class="prop-title">Property Title</div>
             <div class="prop-id">Property ID</div>
-            <button class="btn learn-more-btn my-2">Remove from list</button>
+            <button class="btn w-100 learn-more-btn my-2">Remove from list</button>
           </div>
         </div>
         <div class="col-md-4 watch-prop-col">
@@ -359,7 +358,7 @@
             <div class="prop-pic-div thumbnail-2 mb-3"></div>
             <div class="prop-title">Property Title</div>
             <div class="prop-id">Property ID</div>
-            <button class="btn learn-more-btn my-2">Remove from list</button>
+            <button class="btn w-100 learn-more-btn my-2">Remove from list</button>
           </div>
         </div>
         <div class="col-md-4 watch-prop-col">
@@ -367,7 +366,7 @@
             <div class="prop-pic-div thumbnail-3 mb-3"></div>
             <div class="prop-title">Property Title</div>
             <div class="prop-id">Property ID</div>
-            <button class="btn learn-more-btn my-2">Remove from list</button>
+            <button class="btn w-100 learn-more-btn my-2">Remove from list</button>
           </div>
         </div>
       </div>
@@ -377,7 +376,7 @@
             <div class="prop-pic-div thumbnail-1 mb-3"></div>
             <div class="prop-title">Property Title</div>
             <div class="prop-id">Property ID</div>
-            <button class="btn learn-more-btn my-2">Remove from list</button>
+            <button class="btn w-100 learn-more-btn my-2">Remove from list</button>
           </div>
         </div>
         <div class="col-md-4 watch-prop-col">
@@ -385,7 +384,7 @@
             <div class="prop-pic-div thumbnail-2 mb-3"></div>
             <div class="prop-title">Property Title</div>
             <div class="prop-id">Property ID</div>
-            <button class="btn learn-more-btn my-2">Remove from list</button>
+            <button class="btn w-100 learn-more-btn my-2">Remove from list</button>
           </div>
         </div>
         <div class="col-md-4 watch-prop-col">
@@ -393,7 +392,7 @@
             <div class="prop-pic-div thumbnail-3 mb-3"></div>
             <div class="prop-title">Property Title</div>
             <div class="prop-id">Property ID</div>
-            <button class="btn learn-more-btn my-2">Remove from list</button>
+            <button class="btn w-100 learn-more-btn my-2">Remove from list</button>
           </div>
         </div>
       </div>
@@ -419,7 +418,7 @@
             <div class="prop-pic-div thumbnail-1 mb-3"></div>
             <div class="prop-title">Property Title<a href="#" class="bid-detail-view">Edit details</a></div>
             <div class="prop-id">Property ID</div>
-            <button class="btn learn-more-btn my-2">You bid: 50,000,00</button>
+            <button class="btn w-100 learn-more-btn my-2">You bid: 50,000,00</button>
           </div>
         </div>
         <div class="col-md-4 watch-prop-col">
@@ -427,7 +426,7 @@
             <div class="prop-pic-div thumbnail-2 mb-3"></div>
             <div class="prop-title">Property Title<a href="#" class="bid-detail-view">Edit details</a></div>
             <div class="prop-id">Property ID</div>
-            <button class="btn learn-more-btn my-2">You bid: 50,000,00</button>
+            <button class="btn w-100 learn-more-btn my-2">You bid: 50,000,00</button>
           </div>
         </div>
         <div class="col-md-4 watch-prop-col">
@@ -435,7 +434,7 @@
             <div class="prop-pic-div thumbnail-3 mb-3"></div>
             <div class="prop-title">Property Title<a href="#" class="bid-detail-view">Edit details</a></div>
             <div class="prop-id">Property ID</div>
-            <button class="btn learn-more-btn my-2">You bid: 50,000,00</button>
+            <button class="btn w-100 learn-more-btn my-2">You bid: 50,000,00</button>
           </div>
         </div>
       </div>
@@ -445,7 +444,7 @@
             <div class="prop-pic-div thumbnail-1 mb-3"></div>
             <div class="prop-title">Property Title<a href="#" class="bid-detail-view">Edit details</a></div>
             <div class="prop-id">Property ID</div>
-            <button class="btn learn-more-btn my-2">You bid: 50,000,00</button>
+            <button class="btn w-100 learn-more-btn my-2">You bid: 50,000,00</button>
           </div>
         </div>
         <div class="col-md-4 watch-prop-col">
@@ -453,7 +452,7 @@
             <div class="prop-pic-div thumbnail-2 mb-3"></div>
             <div class="prop-title">Property Title<a href="#" class="bid-detail-view">Edit details</a></div>
             <div class="prop-id">Property ID</div>
-            <button class="btn learn-more-btn my-2">You bid: 50,000,00</button>
+            <button class="btn w-100 learn-more-btn my-2">You bid: 50,000,00</button>
           </div>
         </div>
         <div class="col-md-4 watch-prop-col">
@@ -461,7 +460,7 @@
             <div class="prop-pic-div thumbnail-3 mb-3"></div>
             <div class="prop-title">Property Title<a href="#" class="bid-detail-view">Edit details</a></div>
             <div class="prop-id">Property ID</div>
-            <button class="btn learn-more-btn my-2">You bid: 50,000,00</button>
+            <button class="btn w-100 learn-more-btn my-2">You bid: 50,000,00</button>
           </div>
         </div>
       </div>
@@ -487,7 +486,7 @@
             <div class="prop-pic-div thumbnail-1 mb-3"></div>
             <div class="prop-title">Property Title</div>
             <div class="prop-id">Property ID</div>
-            <button class="btn learn-more-btn my-2">Remove from list</button>
+            <button class="btn w-100 learn-more-btn my-2">Remove from list</button>
           </div>
         </div>
         <div class="col-md-4 watch-prop-col">
@@ -495,7 +494,7 @@
             <div class="prop-pic-div thumbnail-2 mb-3"></div>
             <div class="prop-title">Property Title</div>
             <div class="prop-id">Property ID</div>
-            <button class="btn learn-more-btn my-2">Remove from list</button>
+            <button class="btn w-100 learn-more-btn my-2">Remove from list</button>
           </div>
         </div>
         <div class="col-md-4 watch-prop-col">
@@ -503,7 +502,7 @@
             <div class="prop-pic-div thumbnail-3 mb-3"></div>
             <div class="prop-title">Property Title</div>
             <div class="prop-id">Property ID</div>
-            <button class="btn learn-more-btn my-2">Remove from list</button>
+            <button class="btn w-100 learn-more-btn my-2">Remove from list</button>
           </div>
         </div>
       </div>
@@ -513,7 +512,7 @@
             <div class="prop-pic-div thumbnail-1 mb-3"></div>
             <div class="prop-title">Property Title</div>
             <div class="prop-id">Property ID</div>
-            <button class="btn learn-more-btn my-2">Remove from list</button>
+            <button class="btn w-100 learn-more-btn my-2">Remove from list</button>
           </div>
         </div>
         <div class="col-md-4 watch-prop-col">
@@ -521,7 +520,7 @@
             <div class="prop-pic-div thumbnail-2 mb-3"></div>
             <div class="prop-title">Property Title</div>
             <div class="prop-id">Property ID</div>
-            <button class="btn learn-more-btn my-2">Remove from list</button>
+            <button class="btn w-100 learn-more-btn my-2">Remove from list</button>
           </div>
         </div>
         <div class="col-md-4 watch-prop-col">
@@ -529,7 +528,7 @@
             <div class="prop-pic-div thumbnail-3 mb-3"></div>
             <div class="prop-title">Property Title</div>
             <div class="prop-id">Property ID</div>
-            <button class="btn learn-more-btn my-2">Remove from list</button>
+            <button class="btn w-100 learn-more-btn my-2">Remove from list</button>
           </div>
         </div>
       </div>
@@ -548,37 +547,60 @@
       </div>
     </div>
     <!-- Property List -->
-    <div   id="property-list" class="row tab-pane fade sign-in-row">
+    <div   id="property-list" class="row tab-pane fade sign-in-row active show">
       <div class="col-md-12 sign-in-col">
-        <form  *ngIf="!currentProperty"   class="common-form bester-form">
+        <form  *ngIf="!currentProperty"   class="common-form mb-4 bester-form">
           <div class="row">
-            <div class="col-md-12 form-block-heading mb-4">Properties List </div>
+            <div class="offset-md-6 col-md-6 d-flex align-items-center mb-3">
+              <input type="text" class="form-control bg-light" placeholder="Keyword, Property ID, Name etc">
+              <label class="ml-3 mb-0">Search</label>
+            </div>
           </div>
           <div class="row">
-            <table class="table table-striped table-responsive">
-              <thead>
-                <tr>
-                  <th scope="col">Property Id</th>
-                  <th scope="col">New Leads</th>
-                  <th scope="col">Last Action Performed</th>
-                  <th scope="col">Date Received</th>
-                  <th scope="col">Last Action</th>
-                  <th scope="col">By</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr *ngFor="let propertyArr of completePropertyArr">
-                  <th scope="row">{{propertyArr.propertyId}}</th>
-                  <td><a (click)="setCurrentProperty(propertyArr)" class="bester-call" >{{propertyArr.sellerUserName}}</a></td>
-                  <td>Last Action Performed</td>
-                  <td>{{propertyArr.dateReceived}}</td>
-                  <td>Last Action Date</td>
-                  <td>By</td>
-                </tr>
-              </tbody>
-            </table>
+            <div class="col-md-12 form-block-heading mb-3">Seller</div>
           </div>
-          <div class="row align-items-end mt-5">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="dsahboard-tbl">
+                <table class="table scroll table-fixed table-responsive">
+                    <thead>
+                      <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">New Leads</th>
+                        <th scope="col">Last Action Performed</th>
+                        <th scope="col">Date Received</th>
+                        <th scope="col">Last Action</th>
+                        <th scope="col">By</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let propertyArr of completePropertyArr">
+                        <td scope="row">{{propertyArr.propertyId}}</td>
+                        <td><a (click)="setCurrentProperty(propertyArr)" class="bester-call" >{{propertyArr.sellerUserName}}</a></td>
+                        <td>Last Action Performed</td>
+                        <td>{{propertyArr.dateReceived}}</td>
+                        <td>Last Action Date</td>
+                        <td>By</td>
+                      </tr>
+                    </tbody>
+                  </table>
+              </div>
+              <div class="pagination-wrap pb-4">
+                <nav>
+                  <ul class="pagination justify-content-center mb-0">
+                    <li class="page-item"><a class="page-link prev-link mr-2" href="#"><i class="fas fa-chevron-left"></i></a></li>
+                    <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                    <li class="page-item"><a class="page-link" href="#">4</a></li>
+                    <li class="page-item"><a class="page-link" href="#">5</a></li>
+                    <li class="page-item"><a class="page-link next-link ml-2" href="#"><i class="fas fa-chevron-right"></i></a></li>
+                  </ul>
+                </nav>
+              </div>
+            </div>
+          </div>
+          <!-- <div class="row align-items-end mt-5">
             <div class="col-md-8">
               <div class="form-block-heading mb-2">Request Change</div>
               <textarea class="form-control common-textarea" placeholder="Composing Box"></textarea>
@@ -587,29 +609,29 @@
             <div class="offset-md-1 col-md-3">
               <button class="btn form-btn">HOD Approved</button>
             </div>
-          </div>
+          </div> -->
         </form>
         <!-- Property  List-->
 
           <div *ngIf="currentProperty" id="besterCall" class="row tab-pane fade sign-in-row-active show">
-            <div class="col-md-12 sign-in-col mb-5 pb-3">
+            <div class="col-md-12 sign-in-col mb-3 pb-3">
               <ul class="nav nav-tabs sub-prop-tabs property-sell-tabs-wrap" id="sell-sub-links/{{currentProperty.propertyId}}">
-                <li><a data-toggle="tab" href="#owner-detail" class="sub-prop-links"(click)="refreshDto()" >Owners details</a></li>
-                <li><a data-toggle="tab" href="#POA-detail" class="sub-prop-links" (click)="refreshDto()">POA details</a></li>
+                <li><a data-toggle="tab" href="#owner-detail" class="sub-prop-links active show"(click)="refreshDto()" >Personal Details</a></li>
+                <li><a data-toggle="tab" href="#POA-detail" class="sub-prop-links" (click)="refreshDto()">POA Details</a></li>
                 <!-- <li *ngFor="let ownerArr of propertyArr.propertysellerdetailses"><a *ngIf="ownerArr.ownerType=='owner'" data-toggle="tab" href="#owner-detail"  (click)="getOwnerDetails(ownerArr)" class="sub-prop-links">- Owner ID:{{ownerArr.propertySellerId}}</a></li> -->
                 <!-- <li *ngFor="let ownerArr of propertyArr.propertysellerdetailses"><a  *ngIf="ownerArr.ownerType=='poa'"  data-toggle="tab" href="#POA-detail"  (click)="getPOADetails(ownerArr)" class="sub-prop-links">- POA ID {{ownerArr.propertySellerId}}</a></li>  -->
-                <li><a  data-toggle="tab" href="#prop-detail" (click)="getPropertyDetails(currentProperty)" class="sub-prop-links">Property details</a></li>
-                <li><a data-toggle="tab" href="#prop-financials" (click)="getPropertyFinancialDetails(currentProperty)" class="sub-prop-links">Property financials</a></li>
-                <li><a data-toggle="tab" href="#prop-rent" (click)="getPropertyRentalDetails(currentProperty)" class="sub-prop-links">Property rent</a></li>
-                <li><a data-toggle="tab" href="#prop-pics" class="sub-prop-links">- Property pics</a></li>
-                <li><a data-toggle="tab" href="#seller-verification"  (click)="checklistData(currentProperty)" class="sub-prop-links">Seller Verification</a></li>
+                <li><a  data-toggle="tab" href="#prop-detail" (click)="getPropertyDetails(currentProperty)" class="sub-prop-links">Property Details</a></li>
+                <!-- <li><a data-toggle="tab" href="#prop-financials" (click)="getPropertyFinancialDetails(currentProperty)" class="sub-prop-links">Property financials</a></li>
+                <li><a data-toggle="tab" href="#prop-rent" (click)="getPropertyRentalDetails(currentProperty)" class="sub-prop-links">Property rent</a></li> -->
+                <!-- <li><a data-toggle="tab" href="#prop-pics" class="sub-prop-links">- Property pics</a></li> -->
+                <li><a data-toggle="tab" href="#seller-verification"  (click)="checklistData(currentProperty)" class="sub-prop-links">Checklist</a></li>
               </ul>
             </div>
             <div  class="col-md-12 sign-in-col">
               <div class="tab-content">
                 <!-- Seller property details -->
-                <div id="owner-detail" class="row tab-pane fade sign-in-row">
-                  <div class="offset-md-1 col-md-10 sub-prop-mutliple">
+                <div id="owner-detail" class="row tab-pane fade sign-in-row active show">
+                  <div class="col-md-12 sub-prop-mutliple">
                     <ul *ngIf="currentProperty" class="nav nav-tabs sub-prop-tabs">
                       <li class="d-flex" *ngFor="let ownerArr1 of currentProperty.propertysellerdetailses">
                         <a *ngIf="ownerArr1.ownerType=='owner'" data-toggle="tab" href="#owner-detail"  (click)="getOwnerDetails(ownerArr1)" class="sub-prop-tabs-link">
@@ -622,9 +644,9 @@
                       <li><a class="sub-prop-tabs-link" data-toggle="tab" href="#owner-4">Owner 4</a></li>  -->
                     </ul>
                   </div>
-                  <div   class="offset-md-1 col-md-11 sign-in-col">
+                  <div   class="col-md-12 sign-in-col">
                     <div class="tab-content">
-                      <form *ngIf="!editOwner" #ownerDetailsForm1="ngForm"  class="common-form"   novalidate>
+                      <form *ngIf="!editOwner" #ownerDetailsForm1="ngForm"  class="common-form mb-4" novalidate>
                         <div class="mb-5 page-primary-title-34">Owner Details</div>
                         <div class="row">
                           <div class="col-md-12 form-block-heading mb-3">Personal Details:</div>
@@ -686,7 +708,8 @@
                           <div class="col-md-6 form-label-group mb-4">
                             <label class="form-label form-label-bold">P.O.Box</label>
                             <label class="form-label form-label-value">{{ownerDto.pobox}}</label>
-                        </div>
+                          </div>
+                        </div>  
                         <div class="row mt-3">
                           <div class="col-md-12 document-upload">
                             Uploaded Documents
@@ -696,16 +719,15 @@
                         </div>
                         <div class="row mt-5 submit-btn-row">
                           <div class="col-md-3 mb-xs-4">
-                            <a *ngIf="ownerDto.isPersonalDetailsVerified=='false'" (click)="ownerVerified('true')" id="verifyowners"  style=color:white class="btn common-btn btn-light-black">Verify</a>
+                            <a *ngIf="ownerDto.isPersonalDetailsVerified=='false'" (click)="ownerVerified('true')" id="verifyowners"  style=color:white class="btn w-100 common-btn btn-light-black">Verify</a>
                           </div>
                           <div class="offset-md-6 col-md-3">
-                            <button  (click)="grantEditAccess()" style=color:white class="btn common-btn" type="submit">Edit</button>
+                            <button (click)="grantEditAccess()" style=color:white class="btn w-100 common-btn w-100" type="submit">Edit</button>
                           </div>
-                        </div>
                         </div>
                       </form>
                       <!-- edit form -->
-                      <form *ngIf="editOwner" #ownerDetailsForm="ngForm"  class="common-form"   novalidate>
+                      <form *ngIf="editOwner" #ownerDetailsForm="ngForm" class="common-form mb-4" novalidate>
                         <div class="mb-5 page-primary-title-34">Owner Details</div>
                         <div class="row">
                           <div class="col-md-12 form-block-heading mb-3">Personal Details:</div>
@@ -924,12 +946,12 @@
                           </div>
                         </div>
                         <div class="row mt-5 submit-btn-row">
-                          <div class="col-md-3 mb-xs-4">
-                            <!-- <a *ngIf="ownerDto.isPersonalDetailsVerified=='false'" (click)="ownerVerified('true')" id="verifyowners"  style=color:white class="btn common-btn btn-light-black">Verify</a> -->
-                          </div>
-                          <div class="offset-md-6 col-md-3">
+                          <!-- <div class="col-md-3 mb-xs-4">
+                            <a *ngIf="ownerDto.isPersonalDetailsVerified=='false'" (click)="ownerVerified('true')" id="verifyowners"  style=color:white class="btn common-btn btn-light-black">Verify</a>
+                          </div> -->
+                          <div class="offset-md-9 col-md-3">
                             <!-- [disabled]="!ownerDetailsForm.form.valid" -->
-                            <button  (click)="ownerVerified('false')" style=color:white class="btn common-btn" type="submit">Update</button>
+                            <button  (click)="ownerVerified('false')" style=color:white class="btn common-btn w-100" type="submit">Update</button>
                           </div>
                         </div>
                       </form>
@@ -938,7 +960,7 @@
                 </div>
                 <!-- POA Details Here -->
                 <div id="POA-detail" class="row tab-pane fade sign-in-row">
-                  <div class="offset-md-1 col-md-10 sub-prop-mutliple">
+                  <div class="col-md-12 sub-prop-mutliple">
                     <ul *ngIf="currentProperty" class="nav nav-tabs sub-prop-tabs">
                       <li class="d-flex" *ngFor="let poaArr1 of currentProperty.propertysellerdetailses">
                         <a *ngIf="poaArr1.ownerType=='poa'" data-toggle="tab"  href="#POA-detail"   (click)=" getPOADetails(poaArr1)" class="sub-prop-tabs-link">
@@ -947,9 +969,9 @@
                       </li>
                     </ul>
                   </div>
-                  <div class="offset-md-1 col-md-11 sign-in-col">
+                  <div class="col-md-12 sign-in-col">
                     <div class="tab-content">
-                      <form *ngIf="editPOA" #poaDetailsForm="ngForm" class="common-form" novalidate>
+                      <form *ngIf="editPOA" #poaDetailsForm="ngForm" class="common-form mb-4" novalidate>
                         <div class="mb-5 page-primary-title-34">POA Details</div>
                         <div class="row">
                           <div class="col-md-12 form-block-heading mb-3">Personal Details:</div>
@@ -1206,12 +1228,12 @@
                           </div>
                           <div class="offset-md-6 col-md-3">
                             <!-- [disabled]="!ownerDetailsForm.form.valid" -->
-                            <button  (click)="ownerVerified('false')" style=color:white class="btn common-btn" type="submit">Update</button>
+                            <button  (click)="ownerVerified('false')" style=color:white class="btn common-btn w-100" type="submit">Update</button>
                           </div>
                         </div>
                       </form>
                       <!-- edit form     -->
-                      <form  *ngIf="!editPOA" #poaDetailsForm="ngForm" class="common-form" novalidate>
+                      <form  *ngIf="!editPOA" #poaDetailsForm="ngForm" class="common-form mb-4" novalidate>
                         <div class="mb-5 page-primary-title-34">POA Details</div>
                         <div class="row">
                           <div class="col-md-12 form-block-heading mb-3">Personal Details:</div>
@@ -1269,8 +1291,8 @@
                           <div class="col-md-6 form-label-group mb-4">
                             <label class="form-label form-label-bold required-input-label">Address</label>
                             <label class="form-label form-label-value required-input-label">{{ownerDto.address}}</label>
-                            </div>
-                            <div class="col-md-6 form-label-group mb-4">
+                          </div>
+                          <div class="col-md-6 form-label-group mb-4">
                             <label class="form-label form-label-bold">P.O.Box</label>
                             <label class="form-label form-label-value required-input-label">{{ownerDto.pobox}}</label>
                           </div>
@@ -1299,11 +1321,11 @@
                         </div>
                         <div class="row mt-5 submit-btn-row">
                           <div class="col-md-3 mb-xs-4">
-                            <a *ngIf="ownerDto.isPersonalDetailsVerified=='false'" (click)="ownerVerified('true')" id="verifyowners"  style=color:white class="btn common-btn btn-light-black">Verify</a>
+                            <a *ngIf="ownerDto.isPersonalDetailsVerified=='false'" (click)="ownerVerified('true')" id="verifyowners"  style=color:white class="btn w-100 common-btn btn-light-black">Verify</a>
                           </div>
                           <div class="offset-md-6 col-md-3">
                             <!-- [disabled]="!ownerDetailsForm.form.valid" -->
-                            <button  (click)="grantEditAccessToPOA()" style=color:white class="btn common-btn" type="submit">Edit</button>
+                            <button  (click)="grantEditAccessToPOA()" style=color:white class="btn w-100 common-btn" type="submit">Edit</button>
                           </div>
                         </div>
                       </form>
@@ -1312,9 +1334,8 @@
                 </div>
                 <!-- Property Details Here -->
                 <div id="prop-detail" class="row tab-pane fade sign-in-row">
-                  <div class="offset-md-1 col-md-11 sign-in-col">
-
-                    <form *ngIf="!editPropertyDetails" #propertyDetailsForm="ngForm" class="common-form" novalidate>
+                  <div class="col-md-12 sign-in-col">
+                    <form *ngIf="!editPropertyDetails" #propertyDetailsForm="ngForm" class="common-form mb-4" novalidate>
                       <div class="mb-5 page-primary-title-34">Property Details</div>
                       <div class="row">
                         <div class="col-md-12 form-block-heading mb-3">Area Details:</div>
@@ -1879,15 +1900,15 @@
                       </div>
                       <div class="row mt-5 submit-btn-row">
                         <div class="col-md-3 mb-xs-4">
-                          <a *ngIf="propertyDetailsDto.isPropertyDetailsVerified=='false'" (click)="propertyDetailsVerified('true')" id="verifyowners"  style=color:white class="btn common-btn btn-light-black">Verify</a>
+                          <a *ngIf="propertyDetailsDto.isPropertyDetailsVerified=='false'" (click)="propertyDetailsVerified('true')" id="verifyowners"  style=color:white class="btn common-btn btn-light-black w-100">Verify</a>
                         </div>
                         <div class="offset-md-6 col-md-3">
-                          <button  (click)="grantEditAccessToPropertyDetails()" style=color:white class="btn common-btn" type="submit">Edit</button>
+                          <button  (click)="grantEditAccessToPropertyDetails()" style=color:white class="btn w-100 common-btn" type="submit">Edit</button>
                         </div>
                       </div>
                     </form>
                     <!-- edit property details form -->
-                    <form *ngIf="editPropertyDetails" #propertyDetailsForm="ngForm" class="common-form" novalidate>
+                    <form *ngIf="editPropertyDetails" #propertyDetailsForm="ngForm" class="common-form mb-4" novalidate>
                       <div class="mb-5 page-primary-title-34">Property Details</div>
                       <div class="row">
                         <div class="col-md-12 form-block-heading mb-3">Area Details:</div>
@@ -2536,12 +2557,12 @@
                         </div>
                       </div>
                       <div class="row mt-5 submit-btn-row">
-                          <div class="col-md-3 mb-xs-4">
-                            <!-- <a *ngIf="propertyDetailsDto.isPropertyDetailsVerified=='false'&&!editPropertyDetails" (click)="propertyDetailsVerified('true')" id="verifyowners"  style=color:white class="btn common-btn btn-light-black">Verify</a> -->
-                          </div>
+                          <!-- <div class="col-md-3 mb-xs-4">
+                            <a *ngIf="propertyDetailsDto.isPropertyDetailsVerified=='false'&&!editPropertyDetails" (click)="propertyDetailsVerified('true')" id="verifyowners"  style=color:white class="btn common-btn btn-light-black">Verify</a>
+                          </div> -->
                           <div class="offset-md-6 col-md-3">
                             <!-- [disabled]="!ownerDetailsForm.form.valid" -->
-                            <button  (click)="propertyDetailsVerified('false')" style=color:white class="btn common-btn" type="submit">Update</button>
+                            <button  (click)="propertyDetailsVerified('false')" style=color:white class="btn common-btn w-100" type="submit">Update</button>
                           </div>
                         </div>
                     </form>
@@ -2549,8 +2570,8 @@
                 </div>
                 <!-- Property Financilas Here -->
                 <div id="prop-financials" class="row tab-pane fade sign-in-row">
-                  <div class="offset-md-1 col-md-11 sign-in-col">
-                    <form *ngIf="!editFinancialDetails" #finanicalForm="ngForm" class="common-form" novalidate>
+                  <div class="col-md-12 sign-in-col">
+                    <form *ngIf="!editFinancialDetails" #finanicalForm="ngForm" class="common-form mb-4" novalidate>
                       <div class="mb-5 page-primary-title-34">Property Details</div>
                       <div class="row">
                         <div class="col-md-12 form-block-heading mb-3">Mortgage Details</div>
@@ -2627,14 +2648,14 @@
                       </div>
                       <div class="row mt-5 submit-btn-row">
                         <div class="col-md-3 mb-xs-4">
-                          <a *ngIf="propertyDetailsDto.isPropertyDetailsVerified=='false'" (click)="financialDetailsVerified('true')" id="verifyowners"  style=color:white class="btn common-btn btn-light-black">Verify</a>
+                          <a *ngIf="propertyDetailsDto.isPropertyDetailsVerified=='false'" (click)="financialDetailsVerified('true')" id="verifyowners"  style=color:white class="btn w-100 common-btn btn-light-black">Verify</a>
                         </div>
                         <div class="offset-md-6 col-md-3">
-                          <button  (click)="grantEditAccessToFinancialDetails()" style=color:white class="btn common-btn" type="submit">Edit</button>
+                          <button  (click)="grantEditAccessToFinancialDetails()" style=color:white class="btn w-100 common-btn" type="submit">Edit</button>
                         </div>
                       </div>
                     </form>
-                    <form *ngIf="editFinancialDetails" #finanicalForm="ngForm" class="common-form" novalidate>
+                    <form *ngIf="editFinancialDetails" #finanicalForm="ngForm" class="common-form mb-4" novalidate>
                       <div class="mb-5 page-primary-title-34">Property Details</div>
                       <div class="row">
                         <div class="col-md-12 form-block-heading mb-3">Mortgage Details</div>
@@ -2762,7 +2783,7 @@
                           </div>
                           <div class="offset-md-6 col-md-3">
                               <!-- [disabled]="!ownerDetailsForm.form.valid" -->
-                              <button  (click)="financialDetailsVerified('false')" style=color:white class="btn common-btn" type="submit">Update</button>
+                              <button  (click)="financialDetailsVerified('false')" style=color:white class="btn common-btn w-100" type="submit">Update</button>
                           </div>
                       </div>
                     </form>
@@ -2770,8 +2791,8 @@
                 </div>
                 <!-- Property Rent Here -->
                 <div id="prop-rent" class="row tab-pane fade sign-in-row">
-                  <div class="offset-md-1 col-md-11 sign-in-col">
-                    <form *ngIf="!editRentalDetails" #rentalForm="ngForm" class="common-form" novalidate>
+                  <div class="col-md-12 sign-in-col">
+                    <form *ngIf="!editRentalDetails" #rentalForm="ngForm" class="common-form mb-4" novalidate>
                       <div class="mb-5 page-primary-title-34">Property Details</div>
                       <div class="row">
                         <div class="col-md-12 form-block-heading mb-3">Rent Details</div>
@@ -2813,15 +2834,15 @@
                       </div>
                       <div class="row mt-5 submit-btn-row">
                           <div class="col-md-3 mb-xs-4">
-                              <a *ngIf="propertyRentalDetailDTO.isPropertyRentalDetailsVerified=='false'" (click)="financialDetailsVerified('true')" id="verifyowners"  style=color:white class="btn common-btn btn-light-black">Verify</a>
+                              <a *ngIf="propertyRentalDetailDTO.isPropertyRentalDetailsVerified=='false'" (click)="financialDetailsVerified('true')" id="verifyowners"  style=color:white class="btn w-100 common-btn btn-light-black">Verify</a>
                           </div>
                           <div class="offset-md-6 col-md-3">
                               <!-- [disabled]="!ownerDetailsForm.form.valid" -->
-                              <button  (click)="grantEditAccessToRentalDetails()" style=color:white class="btn common-btn" type="submit">Edit</button>
+                              <button  (click)="grantEditAccessToRentalDetails()" style=color:white class="btn w-100 common-btn" type="submit">Edit</button>
                           </div>
                       </div>
                     </form>
-                    <form *ngIf="editRentalDetails" #rentalForm="ngForm" class="common-form" novalidate>
+                    <form *ngIf="editRentalDetails" #rentalForm="ngForm" class="common-form mb-4" novalidate>
                       <div class="mb-5 page-primary-title-34">Property Details</div>
                       <div class="row">
                         <div class="col-md-12 form-block-heading mb-3">Rent Details</div>
@@ -2927,7 +2948,7 @@
                           </div>
                           <div class="offset-md-6 col-md-3">
                               <!-- [disabled]="!ownerDetailsForm.form.valid" -->
-                              <button  (click)="rentalDetailsVerified('false')" style=color:white class="btn common-btn" type="submit">Update</button>
+                              <button  (click)="rentalDetailsVerified('false')" style=color:white class="btn common-btn w-100" type="submit">Update</button>
                           </div>
                       </div>
                     </form>
@@ -2935,8 +2956,8 @@
                 </div>
                 <!-- Property pics Here -->
                 <div id="prop-pics" class="row tab-pane fade sign-in-row">
-                  <div class="offset-md-1 col-md-11 sign-in-col">
-                    <form class="common-form">
+                  <div class="col-md-12 sign-in-col">
+                    <form class="common-form mb-4">
                       <div class="row">
                         <div class="col-md-12 form-block-heading mb-2">Property Pics</div>
                       </div>
@@ -3011,8 +3032,8 @@
                 </div>
                 <!-- Seller Verifivation Here -->
                 <div id="seller-verification" class="row tab-pane fade sign-in-row">
-                  <div class="offset-md-1 col-md-11 sign-in-col">
-                    <form class="common-form">
+                  <div class="col-md-12 sign-in-col">
+                    <form class="common-form mb-4">
                       <div class="row">
                         <div class="col-md-12 form-block-heading mb-4">Verification Department</div>
                       </div>
@@ -3060,7 +3081,7 @@
                           <button class="btn common-btn mt-4 px-5">Send</button>
                         </div>
                         <div class="offset-md-1 col-md-3">
-                          <button class="btn form-btn">HOD Approved</button>
+                          <button class="btn w-100 form-btn">HOD Approved</button>
                         </div>
                       </div>
                     </form>
@@ -3085,7 +3106,7 @@
 <!-- Property Rent Here -->
 <div id="checklist" class="row tab-pane fade sign-in-row">
   <div class="offset-md-1 col-md-11 sign-in-col">
-      <form  #checklist="ngForm" class="common-form" novalidate>
+      <form  #checklist="ngForm" class="common-form mb-4" novalidate>
           <div class="mb-5 page-primary-title-34">Property Details</div>
           <div class="row">
             <div class="col-md-12 form-block-heading mb-3">Rent Details</div>
@@ -3186,13 +3207,13 @@
             </div>
           </div>
           <div class="row mt-5 submit-btn-row">
-              <div class="col-md-3 mb-xs-4">
-                  <a *ngIf="propertyRentalDetailDTO.isPropertyRentalDetailsVerified=='false'" (click)="financialDetailsVerified('true')" id="verifyowners"  style=color:white class="btn common-btn btn-light-black">Verify</a>
-              </div>
-              <div class="offset-md-6 col-md-3">
-                  <!-- [disabled]="!ownerDetailsForm.form.valid" -->
-                  <button  (click)="financialDetailsVerified('false')" style=color:white class="btn common-btn" type="submit">Update</button>
-              </div>
+            <div class="col-md-3 mb-xs-4">
+              <a *ngIf="propertyRentalDetailDTO.isPropertyRentalDetailsVerified=='false'" (click)="financialDetailsVerified('true')" id="verifyowners"  style=color:white class="btn w-100 common-btn btn-light-black">Verify</a>
+            </div>
+            <div class="offset-md-6 col-md-3">
+              <!-- [disabled]="!ownerDetailsForm.form.valid" -->
+              <button  (click)="financialDetailsVerified('false')" style=color:white class="btn common-btn w-100" type="submit">Update</button>
+            </div>
           </div>
         </form>
   </div>
@@ -3205,9 +3226,9 @@
 <div class="row ud-body-row">
   <div class="col-md-3 ud-sidebar-col p-xs-0 ">
     <div class="ud-sidebar">
-      <div class="file imgae-upload my-4">
+      <!-- <div class="file imgae-upload my-4">
         <input type="file" name="file"/>
-      </div>
+      </div> -->
       <ul class="nav nav-tabs ud-sidebar-links-wrap">
         <li><a class="ud-pers-info active" data-toggle="tab" href="#personal-info">Personal Info</a></li>
         <li>
@@ -3230,10 +3251,10 @@
       </ul>
     </div>
   </div>
-  <div class="col-md-9 tab-content mt-5">
+  <div class="col-md-9 tab-content">
     <div id="personal-info" class="row tab-pane fade sign-in-row in active show">
       <div class="offset-md-1 col-md-11 sign-in-col">
-        <form class="common-form">
+        <form class="common-form mb-4">
           <div class="row">
             <div class="col-md-12 form-block-heading mb-2">
               Personal Details:
@@ -3311,7 +3332,7 @@
               <input type="text" class="form-control form-input" placeholder="Address">
             </div>
             <div class="col-md-4 form-label-group mb-4 mt-5">
-              <button class="btn form-btn">Change Password</button>
+              <button class="btn form-btn w-100">Change Password</button>
             </div>
           </div>
         </form>
