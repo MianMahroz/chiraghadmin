@@ -565,22 +565,22 @@
                 <table class="table scroll table-fixed table-responsive">
                     <thead>
                       <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">New Leads</th>
-                        <th scope="col">Last Action Performed</th>
-                        <th scope="col">Date Received</th>
-                        <th scope="col">Last Action</th>
-                        <th scope="col">By</th>
+                        <th width="5%">#</th>
+                        <th width="15%">New Leads</th>
+                        <th width="25%">Last Action Performed</th>
+                        <th width="20%">Date Received</th>
+                        <th width="20%">Last Action</th>
+                        <th width="15%">By</th>
                       </tr>
                     </thead>
                     <tbody>
                       <tr *ngFor="let propertyArr of completePropertyArr">
-                        <td scope="row">{{propertyArr.propertyId}}</td>
-                        <td><a (click)="setCurrentProperty(propertyArr)" class="bester-call" >{{propertyArr.sellerUserName}}</a></td>
-                        <td>Last Action Performed</td>
-                        <td>{{propertyArr.dateReceived}}</td>
-                        <td>Last Action Date</td>
-                        <td>By</td>
+                        <td width="5%">{{propertyArr.propertyId}}</td>
+                        <td width="15%"><a (click)="setCurrentProperty(propertyArr)" class="bester-call" >{{propertyArr.sellerUserName}}</a></td>
+                        <td width="25%">Last Action Performed</td>
+                        <td width="20%">{{propertyArr.dateReceived}}</td>
+                        <td width="20%">Last Action Date</td>
+                        <td width="15%">By</td>
                       </tr>
                     </tbody>
                   </table>
@@ -711,10 +711,29 @@
                           </div>
                         </div>  
                         <div class="row mt-3">
-                          <div class="col-md-12 document-upload">
+                          <div class="col-md-12 form-block-heading mb-3 document-upload">
                             Uploaded Documents
-                            <ks-modal-gallery [modalImages]="images"
-                            [downloadable]="true"></ks-modal-gallery>
+
+                            <!-- <ks-modal-gallery [modalImages]="images"
+                            [downloadable]="true"></ks-modal-gallery> -->
+                          </div>
+                          <div class="col-md-4">
+                            <div class="upload-doc-block">
+                              <div class="upload-doc-div">
+                                <img class="w-100 thumbnail" src="{{ownerPassportCopy}}">
+                              </div>
+                              <div class="upload-instuct mt-2">Scanned passport copy</div>
+                            </div>
+                          </div>
+                          <div class="offset-md-2 col-md-4">
+                            <div class="upload-doc-block">
+                              <div class="upload-doc-div">
+                                <img class="w-100 thumbnail" src="{{ownerIdCopy}}">
+                              </div>
+                              <div class="upload-instuct mt-2">
+                                Scanned ID copy<div class="ui-subtitle">(UAE or country of origin)</div>
+                              </div>
+                            </div>
                           </div>
                         </div>
                         <div class="row mt-5 submit-btn-row">
@@ -922,7 +941,7 @@
                             Upload Documents
                             <div class="sub-details">jpg, png, pdf accepted with file size not exceeding 2Mb</div>
                           </div>
-                          <div class="col-md-12 upload-doc-block">
+                          <div class="col-md-12 upload-doc-wrap-inline">
                             <div class="upload-btn-div mt-4">
                               <div class="file">
                                 <input id="ownerPassCopy" #passFile type="file" name="file" (change)="selectPassport($event)" class="doc-upload" />
@@ -1180,11 +1199,11 @@
                           </div>
                         </div>
                         <div class="row mt-3">
-                          <div class="col-md-12 document-upload">
+                          <div class="col-md-12 document-upload form-block-heading">
                             Upload Documents
                             <div class="sub-details">jpg, png, pdf accepted with file size not exceeding 2Mb</div>
                           </div>
-                          <div class="col-md-12 upload-doc-block">
+                          <div class="col-md-12 upload-doc-wrap-inline">
                             <div class="upload-btn-div mt-4">
                               <div class="file">
                                 <input id="scanPassCopy" type="file" (change)="selectPassport($event)" name="file" class="doc-upload" />
@@ -1313,11 +1332,43 @@
                           </div>
                         </div>
                         <div class="row mt-3">
-                          <div class="col-md-12 document-upload">
-                            Upload Documents
+                          <div class="col-md-12 form-block-heading mb-2">Uploaded Documents</div>
+                          <div class="col-md-4">
+                            <div class="upload-doc-block">
+                              <div class="upload-doc-div">
+                                <img class="w-100 thumbnail" src="{{poaPassportCopy}}">
+                              </div>
+                              <div class="upload-instuct mt-2">Scanned passport copy</div>
+                            </div>
                           </div>
-                          <ks-modal-gallery [modalImages]="images"
-                          [downloadable]="true"></ks-modal-gallery>
+                          <div class="offset-md-2 col-md-4">
+                            <div class="upload-doc-block">
+                              <div class="upload-doc-div">
+                                <img class="w-100 thumbnail" src="{{poaIdCopy}}">
+                              </div>
+                              <div class="upload-instuct mt-2">
+                                Scanned ID copy<div class="ui-subtitle">(UAE or country of origin)</div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-md-4 mt-3">
+                            <div class="upload-doc-block">
+                              <div class="upload-doc-div">
+                                <img class="w-100 thumbnail" src="{{poaNotorizedCopy}}">
+                              </div>
+                              <div class="upload-instuct mt-2">
+                                Scanned NOTORIZED POA
+                                <div class="ui-subtitle">
+                                  (International POA should have the stamp of external affairs and UAE embassy)
+                                </div>
+                              </div>
+                            </div>
+                          </div>     
+                          <!-- <ks-modal-gallery [modalImages]="images"
+                          [downloadable]="true"></ks-modal-gallery>                      
+                          <p *ngIf="ownerDto.scannedIdCopy"><br>{{ownerDto.scannedIdCopy}}</p>
+                          <p *ngIf="ownerDto.passportCopyUpload"><br>{{ownerDto.passportCopyUpload}}</p>
+                          <p *ngIf="ownerDto.scannedNotorizedCopy"><br>{{ownerDto.scannedNotorizedCopy}} </p> -->
                         </div>
                         <div class="row mt-5 submit-btn-row">
                           <div class="col-md-3 mb-xs-4">
@@ -1880,12 +1931,18 @@
                         </div>
                       </div>
                       <div class="row mt-3">
-                        <div class="col-md-12 document-upload">
-                          Upload Title Deed
-                          <div class="sub-details">jpg, png, pdf accepted with file size not exceeding 2Mb</div>
+                        <div class="col-md-12 form-block-heading mb-2">Uploaded Documents</div>
+                        <div class="col-md-4">
+                          <div class="upload-doc-block">
+                            <div class="upload-doc-div">
+                              <img class="w-100 thumbnail" src="{{pdTitleDeedCopy}}">
+                            </div>
+                            <div class="upload-instuct mt-2">Scanned Title Deed</div>
+                          </div>
                         </div>
-                        <ks-modal-gallery [modalImages]="images"
-                        [downloadable]="true"></ks-modal-gallery>
+                        <!-- <ks-modal-gallery [modalImages]="images"
+                        [downloadable]="true"></ks-modal-gallery>                      
+                        <p *ngIf=propertyDetailsDto.scannedTitleDeed><br>{{propertyDetailsDto.scannedTitleDeed}}</p> -->
                       </div>
                       <div class="note-block py-3 px-2 mt-5">
                         <div class="col-1 common-checkbox">
@@ -2529,20 +2586,20 @@
                         </div>
                       </div>
                       <div class="row mt-3">
-                        <div class="col-md-12 document-upload">
+                        <div class="col-md-12 document-upload form-block-heading">
                           Upload Title Deed
                           <div class="sub-details">jpg, png, pdf accepted with file size not exceeding 2Mb</div>
                         </div>
-                        <div class="col-md-12 upload-doc-block">
+                        <div class="col-md-12 upload-doc-wrap-inline">
                           <div class="upload-btn-div mt-4">
                             <div class="file">
                               <input type="file" name="file"  (change)="selectScannedTitleDeed($event)" class="doc-upload" required />
                             </div>
                             <div class="upload-instuct mt-2">Scanned Title Deed</div>
+                            <p *ngIf="scannedTitleDeedFile" style="color:blue"><br>Scanned Title Deed FileName:{{scannedTitleDeedFile.name}}</p>
+                            <p *ngIf="propertyDetailsDto.scannedTitleDeed&&!scannedTitleDeedFile" style="color:blue"><br> Title Deed FileName:{{propertyDetailsDto.scannedTitleDeed}}</p>
                           </div>
                         </div>
-                        <p *ngIf="scannedTitleDeedFile" style="color:blue"><br>Scanned Title Deed FileName:{{scannedTitleDeedFile.name}}</p>
-                        <p *ngIf="propertyDetailsDto.scannedTitleDeed&&!scannedTitleDeedFile" style="color:blue"><br> Title Deed FileName:{{propertyDetailsDto.scannedTitleDeed}}</p>
 
                       </div>
                       <div class="note-block py-3 px-2 mt-5">
@@ -2560,7 +2617,7 @@
                           <!-- <div class="col-md-3 mb-xs-4">
                             <a *ngIf="propertyDetailsDto.isPropertyDetailsVerified=='false'&&!editPropertyDetails" (click)="propertyDetailsVerified('true')" id="verifyowners"  style=color:white class="btn common-btn btn-light-black">Verify</a>
                           </div> -->
-                          <div class="offset-md-6 col-md-3">
+                          <div class="offset-md-9 col-md-3">
                             <!-- [disabled]="!ownerDetailsForm.form.valid" -->
                             <button  (click)="propertyDetailsVerified('false')" style=color:white class="btn common-btn w-100" type="submit">Update</button>
                           </div>

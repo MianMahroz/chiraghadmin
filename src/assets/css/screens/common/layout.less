@@ -884,18 +884,66 @@
               .upload-doc-div{
                 height: 220px;
                 width: 100%;
+                border: 1px solid @seprator-color;
+                padding: .25rem;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                overflow: hidden;
+              }
+              .upload-instuct {
+                font-size: 1.125em;
+                color: @field-placeholder-color;
+                .ui-subtitle {
+                  font-size: 14px;
+                }
+              }
+            }  
+            .note-block {
+              background-color: @primary-color;
+              display: flex;
+              border-radius: 2px;
+              .common-checkbox {
+                margin-top: 4px;
+                label {
+                  .checkbox-material {
+                    &::befor {
+                      background-color: @white-color;
+                    }
+                    .check {
+                      border: 2px solid @white-color;
+                      &::before {
+                        color: @white-color;
+                      }
+                    }
+                  }
+                }
+              }
+              .note-text {
+                font-size: 1.35em;
+                color: @white-color;
+                .note-sub-title-text {
+                  font-size: 14px;
+                  color: @white-color;
+                }
+              }
+            }
+            .upload-doc-wrap-inline {
+              .upload-doc-div{
+                height: 220px;
+                width: 100%;
                 background-color: @navbar-bg-color;
                 overflow: hidden;
               }
               .upload-instuct {
                 font-size: 1.125em;
-                color: @placeholder-color;
+                color: @field-placeholder-color;
+                margin-left: 50px;
                 .ui-subtitle {
                   font-size: 14px;
                 }
               }
               .upload-btn-div {
-                display: flex;
                 position: relative;
                 .file {
                   position: absolute;
@@ -915,12 +963,18 @@
                     height: 40px;
                   }
                 }
-                .upload-instuct {
-                  margin-left: 50px;
-                }
                 p {
                   color: @field-placeholder-color !important;
                   margin-left: 50px;
+                  display: flex;
+                  align-items: flex-end;
+                  &::before {
+                    content: "";
+                    background: url("../../assets/images/sprite-image.png") no-repeat -126px -334px;
+                    margin-right: 10px;
+                    width: 34px;
+                    height: 34px;
+                  } 
                 }
               }
             }

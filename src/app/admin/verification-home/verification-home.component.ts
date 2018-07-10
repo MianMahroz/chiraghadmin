@@ -73,6 +73,12 @@ isPOADetailsVerified:string;
 isPropertyDetailsVerified:string;
 acknowledgmentCall:string;
 myclassName:string;
+ownerIdCopy:string;
+ownerPassportCopy:string;
+poaIdCopy:string;
+poaPassportCopy:string;
+poaNotorizedCopy:string;
+pdTitleDeedCopy:string;
 // myclassName='row tab-pane fade sign-in-row';
 // myclassNameActive='row tab-pane fade sign-in-row-active show';
 
@@ -335,7 +341,8 @@ selectScannedPoa(event) {
    console.log(' Owner Clicked!!');
    if(data.ownerType=='owner'){
       this.ownerDto=data;
-      this.getOwnerImages();
+      this.ownerPassportCopy=''+this.token.getImagepath()+'propertyId-'+this.currentProperty.propertyId+'/'+this.ownerDto.passportCopyUpload;
+      this.ownerIdCopy=''+this.token.getImagepath()+'propertyId-'+this.currentProperty.propertyId+'/'+this.ownerDto.scannedIdCopy;
       this.editOwner=false;
       this.mytoastr.Info('','Owner Data loaded Successfully');
    }
@@ -343,10 +350,12 @@ selectScannedPoa(event) {
   getPOADetails(data:any):void{
     console.log(' POA Clicked!!');
     if(data.ownerType=='poa'){
-       this.ownerDto=data;
-       this.getPOAImages();
-       this.editPOA=false;
-       this.mytoastr.Info('','POA Data loaded Successfully');
+      this.ownerDto=data;
+      this.poaPassportCopy=''+this.token.getImagepath()+'propertyId-'+this.currentProperty.propertyId+'/'+this.ownerDto.passportCopyUpload;
+      this.poaIdCopy=''+this.token.getImagepath()+'propertyId-'+this.currentProperty.propertyId+'/'+this.ownerDto.scannedIdCopy;
+      this.poaNotorizedCopy=''+this.token.getImagepath()+'propertyId-'+this.currentProperty.propertyId+'/'+this.ownerDto.scannedNotorizedCopy;
+      this.editPOA=false;
+      this.mytoastr.Info('','POA Data loaded Successfully');
     }
    }
    getPropertyFinancialDetailsImages():void{
@@ -373,7 +382,7 @@ getPropertyRentalDetailsImages():void{
    getPropertyDetails(data:any):void{
     console.log(' Property Clicked!!');
     this.propertyDetailsDto=data;
-    this.getPropertyDetailsImages();
+    this.pdTitleDeedCopy=''+this.token.getImagepath()+'propertyId-'+this.currentProperty.propertyId+'/'+this.propertyDetailsDto.scannedTitleDeed;
     this.mytoastr.Info('','Property Details loaded Successfully');
    }
 
