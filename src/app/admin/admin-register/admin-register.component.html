@@ -70,7 +70,7 @@
                       <div class="row">
                         <div class="col-md-12 form-block-heading mb-2">Account Details:</div>
                         <div class="col-md-12 form-label-group mb-4">
-                          <input pattern="[a-zA-Z0-9_]*" type="text" class="form-control form-input" minlength="8" name="userName" #userName="ngModel" maxlength="15" [(ngModel)]="registerdto.userName"  placeholder="Create Username" required>
+                          <input pattern="[a-zA-Z0-9_]*" type="text" class="form-control form-input" minlength="8" name="userName" #userName="ngModel" maxlength="20" [(ngModel)]="registerdto.userName"  placeholder="Create Username" required>
                           <div *ngIf="userName.errors && (userName.dirty || userName.touched)" class="alert alert-danger">
                             <div [hidden]="!userName.errors.required">
                               Username is required!
@@ -155,10 +155,11 @@
                     <div class="col-md-6 form-label-group mb-4">
                         <select [(ngModel)]="registerdto.role" name="role" class="form-control common-select placeholder'Select User Role'">
                           <option>Select User Role</option>
+                          <option>VerificationUser</option>
+                          <option>VerificationHod</option>
+                          <option>ValuationUser</option>
+                          <option>ValuationHod</option>
                           <option>admin</option>
-                          <option>x</option>
-                          <option>y</option>
-                          <option>z</option>
                         </select>
                       </div>
                   </div>

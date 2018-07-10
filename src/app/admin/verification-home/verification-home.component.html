@@ -551,10 +551,10 @@
       <div class="col-md-12 sign-in-col">
         <form  *ngIf="!currentProperty"   class="common-form mb-4 bester-form">
           <div class="row">
-            <div class="offset-md-6 col-md-6 d-flex align-items-center mb-3">
+            <!-- <div class="offset-md-6 col-md-6 d-flex align-items-center mb-3">
               <input type="text" class="form-control bg-light" placeholder="Keyword, Property ID, Name etc">
               <label class="ml-3 mb-0">Search</label>
-            </div>
+            </div> -->
           </div>
           <div class="row">
             <div class="col-md-12 form-block-heading mb-3">Seller</div>
@@ -562,7 +562,7 @@
           <div class="row">
             <div class="col-md-12">
               <div class="dsahboard-tbl">
-                <table class="table scroll table-fixed table-responsive">
+                <!-- <table class="table scroll table-fixed table-responsive">
                     <thead>
                       <tr>
                         <th scope="col">#</th>
@@ -583,9 +583,56 @@
                         <td>By</td>
                       </tr>
                     </tbody>
-                  </table>
+                  </table> -->
+
+
+
+                  <div  class="example-container mat-elevation-z8">
+                    <div class="example-header">
+                      <mat-form-field class="ml-4">
+                        <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Search">
+                      </mat-form-field>
+                    </div>
+                    <mat-table #table [dataSource]="dataSource" matSort>
+
+                      <ng-container matColumnDef="Sr">
+                        <mat-header-cell *matHeaderCellDef mat-sort-header> # </mat-header-cell>
+                        <mat-cell *matCellDef="let element; let i = index;"> {{i+1}} </mat-cell>
+                      </ng-container>
+
+                      <ng-container matColumnDef="userName">
+                        <mat-header-cell *matHeaderCellDef> New Leads </mat-header-cell>
+                        <mat-cell *matCellDef="let element"> {{element.sellerUserName}} </mat-cell>
+                      </ng-container>
+
+                       <ng-container matColumnDef="lastActionPerformed">
+                        <mat-header-cell *matHeaderCellDef>  Last Action Performed </mat-header-cell>
+                        <mat-cell *matCellDef="let element"> {{element.lastActionPerformed}} </mat-cell>
+                      </ng-container>
+
+                      <ng-container matColumnDef="dateReceived">
+                        <mat-header-cell *matHeaderCellDef> Date Received  </mat-header-cell>
+                        <mat-cell *matCellDef="let element"> {{element.dateReceived | date: 'dd/MM/yyyy'}} </mat-cell>
+                      </ng-container>
+
+                      <ng-container matColumnDef="lastAction">
+                        <mat-header-cell *matHeaderCellDef> Last Action</mat-header-cell>
+                        <mat-cell *matCellDef="let element"> {{element.lastAction|date: 'dd/MM/yyyy'}} </mat-cell>
+                      </ng-container>
+
+                      <ng-container matColumnDef="actionPerformedBy">
+                        <mat-header-cell *matHeaderCellDef> By </mat-header-cell>
+                        <mat-cell *matCellDef="let element"> {{element.actionPerformedBy}} </mat-cell>
+                      </ng-container>
+
+                      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+                      <mat-row *matRowDef="let row; columns: displayedColumns;" (click) = "rowClicked(row)" ></mat-row>
+                    </mat-table>
+                    <mat-paginator [length]="5" [pageSize]="4" [pageSizeOptions]="[5, 10, 25]">
+                    </mat-paginator>
+                  </div>
               </div>
-              <div class="pagination-wrap pb-4">
+              <!-- <div class="pagination-wrap pb-4">
                 <nav>
                   <ul class="pagination justify-content-center mb-0">
                     <li class="page-item"><a class="page-link prev-link mr-2" href="#"><i class="fas fa-chevron-left"></i></a></li>
@@ -597,7 +644,7 @@
                     <li class="page-item"><a class="page-link next-link ml-2" href="#"><i class="fas fa-chevron-right"></i></a></li>
                   </ul>
                 </nav>
-              </div>
+              </div> -->
             </div>
           </div>
           <!-- <div class="row align-items-end mt-5">
@@ -709,7 +756,7 @@
                             <label class="form-label form-label-bold">P.O.Box</label>
                             <label class="form-label form-label-value">{{ownerDto.pobox}}</label>
                           </div>
-                        </div>  
+                        </div>
                         <div class="row mt-3">
                           <div class="col-md-12 document-upload">
                             Uploaded Documents
@@ -2536,13 +2583,18 @@
                         <div class="col-md-12 upload-doc-block">
                           <div class="upload-btn-div mt-4">
                             <div class="file">
-                              <input type="file" name="file"  (change)="selectScannedTitleDeed($event)" class="doc-upload" required />
+                              <input id="scanPoa" type="file" name="file" (change)="selectScannedTitleDeed($event)" class="doc-upload" required/>
                             </div>
-                            <div class="upload-instuct mt-2">Scanned Title Deed</div>
+                            <div class="upload-instuct mt-2">Scanned Title Deed <i class="fas fa-circle-notch fa-spin ml-2"></i>
+
+                            </div>
+                            <p *ngIf="scannedTitleDeedFile"><br>{{scannedTitleDeedFile.name}}</p>
+                            <p *ngIf="!scannedTitleDeedFile&&propertyDetailsDto.scannedTitleDeed"><br>{{propertyDetailsDto.scannedTitleDeed}}</p>
+
                           </div>
                         </div>
-                        <p *ngIf="scannedTitleDeedFile" style="color:blue"><br>Scanned Title Deed FileName:{{scannedTitleDeedFile.name}}</p>
-                        <p *ngIf="propertyDetailsDto.scannedTitleDeed&&!scannedTitleDeedFile" style="color:blue"><br> Title Deed FileName:{{propertyDetailsDto.scannedTitleDeed}}</p>
+                        <!-- <p *ngIf="scannedTitleDeedFile" style="color:blue"><br>Scanned Title Deed FileName:{{scannedTitleDeedFile.name}}</p> -->
+                        <!-- <p *ngIf="propertyDetailsDto.scannedTitleDeed&&!scannedTitleDeedFile" style="color:blue"><br> Title Deed FileName:{{propertyDetailsDto.scannedTitleDeed}}</p> -->
 
                       </div>
                       <div class="note-block py-3 px-2 mt-5">
@@ -3077,11 +3129,11 @@
                       <div class="row align-items-end mt-5">
                         <div class="col-md-8">
                           <div class="form-block-heading mb-2">Request Change</div>
-                          <textarea class="form-control common-textarea" placeholder="Composing Box"></textarea>
-                          <button class="btn common-btn mt-4 px-5">Send</button>
+                          <textarea  [(ngModel)]="body"  name="body" class="form-control common-textarea" placeholder="Composing Box"></textarea>
+                          <button  (click)="sentEmail()" class="btn common-btn mt-4 px-5">Send</button>
                         </div>
                         <div class="offset-md-1 col-md-3">
-                          <button class="btn w-100 form-btn">HOD Approved</button>
+                          <button  class="btn w-100 form-btn">HOD Approved</button>
                         </div>
                       </div>
                     </form>

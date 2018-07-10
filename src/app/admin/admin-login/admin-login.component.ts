@@ -1,12 +1,12 @@
-import { loginDTO } from './../../Dto/loginDTO';
+import { loginDTO } from '../../Dto/loginDTO';
 
-import { TokenStorage } from './../../core/token.storage';
-import { AuthService } from './../../core/auth.service';
+import { TokenStorage } from '../../core/token.storage';
+import { AuthService } from '../../core/auth.service';
 import { MatDialog } from '@angular/material';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
-import { UserService } from './../../shared/user.service';
-import { ToasterServiceService } from './../../toaster-service.service';
+import { UserService } from '../../shared/user.service';
+import { ToasterServiceService } from '../../toaster-service.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -37,14 +37,14 @@ export class AdminLoginComponent implements OnInit {
               this.userService.login(this.logindto.userName,this.logindto.userPassword).subscribe(
                 data1=>{
                   console.log(data1);
-                  this.mytoastr.Success('Login','Admin Login Successfully');
+                  this.mytoastr.Success('Login',data1.msg);
                        if(data1.msg=="Login Successfully"){
-                         if(data1.role=='admin'){
+                        //  if(data1.role=='admin'){
                         // this.mytoastr.Success('Login',data1.msg);
                            this.token.saveAdminUserName(this.logindto.userName);
                            this.token.saveUserRole(data1.role);
                            this.router.navigate(['/adminverificationhome']);
-                         }
+                        //  }
                        }//end of if
                     }//end of inner data predicate
               );//end of inner subscription

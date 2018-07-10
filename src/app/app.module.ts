@@ -1,3 +1,4 @@
+import { VerificationService } from './shared/verification.service';
 import { ToasterServiceService } from './toaster-service.service';
 import { MaterialModule } from './material/material.component';
 import { PaymentsService } from './shared/seller.payments.service';
@@ -21,7 +22,7 @@ import { PasswordStrengthBarModule } from 'ng2-password-strength-bar';
 import { CustomFormsModule } from 'ng4-validators';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CommonModule } from '@angular/common';
-import {ToastModule} from 'ng2-toastr/ng2-toastr';
+import {ToastModule} from 'ng2-toastr';
 import { AdminLoginComponent } from './admin/admin-login/admin-login.component';
 import { AdminRegisterComponent } from './admin/admin-register/admin-register.component';
 import { AdminhomeComponent } from './admin/adminhome/adminhome.component';
@@ -32,6 +33,7 @@ import { AdminsignoutComponent } from './admin/adminsignout/adminsignout.compone
 import { AdminSellerDetailsComponent } from './admin/admin-seller-details/admin-seller-details.component';
 import 'hammerjs';
 import 'mousetrap';
+import { MatTableModule } from '@angular/material';
 
 import {ModalGalleryModule} from 'angular-modal-gallery';
 // enableProdMode();
@@ -50,7 +52,7 @@ import {ModalGalleryModule} from 'angular-modal-gallery';
     AdminSellerDetailsComponent,
   ],
   imports: [
-
+    MatTableModule,
     ModalGalleryModule.forRoot(),
     ToastModule.forRoot(),
     CommonModule,
@@ -68,7 +70,7 @@ import {ModalGalleryModule} from 'angular-modal-gallery';
 
   ],
   entryComponents: [ErrorDialogComponent],
-  providers: [ToasterServiceService,ErrorDialogComponent, PaymentsService,AuctionService,UserService,SellerService,AuthService, TokenStorage, TokenStorage,SellerService,PropertyService,
+  providers: [VerificationService,ToasterServiceService,ErrorDialogComponent, PaymentsService,AuctionService,UserService,SellerService,AuthService, TokenStorage, TokenStorage,SellerService,PropertyService,
     {provide: HTTP_INTERCEPTORS,
     useClass: Interceptor,
     multi : true}

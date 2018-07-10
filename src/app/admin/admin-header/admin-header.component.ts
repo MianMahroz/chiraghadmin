@@ -1,4 +1,4 @@
-import { TokenStorage } from './../../core/token.storage';
+import { TokenStorage } from '../../core/token.storage';
 import { Component, OnInit } from '@angular/core';
 
 @Component({

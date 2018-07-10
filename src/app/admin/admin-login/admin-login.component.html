@@ -10,7 +10,7 @@
                 <form #loginForm="ngForm" class="common-form" novalidate>
                   <div class="text-center mb-5 page-primary-title-34">Admin Sign In</div>
                   <div class="input-wrapper form-label-group mb-4">
-                    <input  pattern="[a-zA-Z0-9_]*" minlength="8" name="userName" #userName="ngModel" maxlength="15" id="stuff" type="text"  [(ngModel)]="logindto.userName" class="form-control form-input" placeholder="Username" autofocus>
+                    <input  pattern="[a-zA-Z0-9_]*" minlength="8" name="userName" #userName="ngModel" maxlength="20" id="stuff" type="text"  [(ngModel)]="logindto.userName" class="form-control form-input" placeholder="Username" autofocus>
                     <label for="stuff" class="fa fa-user input-icon"></label>
 
                     <div *ngIf="userName.errors && (userName.dirty || userName.touched)" class="alert alert-danger">
@@ -30,7 +30,7 @@
                     </div>
                   </div>
                   <div class="input-wrapper form-label-group mb-4">
-                    <input  minlength="8"  #userPassword="ngModel" maxlength="15" type="password" class="form-control form-input" name="userPassword" [(ngModel)]="logindto.userPassword" placeholder="Password" required>
+                    <input  minlength="8"  #userPassword="ngModel" maxlength="20" type="password" class="form-control form-input" name="userPassword" [(ngModel)]="logindto.userPassword" placeholder="Password" required>
                     <!-- <ng2-password-strength-bar
                     [passwordToCheck]="logindto.userPassword"
                     [barLabel]="barLabel"

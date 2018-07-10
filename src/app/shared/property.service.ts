@@ -1,6 +1,6 @@
-import { PropertyRentalDetailDTO } from './../Dto/propertyRentalDTO';
-import { PropertyFinancialDTO } from './../Dto/propertyfinancialDTO';
-import { PropertyDetailsDto } from './../Dto/propertymodel';
+import { PropertyRentalDetailDTO } from '../Dto/propertyRentalDTO';
+import { PropertyFinancialDTO } from '../Dto/propertyfinancialDTO';
+import { PropertyDetailsDto } from '../Dto/propertymodel';
 
 import { Injectable } from '@angular/core';
 import { AuthService } from '../core/auth.service';

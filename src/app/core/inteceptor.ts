@@ -5,7 +5,7 @@ import { Observable } from 'rxjs/Observable';
 import { Router } from '@angular/router';
 import {TokenStorage} from './token.storage';
 import 'rxjs/add/operator/do';
-import {AuthService} from '../core/auth.service';
+import {AuthService} from './auth.service';
 
 const TOKEN_HEADER_KEY = 'Authorization';
 
@@ -17,7 +17,7 @@ export class Interceptor implements HttpInterceptor {
   intercept(req: HttpRequest<any>, next: HttpHandler):
     Observable<HttpSentEvent | HttpHeaderResponse | HttpProgressEvent | HttpResponse<any> | HttpUserEvent<any>> {
     let authReq = req;
-  
+
     if (this.token.getToken() != null) {
       // console.log("session Token:"+this.token.getToken());
       authReq = req.clone({ headers: req.headers.set(TOKEN_HEADER_KEY, 'Bearer ' + this.token.getToken())});

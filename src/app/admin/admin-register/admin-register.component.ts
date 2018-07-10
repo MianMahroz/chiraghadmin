@@ -1,9 +1,9 @@
-import { registerDTO } from './../../Dto/registerDTO';
-import { TokenStorage } from './../../core/token.storage';
-import { AuthService } from './../../core/auth.service';
+import { registerDTO } from '../../Dto/registerDTO';
+import { TokenStorage } from '../../core/token.storage';
+import { AuthService } from '../../core/auth.service';
 import { Router } from '@angular/router';
-import { UserService } from './../../shared/user.service';
-import { ToasterServiceService } from './../../toaster-service.service';
+import { UserService } from '../../shared/user.service';
+import { ToasterServiceService } from '../../toaster-service.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({

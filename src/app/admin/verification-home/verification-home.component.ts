@@ -1,21 +1,24 @@
-import { AdminDTO } from './../../Dto/adminDto';
-import { personalInfoDTO } from './../../Dto/personalInfoDTO';
-import { PropertyFinancialDTO } from './../../Dto/propertyfinancialDTO';
-import { PropertyRentalDetailDTO } from './../../Dto/propertyRentalDTO';
-import { PropertyDetailsDto } from './../../Dto/propertymodel';
-import { OwnerDetails } from './../../Dto/ownerdetails.model';
-import { SellerService } from './../../shared/seller.service';
+import { VerificationService } from './../../shared/verification.service';
+import { AdminDTO } from '../../Dto/adminDto';
+import { personalInfoDTO } from '../../Dto/personalInfoDTO';
+import { PropertyFinancialDTO } from '../../Dto/propertyfinancialDTO';
+import { PropertyRentalDetailDTO } from '../../Dto/propertyRentalDTO';
+import { PropertyDetailsDto } from '../../Dto/propertymodel';
+import { OwnerDetails } from '../../Dto/ownerdetails.model';
+import { SellerService } from '../../shared/seller.service';
 import { HttpClient } from '@angular/common/http';
-import { PropertyService } from './../../shared/property.service';
-import { TokenStorage } from './../../core/token.storage';
-import { AuthService } from './../../core/auth.service';
+import { PropertyService } from '../../shared/property.service';
+import { TokenStorage } from '../../core/token.storage';
+import { AuthService } from '../../core/auth.service';
 import { MatDialog } from '@angular/material';
 import { Router, ActivatedRoute } from '@angular/router';
 import {ModalGalleryModule,Image} from 'angular-modal-gallery';
-import { UserService } from './../../shared/user.service';
-import { ToasterServiceService } from './../../toaster-service.service';
+import { UserService } from '../../shared/user.service';
+import { ToasterServiceService } from '../../toaster-service.service';
 import { Component, OnInit ,Input } from '@angular/core';
-
+import {MatPaginator, MatSort, MatTableDataSource} from '@angular/material';
+import {AfterViewInit, ViewChild} from '@angular/core';
+import { VerificationDTO } from '../../Dto/verificationDto';
 @Component({
   selector: 'app-verification-home',
   templateUrl: './verification-home.component.html',
@@ -25,6 +28,25 @@ export class VerificationHomeComponent implements OnInit {
   async ngAfterViewInit() {
     await this.loadScript('./assets/js/common.js');
 	}
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+  @ViewChild(MatSort) sort: MatSort;
+  displayedColumns = ['Sr','userName','lastActionPerformed','dateReceived','lastAction','actionPerformedBy'];
+  dataSource = new MatTableDataSource();
+
+  applyFilter(filterValue: string) {
+    filterValue = filterValue.trim(); // Remove whitespace
+    filterValue = filterValue.toLowerCase(); // MatTableDataSource defaults to lowercase matches
+    this.dataSource.filter = filterValue;
+  }
+  rowClicked(row: any): void {
+    console.log('Here it is');
+    console.log(row);
+    this.currentPropertyId=row.propertyId;
+    this.currentProperty=row;
+    console.log(this.currentProperty);
+    this.token.saveUserName(row.sellerUserName);
+  }
+
 
   private loadScript(scriptUrl: string) {
     return new Promise((resolve, reject) => {
@@ -73,42 +95,48 @@ isPOADetailsVerified:string;
 isPropertyDetailsVerified:string;
 acknowledgmentCall:string;
 myclassName:string;
+owner1=new OwnerDetails();
+body:string;
+verificationDto=new VerificationDTO();
 // myclassName='row tab-pane fade sign-in-row';
 // myclassNameActive='row tab-pane fade sign-in-row-active show';
 
+constructor(private verificationService:VerificationService,private sellerService:SellerService,private route:ActivatedRoute ,private propertyService:PropertyService,private mytoastr:ToasterServiceService,private userService:UserService,private http: HttpClient,private router: Router, public dialog: MatDialog, private authService: AuthService, private token: TokenStorage) {
 
+}
 
-checklistData(data:any):void{
-  this.myclassName='row tab-pane fade sign-in-row';
-//   console.log('admin data')
-//   console.log(data);
-//   this.isPersonalDetailsVerified=null;
-//   Array.from(data.propertysellerdetailses).forEach((obj) => {
-//     if(obj.ownerType=='owner'){
-//       console.log('owner');
-//       this.isPersonalDetailsVerified=obj.isPersonalDetailsVerified;
-//       console.log(this.isPersonalDetailsVerified);
-//    }
-//   else if(obj.ownerType=='poa'){
-//     console.log('poa');
-//     this.isPOADetailsVerified=obj.isPersonalDetailsVerified;
-//     console.log(this.isPOADetailsVerified);
-//   }
+  checklistData(data:any):void{
+      this.myclassName='row tab-pane fade sign-in-row';
+      console.log('admin data')
+      this.isPersonalDetailsVerified=null;
+      Array.from(data.propertysellerdetailses).forEach(obj2 => {
+      var obj= JSON.parse(JSON.stringify(obj2));
+      console.log(obj);
+      if(obj.ownerType=='owner'){
+        console.log('owner');
+        this.isPersonalDetailsVerified=obj.isPersonalDetailsVerified;
+        console.log(this.isPersonalDetailsVerified);
+    }
+    else if(obj.ownerType=='poa'){
+      console.log('poa');
+      this.isPOADetailsVerified=obj.isPersonalDetailsVerified;
+      console.log(this.isPOADetailsVerified);
+    }
 
-//     // eachObj.name = that.firms[data.firmid - 1].name;
-// });
-//   this.isPropertyDetailsVerified=data.isPropertyDetailsVerified;
+      // eachObj.name = that.firms[data.firmid - 1].name;
+  });
+    this.isPropertyDetailsVerified=data.isPropertyDetailsVerified;
 
-//  if(this.isPersonalDetailsVerified=='false'){
-//   this.isPersonalDetailsVerified='';
-// }
-// if(this.isPOADetailsVerified=='false'){
-//   this.isPOADetailsVerified='';
-// }
-// if(this.isPropertyDetailsVerified=='false'){
-//   this.isPropertyDetailsVerified='';
-// }
-}//end of checklist
+    if(this.isPersonalDetailsVerified=='false'){
+      this.isPersonalDetailsVerified='';
+    }
+    if(this.isPOADetailsVerified=='false'){
+      this.isPOADetailsVerified='';
+    }
+    if(this.isPropertyDetailsVerified=='false'){
+      this.isPropertyDetailsVerified='';
+    }
+  }//end of checklist
 
 
 
@@ -230,17 +258,49 @@ selectMorgageNoc(event) {
         this.token.saveToken(data.access_token,data.refresh_token,data.expires_in);
         if(this.token.getToken()!=null){
           this.propertyDetailsDto.isPropertyDetailsVerified=isVerified;
+          console.log(this.propertyDetailsDto.isPropertyDetailsVerified);
+
           this.propertyDetailsDto.sellerUserName=this.propertyDetailsDto.sellerUserName;
           this.propertyDetailsDto.userName=this.token.getAdminuserName();
           this.propertyDetailsDto.propertyId=this.currentPropertyId;
-          this.propertyService.updateProperty(this.propertyDetailsDto).subscribe(
-           data=>{
-                     this.mytoastr.Info('Status','Property Details Verified Successfully');
-                     this.propertyDetailsDto=new PropertyDetailsDto();
-                     this.getCompleteProperties();
-                     this.refreshDto();
-           }//end of
-         );
+
+          this.sellerService.saveDocument('/propertyId-'+this.currentPropertyId+'/','S-titleDeedCopy'+this.currentPropertyId,this.propertyDetailsDto.userName,this.scannedTitleDeedFile).subscribe(imageData=>{
+            console.log(imageData);
+            if(imageData.type==3){
+            this.propertyDetailsDto.scannedTitleDeed=imageData.partialText;
+            this.propertyService.updateProperty(this.propertyDetailsDto).subscribe(
+              data=>{
+                if(isVerified=='true')
+                   this.mytoastr.Info('Status','Property Details Verified Successfully');
+                else
+                   this.mytoastr.Info('Status','Property Details Update Successfully');
+
+                  //  this.propertyDetailsDto=new PropertyDetailsDto();
+                   this.refreshDto();
+                   this.getCompleteProperties();
+
+              }//end of
+            );
+          }//end of if of imagetype
+          else if(imageData=="Data"){
+            this.propertyService.updateProperty(this.propertyDetailsDto).subscribe(
+              data=>{
+                if(isVerified=='true')
+                   this.mytoastr.Info('Status','Property Details Verified Successfully');
+                else
+                   this.mytoastr.Info('Status','Property Details Update Successfully');
+
+                  //  this.propertyDetailsDto=new PropertyDetailsDto();
+                   this.refreshDto();
+                   this.getCompleteProperties();
+
+              }//end of
+            );
+          }//end of else if
+          });
+
+
+
         }//end of if
      }//end of outer data predicate
     );//end of outer subscription
@@ -266,6 +326,7 @@ selectMorgageNoc(event) {
 
     this.currentPropertyId=prop.propertyId;
     this.currentProperty=prop;
+    console.log('current Property');
     console.log(this.currentProperty);
     this.token.saveUserName(prop.sellerUserName);
   }
@@ -396,9 +457,7 @@ getPropertyRentalDetailsImages():void{
     console.log(' Personal info Clicked!!');
     this.personalinfoDTO=data;
    }
-  constructor(private sellerService:SellerService,private route:ActivatedRoute ,private propertyService:PropertyService,private mytoastr:ToasterServiceService,private userService:UserService,private http: HttpClient,private router: Router, public dialog: MatDialog, private authService: AuthService, private token: TokenStorage) {
 
-  }
 
   showSellerHome(){
     this.showsellerhome=true;
@@ -428,9 +487,9 @@ getPropertyRentalDetailsImages():void{
         if(this.token.getToken()!=null){
             this.propertyService.getCompleteProperties(this.token.getAdminuserName()).subscribe(
                    data=>{
-
                     console.log('Output of service call');
                             this.completePropertyArr=data;
+                            this.dataSource.data = data;
                             console.log(this.completePropertyArr);
 
                    }//end of data of getCompleteProperties
@@ -469,6 +528,34 @@ loadData(){
   // this.mytoastr.Success('','Properties loaded Successfully');
 }
 
+sentEmail():void{
+  console.log('email sent data');
+      console.log(this.token.getuserName());
+  window.sessionStorage.removeItem('AuthToken');
+  this.authService.attemptAuth().subscribe(
+    data => {
+      this.token.saveToken(data.access_token,data.refresh_token,data.expires_in);
+      console.log(data);
+      if(this.token.getToken()!=null){
+        console.log(this.body);
+        this.verificationDto.data=this.body;
+        this.verificationDto.userName=this.token.getAdminuserName();
+        this.verificationDto.role=this.token.getUserRole();
+        this.verificationDto.userName=this.token.getuserName();
+        this.verificationDto.adminUser=this.token.getAdminuserName();
+        this.verificationDto.subject='Chiragh Verification Departement Changes Request';
+        this.verificationService.sentEmail1(this.verificationDto).subscribe(
+          data=>{
+                    console.log(data);
+          }//end of data
+        );
+      }//end of if
+
+   }//end of outer data predicate
+  );//end of outer subscription
+
+}//end of onRegister
+//
 
 
 

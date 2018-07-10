@@ -1,5 +1,5 @@
-import { registerDTO } from './../Dto/registerDTO';
-import { ChiraghUser } from './../admin/adminsellerhome/ChiraghUserPOJO';
+import { registerDTO } from '../Dto/registerDTO';
+import { ChiraghUser } from '../admin/adminsellerhome/ChiraghUserPOJO';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable} from 'rxjs/Observable';

@@ -53,10 +53,14 @@ export class AdminsellerhomeComponent implements AfterViewInit,OnInit {
     this.dataSource.filter = filterValue;
   }
   rowClicked(row: any): void {
-    // console.log(row.propertyId);
+    console.log('Here it is inside');
+
+// console.log(row);
+    console.log(row.sellerUserName);
     this.router.navigate(['/sellerOwnerDetails']);
     this.token.saveAdminPropertyId(row.propertyId);
-  }
+    this.token.saveUserName(row.sellerUserName);
+  }//end of row clicked
 
   ngOnInit() {
       this.getAdminSellerHomeData();

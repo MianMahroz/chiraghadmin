@@ -1,10 +1,10 @@
 import { MatDialog } from '@angular/material';
-import { AuthService } from './../../core/auth.service';
-import { TokenStorage } from './../../core/token.storage';
+import { AuthService } from '../../core/auth.service';
+import { TokenStorage } from '../../core/token.storage';
 import { HttpClient } from '@angular/common/http';
-import { UserService } from './../../shared/user.service';
-import { ToasterServiceService } from './../../toaster-service.service';
-import { PropertyService } from './../../shared/property.service';
+import { UserService } from '../../shared/user.service';
+import { ToasterServiceService } from '../../toaster-service.service';
+import { PropertyService } from '../../shared/property.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnInit,Input } from '@angular/core';
 
