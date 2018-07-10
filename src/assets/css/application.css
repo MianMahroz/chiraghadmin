@@ -846,31 +846,73 @@
 .screen-wrapper .ud-body-row .tab-content .sign-in-row .sign-in-col .common-form .upload-doc-block .upload-doc-div {
   height: 220px;
   width: 100%;
-  background-color: #a0a0a0;
+  border: 1px solid #e3e3e3;
+  padding: .25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   overflow: hidden;
 }
 .screen-wrapper .ud-body-row .tab-content .sign-in-row .sign-in-col .common-form .upload-doc-block .upload-instuct {
   font-size: 1.125em;
-  color: #d8d8d8;
+  color: #7c7c7c;
 }
 .screen-wrapper .ud-body-row .tab-content .sign-in-row .sign-in-col .common-form .upload-doc-block .upload-instuct .ui-subtitle {
   font-size: 14px;
 }
-.screen-wrapper .ud-body-row .tab-content .sign-in-row .sign-in-col .common-form .upload-doc-block .upload-btn-div {
+.screen-wrapper .ud-body-row .tab-content .sign-in-row .sign-in-col .common-form .note-block {
+  background-color: #212121;
   display: flex;
+  border-radius: 2px;
+}
+.screen-wrapper .ud-body-row .tab-content .sign-in-row .sign-in-col .common-form .note-block .common-checkbox {
+  margin-top: 4px;
+}
+.screen-wrapper .ud-body-row .tab-content .sign-in-row .sign-in-col .common-form .note-block .common-checkbox label .checkbox-material::befor {
+  background-color: #ffffff;
+}
+.screen-wrapper .ud-body-row .tab-content .sign-in-row .sign-in-col .common-form .note-block .common-checkbox label .checkbox-material .check {
+  border: 2px solid #ffffff;
+}
+.screen-wrapper .ud-body-row .tab-content .sign-in-row .sign-in-col .common-form .note-block .common-checkbox label .checkbox-material .check::before {
+  color: #ffffff;
+}
+.screen-wrapper .ud-body-row .tab-content .sign-in-row .sign-in-col .common-form .note-block .note-text {
+  font-size: 1.35em;
+  color: #ffffff;
+}
+.screen-wrapper .ud-body-row .tab-content .sign-in-row .sign-in-col .common-form .note-block .note-text .note-sub-title-text {
+  font-size: 14px;
+  color: #ffffff;
+}
+.screen-wrapper .ud-body-row .tab-content .sign-in-row .sign-in-col .common-form .upload-doc-wrap-inline .upload-doc-div {
+  height: 220px;
+  width: 100%;
+  background-color: #a0a0a0;
+  overflow: hidden;
+}
+.screen-wrapper .ud-body-row .tab-content .sign-in-row .sign-in-col .common-form .upload-doc-wrap-inline .upload-instuct {
+  font-size: 1.125em;
+  color: #7c7c7c;
+  margin-left: 50px;
+}
+.screen-wrapper .ud-body-row .tab-content .sign-in-row .sign-in-col .common-form .upload-doc-wrap-inline .upload-instuct .ui-subtitle {
+  font-size: 14px;
+}
+.screen-wrapper .ud-body-row .tab-content .sign-in-row .sign-in-col .common-form .upload-doc-wrap-inline .upload-btn-div {
   position: relative;
 }
-.screen-wrapper .ud-body-row .tab-content .sign-in-row .sign-in-col .common-form .upload-doc-block .upload-btn-div .file {
+.screen-wrapper .ud-body-row .tab-content .sign-in-row .sign-in-col .common-form .upload-doc-wrap-inline .upload-btn-div .file {
   position: absolute;
   left: 0;
   top: 10px;
 }
-.screen-wrapper .ud-body-row .tab-content .sign-in-row .sign-in-col .common-form .upload-doc-block .upload-btn-div .file::before {
+.screen-wrapper .ud-body-row .tab-content .sign-in-row .sign-in-col .common-form .upload-doc-wrap-inline .upload-btn-div .file::before {
   content: "";
   background: url("../../assets/images/sprite-image.png") no-repeat -570px -218px;
   padding: 12px 17px;
 }
-.screen-wrapper .ud-body-row .tab-content .sign-in-row .sign-in-col .common-form .upload-doc-block .upload-btn-div .file .doc-upload {
+.screen-wrapper .ud-body-row .tab-content .sign-in-row .sign-in-col .common-form .upload-doc-wrap-inline .upload-btn-div .file .doc-upload {
   width: 40px;
   opacity: 0;
   left: 0;
@@ -878,12 +920,18 @@
   top: -10px;
   height: 40px;
 }
-.screen-wrapper .ud-body-row .tab-content .sign-in-row .sign-in-col .common-form .upload-doc-block .upload-btn-div .upload-instuct {
-  margin-left: 50px;
-}
-.screen-wrapper .ud-body-row .tab-content .sign-in-row .sign-in-col .common-form .upload-doc-block .upload-btn-div p {
+.screen-wrapper .ud-body-row .tab-content .sign-in-row .sign-in-col .common-form .upload-doc-wrap-inline .upload-btn-div p {
   color: #7c7c7c !important;
   margin-left: 50px;
+  display: flex;
+  align-items: flex-end;
+}
+.screen-wrapper .ud-body-row .tab-content .sign-in-row .sign-in-col .common-form .upload-doc-wrap-inline .upload-btn-div p::before {
+  content: "";
+  background: url("../../assets/images/sprite-image.png") no-repeat -126px -334px;
+  margin-right: 10px;
+  width: 34px;
+  height: 34px;
 }
 .screen-wrapper .ud-body-row .tab-content .prop-pics-block .prop-pic-div {
   height: 155px;

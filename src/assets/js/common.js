@@ -182,6 +182,14 @@ $(document).ready(function(){
     $('.side-link-no-img').removeClass('bg-secondary text-white');
     $(this).addClass('bg-secondary text-white');
   });
+
+  $('.thumbnail').click(function(){
+    $('.modal-body').empty();
+    var title = $(this).parent('a').attr("title");
+    $('.modal-title').html(title);
+    $($(this).parents('div').html()).appendTo('.modal-body');
+    $('#thumbnailViewer').modal({show:true});
+  });
 });
 
 $('.advance-search-link').click(function() {
