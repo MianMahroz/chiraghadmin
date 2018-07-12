@@ -40,12 +40,40 @@ export class VerificationHomeComponent implements OnInit {
   }
   rowClicked(row: any): void {
     console.log('Here it is');
-    console.log(row);
+    // console.log(row);
     this.currentPropertyId=row.propertyId;
     this.currentProperty=row;
-    console.log(this.currentProperty);
+    // console.log(this.currentProperty);
     this.token.saveUserName(row.sellerUserName);
+   this.getFirstOwner();
   }
+
+  getFirstOwner():void{
+    Array.from(this.currentProperty.propertysellerdetailses).forEach(obj2 => {
+      var obj=null;
+      obj=JSON.parse(JSON.stringify(obj2));
+      console.log(obj.ownerType);
+      if(obj.ownerType=='owner'){
+      //  this.ownerDto=obj;
+      this.getOwnerDetails(this.ownerDto);
+      }
+});//end of for each
+  // this.ownerDto=this.a[0];
+  }//end of getFirstOwner
+
+  getFirstPOA():void{
+  this.ownerDto=new OwnerDetails();
+    Array.from(this.currentProperty.propertysellerdetailses).forEach(obj2 => {
+      var obj=null;
+      obj=JSON.parse(JSON.stringify(obj2));
+      console.log(obj.ownerType);
+      if(obj.ownerType=='poa'){
+      //  this.ownerDto=obj;
+      this.getPOADetails(this.ownerDto);
+      }
+});//end of for each
+  // this.ownerDto=this.a[0];
+  }//end of getFirstOwner
 
 
   private loadScript(scriptUrl: string) {
@@ -95,18 +123,15 @@ isPOADetailsVerified:string;
 isPropertyDetailsVerified:string;
 acknowledgmentCall:string;
 myclassName:string;
-<<<<<<< HEAD
 owner1=new OwnerDetails();
 body:string;
 verificationDto=new VerificationDTO();
-=======
 ownerIdCopy:string;
 ownerPassportCopy:string;
 poaIdCopy:string;
 poaPassportCopy:string;
 poaNotorizedCopy:string;
 pdTitleDeedCopy:string;
->>>>>>> 92688a0914a9d5e39b68429f753f75e6740db3b2
 // myclassName='row tab-pane fade sign-in-row';
 // myclassNameActive='row tab-pane fade sign-in-row-active show';
 
@@ -316,6 +341,8 @@ selectMorgageNoc(event) {
   }//end of loginChiraghUser
 
 
+
+
   refreshDto():void{
     //  this.images=null;
      this.ownerDto=new OwnerDetails();
@@ -404,6 +431,7 @@ selectScannedPoa(event) {
   getOwnerDetails(data:any):void{
    console.log(' Owner Clicked!!');
    if(data.ownerType=='owner'){
+
       this.ownerDto=data;
       this.ownerPassportCopy=''+this.token.getImagepath()+'propertyId-'+this.currentProperty.propertyId+'/'+this.ownerDto.passportCopyUpload;
       this.ownerIdCopy=''+this.token.getImagepath()+'propertyId-'+this.currentProperty.propertyId+'/'+this.ownerDto.scannedIdCopy;
@@ -487,6 +515,7 @@ getPropertyRentalDetailsImages():void{
     this.showsellerdetails=this.route.snapshot.params['action'];
     this.propertyId=this.route.snapshot.params['propertyId'];
     this.getCompleteProperties();
+
   }//end of oninit
 
 
