@@ -547,7 +547,7 @@
       </div>
     </div>
     <!-- Property List -->
-    <div   id="property-list" class="row tab-pane fade sign-in-row active show">
+    <div id="property-list" class="row tab-pane fade sign-in-row active show">
       <div class="col-md-12 sign-in-col">
         <form  *ngIf="!currentProperty"   class="common-form mb-4 bester-form">
           <div class="row">
@@ -585,52 +585,50 @@
                     </tbody>
                   </table> -->
 
-
-
-                  <div  class="example-container mat-elevation-z8">
-                    <div class="example-header">
-                      <mat-form-field class="ml-4">
-                        <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Search">
-                      </mat-form-field>
-                    </div>
-                    <mat-table #table [dataSource]="dataSource" matSort>
-
-                      <ng-container matColumnDef="Sr">
-                        <mat-header-cell *matHeaderCellDef mat-sort-header> # </mat-header-cell>
-                        <mat-cell *matCellDef="let element; let i = index;"> {{i+1}} </mat-cell>
-                      </ng-container>
-
-                      <ng-container matColumnDef="userName">
-                        <mat-header-cell *matHeaderCellDef> New Leads </mat-header-cell>
-                        <mat-cell *matCellDef="let element"> {{element.sellerUserName}} </mat-cell>
-                      </ng-container>
-
-                       <ng-container matColumnDef="lastActionPerformed">
-                        <mat-header-cell *matHeaderCellDef>  Last Action Performed </mat-header-cell>
-                        <mat-cell *matCellDef="let element"> {{element.lastActionPerformed}} </mat-cell>
-                      </ng-container>
-
-                      <ng-container matColumnDef="dateReceived">
-                        <mat-header-cell *matHeaderCellDef> Date Received  </mat-header-cell>
-                        <mat-cell *matCellDef="let element"> {{element.dateReceived | date: 'dd/MM/yyyy'}} </mat-cell>
-                      </ng-container>
-
-                      <ng-container matColumnDef="lastAction">
-                        <mat-header-cell *matHeaderCellDef> Last Action</mat-header-cell>
-                        <mat-cell *matCellDef="let element"> {{element.lastAction|date: 'dd/MM/yyyy'}} </mat-cell>
-                      </ng-container>
-
-                      <ng-container matColumnDef="actionPerformedBy">
-                        <mat-header-cell *matHeaderCellDef> By </mat-header-cell>
-                        <mat-cell *matCellDef="let element"> {{element.actionPerformedBy}} </mat-cell>
-                      </ng-container>
-
-                      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-                      <mat-row *matRowDef="let row; columns: displayedColumns;" (click) = "rowClicked(row)" ></mat-row>
-                    </mat-table>
-                    <mat-paginator [length]="5" [pageSize]="4" [pageSizeOptions]="[5, 10, 25]">
-                    </mat-paginator>
+                <div  class="example-container mat-elevation-z8">
+                  <div class="example-header">
+                    <mat-form-field>
+                      <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Search">
+                    </mat-form-field>
                   </div>
+                  <mat-table #table [dataSource]="dataSource" matSort>
+
+                    <ng-container matColumnDef="Sr">
+                      <mat-header-cell *matHeaderCellDef mat-sort-header> # </mat-header-cell>
+                      <mat-cell *matCellDef="let element; let i = index;"> {{i+1}} </mat-cell>
+                    </ng-container>
+
+                    <ng-container matColumnDef="userName">
+                      <mat-header-cell *matHeaderCellDef> New Leads </mat-header-cell>
+                      <mat-cell *matCellDef="let element"> {{element.sellerUserName}} </mat-cell>
+                    </ng-container>
+
+                      <ng-container matColumnDef="lastActionPerformed">
+                      <mat-header-cell *matHeaderCellDef>  Last Action Performed </mat-header-cell>
+                      <mat-cell *matCellDef="let element"> {{element.lastActionPerformed}} </mat-cell>
+                    </ng-container>
+
+                    <ng-container matColumnDef="dateReceived">
+                      <mat-header-cell *matHeaderCellDef> Date Received  </mat-header-cell>
+                      <mat-cell *matCellDef="let element"> {{element.dateReceived | date: 'dd/MM/yyyy'}} </mat-cell>
+                    </ng-container>
+
+                    <ng-container matColumnDef="lastAction">
+                      <mat-header-cell *matHeaderCellDef> Last Action</mat-header-cell>
+                      <mat-cell *matCellDef="let element"> {{element.lastAction|date: 'dd/MM/yyyy'}} </mat-cell>
+                    </ng-container>
+
+                    <ng-container matColumnDef="actionPerformedBy">
+                      <mat-header-cell *matHeaderCellDef> By </mat-header-cell>
+                      <mat-cell *matCellDef="let element"> {{element.actionPerformedBy}} </mat-cell>
+                    </ng-container>
+
+                    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+                    <mat-row *matRowDef="let row; columns: displayedColumns;" (click) = "rowClicked(row)" ></mat-row>
+                  </mat-table>
+                  <mat-paginator [length]="5" [pageSize]="4" [pageSizeOptions]="[5, 10, 25]">
+                  </mat-paginator>
+                </div>
               </div>
               <!-- <div class="pagination-wrap pb-4">
                 <nav>
@@ -2643,24 +2641,12 @@
                               <input id="scanPoa" type="file" name="file" (change)="selectScannedTitleDeed($event)" class="doc-upload" required/>
                             </div>
                             <div class="upload-instuct mt-2">Scanned Title Deed <i class="fas fa-circle-notch fa-spin ml-2"></i>
-
                             </div>
-<<<<<<< HEAD
-                            <p *ngIf="scannedTitleDeedFile"><br>{{scannedTitleDeedFile.name}}</p>
-                            <p *ngIf="!scannedTitleDeedFile&&propertyDetailsDto.scannedTitleDeed"><br>{{propertyDetailsDto.scannedTitleDeed}}</p>
-
-                          </div>
-                        </div>
-                        <!-- <p *ngIf="scannedTitleDeedFile" style="color:blue"><br>Scanned Title Deed FileName:{{scannedTitleDeedFile.name}}</p> -->
-                        <!-- <p *ngIf="propertyDetailsDto.scannedTitleDeed&&!scannedTitleDeedFile" style="color:blue"><br> Title Deed FileName:{{propertyDetailsDto.scannedTitleDeed}}</p> -->
-=======
                             <div class="upload-instuct mt-2">Scanned Title Deed</div>
                             <p *ngIf="scannedTitleDeedFile" style="color:blue"><br>Scanned Title Deed FileName:{{scannedTitleDeedFile.name}}</p>
                             <p *ngIf="propertyDetailsDto.scannedTitleDeed&&!scannedTitleDeedFile" style="color:blue"><br> Title Deed FileName:{{propertyDetailsDto.scannedTitleDeed}}</p>
                           </div>
                         </div>
->>>>>>> 92688a0914a9d5e39b68429f753f75e6740db3b2
-
                       </div>
                       <div class="note-block py-3 px-2 mt-5">
                         <div class="col-1 common-checkbox">

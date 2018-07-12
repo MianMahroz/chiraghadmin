@@ -95,18 +95,15 @@ isPOADetailsVerified:string;
 isPropertyDetailsVerified:string;
 acknowledgmentCall:string;
 myclassName:string;
-<<<<<<< HEAD
 owner1=new OwnerDetails();
 body:string;
 verificationDto=new VerificationDTO();
-=======
 ownerIdCopy:string;
 ownerPassportCopy:string;
 poaIdCopy:string;
 poaPassportCopy:string;
 poaNotorizedCopy:string;
 pdTitleDeedCopy:string;
->>>>>>> 92688a0914a9d5e39b68429f753f75e6740db3b2
 // myclassName='row tab-pane fade sign-in-row';
 // myclassNameActive='row tab-pane fade sign-in-row-active show';
 
