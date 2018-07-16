@@ -177,8 +177,8 @@ $(document).ready(function(){
     $('a').removeClass('active show');
     $(this).addClass('active show');
   });
-  $('.ud-sidebar > ul > li').click(function(){
-    $('ul').removeClass('show');
+  $('.side-link-no-img').click(function(){
+    $('.link-wrap-no-bullets').removeClass('show');
   });
 
   $('.side-link-no-img').click(function(){
