@@ -177,6 +177,9 @@ $(document).ready(function(){
     $('a').removeClass('active show');
     $(this).addClass('active show');
   });
+  $('.ud-sidebar > ul > li').click(function(){
+    $('ul').removeClass('show');
+  });
 
   $('.side-link-no-img').click(function(){
     $('.side-link-no-img').removeClass('bg-secondary text-white');
@@ -205,9 +208,7 @@ $(document).ready(function(){
       }
     });
   });
-
-
-
+  
 });
 
 $('.advance-search-link').click(function() {
