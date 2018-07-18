@@ -24,6 +24,9 @@ const routes: Routes = [
   {path:'adminsellerdetails',component:AdminSellerDetailsComponent},
   {path:'adminverificationhome/:action',component:VerificationHomeComponent},
   {path:'adminverificationhome/:action/:propertyId',component:VerificationHomeComponent},
+  {path:'adminvaluationhome',component:VerificationHomeComponent},
+  {path:'adminbrokeragehome',component:VerificationHomeComponent},
+
 ];
 
 @NgModule({

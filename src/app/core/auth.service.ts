@@ -14,9 +14,14 @@ export class AuthService {
     headers: new HttpHeaders({
         'Content-Type': 'application/x-www-form-urlencoded',
         'Authorization': 'Basic ' + btoa('chiragh-client' + ':' + 'devglan-secret'),
-        'Access-Control-Allow-Origin':'*',
+        'Access-Control-Allow-Origin':'*'
+
+        ,'Access-Control-Allow-Method':'*',"Access-Control-Allow-Credentials":"true",
+        'Access-Control-Allow-Methods': 'GET, HEAD, OPTIONS, POST, PUT, DELETE',
+        // 'Access-Control-Request-Headers': 'Content-type,X-Requested-With,Origin,accept'
     })
 };
+
 
   let data = "username=" + 'Chiragh' + "&password=" +'password'+"&grant_type=password&" +
             "client_secret=devglan-secret&client_id=chiragh-client";

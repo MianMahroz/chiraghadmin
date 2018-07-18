@@ -53,8 +53,8 @@ export class AdminRegisterComponent {
           this.userService.register(this.registerdto).subscribe(
             data1=>{
               console.log(data1);
-                   if(data1.msg=="User Created Successfully"){
-                     this.myToast.Success('Status',data1.msg);
+              this.myToast.Success('Status',data1.msg);
+                   if(data1.msg=="Used Registered Sucessfully"){
                     this.registerdto=new registerDTO();
                     this.router.navigate(['adminsignin']);
                     }//end of if

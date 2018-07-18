@@ -1,4 +1,4 @@
-import { OwnerDetails } from './../Dto/ownerdetails.model';
+import { OwnerDetails } from '../Dto/ownerdetails.model';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpRequest, HttpEvent } from '@angular/common/http';
 import {Observable} from 'rxjs/Observable';

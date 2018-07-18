@@ -11,7 +11,7 @@ export class TokenStorage {
 
   serverPath:string='http://52.14.137.61/ChiraghServer';
   // serverPath:string='http://localhost:8082';
-  imagepath:string='http://demo.chiragh.com/ChiraghDocuments/';
+  imagepath:string='http://ec2-52-14-137-61.us-east-2.compute.amazonaws.com/ChiraghDocuments/';
   // imagepath:string='http://localhost:8082/ChiraghDocuments/';
 
 

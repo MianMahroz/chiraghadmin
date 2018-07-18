@@ -19,7 +19,7 @@ export class Interceptor implements HttpInterceptor {
     let authReq = req;
 
     if (this.token.getToken() != null) {
-      // console.log("session Token:"+this.token.getToken());
+      console.log("session Token:"+this.token.getToken());
       authReq = req.clone({ headers: req.headers.set(TOKEN_HEADER_KEY, 'Bearer ' + this.token.getToken())});
     }
     return next.handle(authReq).do(
