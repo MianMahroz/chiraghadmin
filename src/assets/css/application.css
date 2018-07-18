@@ -750,6 +750,30 @@
   background: url("../../assets/images/thumbnail-img3.jpg") no-repeat 0 0;
   height: 180px;
 }
+.screen-wrapper .ud-body-row .tab-content .tab-pane .bid-active-row .bid-active-col .bid-active-block .bid-active-img .upload-btn-div {
+  position: relative;
+}
+.screen-wrapper .ud-body-row .tab-content .tab-pane .bid-active-row .bid-active-col .bid-active-block .bid-active-img .upload-btn-div .file {
+  position: absolute;
+  left: 0;
+  top: 5px;
+}
+.screen-wrapper .ud-body-row .tab-content .tab-pane .bid-active-row .bid-active-col .bid-active-block .bid-active-img .upload-btn-div .file::before {
+  content: "";
+  background: url("../../assets/images/sprite-image.png") no-repeat -570px -218px;
+  padding: 12px 17px;
+}
+.screen-wrapper .ud-body-row .tab-content .tab-pane .bid-active-row .bid-active-col .bid-active-block .bid-active-img .upload-btn-div .file .doc-upload {
+  width: 40px;
+  opacity: 0;
+  left: 0;
+  position: absolute;
+  top: -10px;
+  height: 40px;
+}
+.screen-wrapper .ud-body-row .tab-content .tab-pane .bid-active-row .bid-active-col .bid-active-block .bid-active-img .upload-btn-div .upload-instuct {
+  color: #606060;
+}
 .screen-wrapper .ud-body-row .tab-content .tab-pane .bid-active-row .bid-active-col .bid-active-block .bid-active-decript {
   color: #606060;
   display: flex;
@@ -759,8 +783,47 @@
 .screen-wrapper .ud-body-row .tab-content .tab-pane .bid-active-row .bid-active-col .bid-active-block .bid-active-decript .prop-descript-wrap .prop-title {
   font-size: 1.375em;
 }
+.screen-wrapper .ud-body-row .tab-content .tab-pane .bid-active-row .bid-active-col .bid-active-block .bid-active-decript .prop-upload-div {
+  position: relative;
+}
+.screen-wrapper .ud-body-row .tab-content .tab-pane .bid-active-row .bid-active-col .bid-active-block .bid-active-decript .prop-upload-div .doc-upload {
+  position: absolute;
+  right: 0;
+  left: 0;
+  top: 0;
+  height: 38px;
+}
+.screen-wrapper .ud-body-row .tab-content .tab-pane .bid-active-row .bid-active-col .bid-active-block .bid-active-decript .prop-upload-div .doc-upload input {
+  width: 100%;
+  opacity: 0;
+  position: absolute;
+  bottom: 0;
+  top: 0;
+}
 .screen-wrapper .ud-body-row .tab-content .tab-pane .bid-active-row .bid-active-col .bid-active-block .bid-active-decript .prop-amount .amount {
   font-size: 1.25em;
+}
+.screen-wrapper .ud-body-row .tab-content .tab-pane .bid-active-row .property-sort {
+  text-align: right;
+  margin-top: 1rem;
+}
+.screen-wrapper .ud-body-row .tab-content .tab-pane .bid-active-row .property-sort .user-id-link {
+  font-size: 0.875em;
+  font-weight: bold;
+  cursor: pointer;
+}
+.screen-wrapper .ud-body-row .tab-content .tab-pane .bid-active-row .property-sort .dropdown-menu {
+  padding: 0;
+  margin: 0.5rem 0 0;
+  font-size: 0.875em;
+  transition: all 0.8s;
+}
+.screen-wrapper .ud-body-row .tab-content .tab-pane .bid-active-row .property-sort .dropdown-menu .dropdown-item {
+  cursor: pointer;
+}
+.screen-wrapper .ud-body-row .tab-content .tab-pane .bid-active-row .property-sort .dropdown-menu .dropdown-item:hover {
+  background-color: #212121;
+  color: #ffffff;
 }
 .screen-wrapper .ud-body-row .tab-content .tab-pane .section-seprator {
   border-top: 1px solid #e3e3e3;
@@ -830,11 +893,29 @@
   height: 350px;
   overflow-y: auto;
 }
+.screen-wrapper .ud-body-row .tab-content .sign-in-row .sign-in-col .common-form .dsahboard-tbl .create-new-task {
+  float: right;
+  margin-bottom: 1.5rem;
+  cursor: pointer;
+}
 .screen-wrapper .ud-body-row .tab-content .sign-in-row .sign-in-col .common-form .dsahboard-tbl .scroll tr th {
   white-space: nowrap;
 }
 .screen-wrapper .ud-body-row .tab-content .sign-in-row .sign-in-col .common-form .dsahboard-tbl .scroll tr td {
   white-space: nowrap;
+  vertical-align: middle;
+}
+.screen-wrapper .ud-body-row .tab-content .sign-in-row .sign-in-col .common-form .dsahboard-tbl .scroll tr td .edit-icon {
+  margin-right: 1rem;
+}
+.screen-wrapper .ud-body-row .tab-content .sign-in-row .sign-in-col .common-form .dsahboard-tbl .scroll tr td .edit-icon .fa-pencil-alt {
+  font-size: 20px;
+}
+.screen-wrapper .ud-body-row .tab-content .sign-in-row .sign-in-col .common-form .dsahboard-tbl .scroll tr td .save-icon .fa-save {
+  font-size: 20px;
+}
+.screen-wrapper .ud-body-row .tab-content .sign-in-row .sign-in-col .common-form .dsahboard-tbl .scroll tr td .form-input {
+  width: auto;
 }
 .screen-wrapper .ud-body-row .tab-content .sign-in-row .sign-in-col .common-form .dsahboard-tbl .scroll tr td a {
   cursor: pointer;
@@ -1387,7 +1468,10 @@ a:hover {
   color: #f8f8f8;
 }
 .font-size-14 {
-  font-size: 14px;
+  font-size: 14px !important;
+}
+.font-size-16 {
+  font-size: 16px !important;
 }
 .margin-bottom-20-neg {
   margin-bottom: -20px;

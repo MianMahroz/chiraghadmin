@@ -177,6 +177,9 @@ $(document).ready(function(){
     $('a').removeClass('active show');
     $(this).addClass('active show');
   });
+  $('.side-link-no-img').click(function(){
+    $('.link-wrap-no-bullets').removeClass('show');
+  });
 
   $('.side-link-no-img').click(function(){
     $('.side-link-no-img').removeClass('bg-secondary text-white');
@@ -190,6 +193,22 @@ $(document).ready(function(){
     $($(this).parents('div').html()).appendTo('.modal-body');
     $('#thumbnailViewer').modal({show:true});
   });
+
+  $("#insert-more").click(function () {
+    $("#taskTbl").each(function () {
+      var tds = '<tr>';
+      jQuery.each($('tr:last td', this), function () {
+          tds += '<td>' + $(this).html() + '</td>';
+      });
+      tds += '</tr>';
+      if ($('tbody', this).length > 0) {
+          $('tbody', this).append(tds);
+      } else {
+          $(this).append(tds);
+      }
+    });
+  });
+  
 });
 
 $('.advance-search-link').click(function() {

@@ -769,6 +769,30 @@
                   background: url("../../assets/images/thumbnail-img3.jpg") no-repeat 0 0;
                   height: 180px;
                 }
+                .upload-btn-div {
+                  position: relative;
+                  .file {
+                    position: absolute;
+                    left: 0;
+                    top: 5px;
+                    &::before {
+                      content: "";
+                      background: url("../../assets/images/sprite-image.png") no-repeat -570px -218px;
+                      padding: 12px 17px;
+                    }
+                    .doc-upload {
+                      width: 40px;
+                      opacity: 0;
+                      left: 0;
+                      position: absolute;
+                      top: -10px;
+                      height: 40px;
+                    }
+                  }
+                  .upload-instuct {
+                    color: @secondary-color;
+                  }
+                }
               }
               .bid-active-decript {
                 color: @secondary-color;
@@ -780,10 +804,49 @@
                     font-size: 1.375em;
                   }
                 }
+                .prop-upload-div {
+                  position: relative;
+                  .doc-upload {
+                    position: absolute;
+                    right: 0;
+                    left: 0;
+                    top: 0;
+                    height: 38px;
+                    input {
+                      width: 100%;
+                      opacity: 0;
+                      position: absolute;
+                      bottom: 0;
+                      top: 0;
+                    }
+                  }
+                }
                 .prop-amount {
                   .amount {
                     font-size: 1.25em;
                   }
+                }
+              }
+            }
+          }
+          .property-sort {
+            text-align: right;
+            margin-top: 1rem;
+            .user-id-link {
+              font-size: 0.875em;
+              font-weight: bold;
+              cursor: pointer;
+            }
+            .dropdown-menu  {
+              padding: 0;
+              margin: 0.5rem 0 0;
+              font-size: 0.875em;
+              transition: all 0.8s;
+              .dropdown-item {
+                cursor: pointer;
+                &:hover {
+                  background-color: @primary-color;
+                  color: @white-color;
                 }
               }
             }
@@ -860,6 +923,11 @@
             .dsahboard-tbl {
               height: 350px;
               overflow-y: auto; 
+              .create-new-task {
+                float: right;
+                margin-bottom: 1.5rem;
+                cursor: pointer;
+              }
               .scroll {
                 tr {
                   th {
@@ -867,6 +935,21 @@
                   }
                   td {
                     white-space: nowrap;
+                    vertical-align: middle;
+                    .edit-icon {
+                      margin-right: 1rem;
+                      .fa-pencil-alt {
+                        font-size: 20px;
+                      }
+                    }
+                    .save-icon {
+                      .fa-save {
+                        font-size: 20px;
+                      }
+                    }
+                    .form-input {
+                      width: auto;
+                    }
                     a {
                       cursor: pointer;
                     }
