@@ -1,13 +1,13 @@
-import { PropertyService } from './../../shared/property.service';
+import { PropertyService } from '../../shared/property.service';
 import { ChiraghUser } from './ChiraghUserPOJO';
 
-import { ToasterServiceService } from './../../toaster-service.service';
-import { SellerService } from './../../shared/seller.service';
-import { UserService } from './../../shared/user.service';
+import { ToasterServiceService } from '../../toaster-service.service';
+import { SellerService } from '../../shared/seller.service';
+import { UserService } from '../../shared/user.service';
 import { HttpClient } from '@angular/common/http';
 import { Router, ActivatedRoute } from '@angular/router';
-import { AuthService } from './../../core/auth.service';
-import { TokenStorage } from './../../core/token.storage';
+import { AuthService } from '../../core/auth.service';
+import { TokenStorage } from '../../core/token.storage';
 import { MatTableDataSource, MatPaginator, MatSort } from '@angular/material';
 import { Component, OnInit, ViewChild, AfterViewInit,Input } from '@angular/core';
 import {MatTableModule} from '@angular/material/table';

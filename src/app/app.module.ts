@@ -36,6 +36,7 @@ import 'mousetrap';
 import { MatTableModule } from '@angular/material';
 
 import {ModalGalleryModule} from 'angular-modal-gallery';
+import { ValuationHomeComponent } from './admin/valuation-home/valuation-home.component';
 // enableProdMode();
 @NgModule({
   declarations: [
@@ -50,6 +51,7 @@ import {ModalGalleryModule} from 'angular-modal-gallery';
     VerificationHomeComponent,
     AdminsignoutComponent,
     AdminSellerDetailsComponent,
+    ValuationHomeComponent,
   ],
   imports: [
     MatTableModule,

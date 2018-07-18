@@ -37,14 +37,33 @@ export class AdminLoginComponent implements OnInit {
               this.userService.login(this.logindto.userName,this.logindto.userPassword).subscribe(
                 data1=>{
                   console.log(data1);
+                  console.log(data1.msg);
                   this.mytoastr.Success('Login',data1.msg);
                        if(data1.msg=="Login Successfully"){
                         //  if(data1.role=='admin'){
                         // this.mytoastr.Success('Login',data1.msg);
                            this.token.saveAdminUserName(this.logindto.userName);
                            this.token.saveUserRole(data1.role);
-                           this.router.navigate(['/adminverificationhome']);
-                        //  }
+                         if(data1.role=='VerificationUser')
+                            this.router.navigate(['/adminverificationhome']);
+                        else if(data1.role=='VerificationHod'){
+                            this.router.navigate(['/adminverificationhome']);
+                        }
+                        else if(data1.role=='ValuationUser'){
+                          this.router.navigate(['/adminvaluationhome']);
+                        }
+                        else if(data1.role=='ValuationHod'){
+                          this.router.navigate(['/adminvaluationhome']);
+                        }
+                        else if(data1.role=='BrokerageUser'){
+                          this.router.navigate(['/adminbrokeragehome']);
+                        }
+                        else if(data1.role=='BrokerageHod'){
+                          this.router.navigate(['/adminbrokeragehome']);
+                        }
+
+
+                           //  }
                        }//end of if
                     }//end of inner data predicate
               );//end of inner subscription

@@ -1,4 +1,5 @@
-import { VerificationDTO } from './../Dto/verificationDto';
+import { PropertyActivityLogs } from './../Dto/PropertyActivityLogs';
+import { VerificationDTO } from '../Dto/verificationDto';
 
 import { PropertyRentalDetailDTO } from '../Dto/propertyRentalDTO';
 import { PropertyFinancialDTO } from '../Dto/propertyfinancialDTO';
@@ -16,10 +17,19 @@ const httpOptions = {
 @Injectable()
 export class VerificationService {
   private verificationUrl = this.token.getServerpath()+'/api/verification';
+  private taskUrl = this.token.getServerpath()+'/api/propertyactivitylogs';
+
   constructor(private http: HttpClient,private token:TokenStorage,private authService:AuthService) { }
 
   public sentEmail1(verificationDTO:VerificationDTO): Observable<any> {
     return this.http.post<any>(this.verificationUrl + '/sentEmail', verificationDTO,httpOptions);
+  }
+
+  public createTask(propertyActivityLogs:PropertyActivityLogs): Observable<any> {
+    return this.http.post<PropertyActivityLogs>(this.taskUrl + '/save', propertyActivityLogs,httpOptions);
+  }
+  public getSystemGeneratedTaskByPropertyId(propertyId:number): Observable<PropertyActivityLogs> {
+    return this.http.get<PropertyActivityLogs>(this.taskUrl + '/getSystemTaskGeneratedByPropertyId/'+propertyId);
   }
 
 }

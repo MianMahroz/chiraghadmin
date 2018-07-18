@@ -127,6 +127,11 @@ export class PropertyDetailsDto {
  park:string;
  description:string;
  areaUnit:string;
+
  isPropertyDetailsVerified:string;
+ isPOADetailsVerified:string;
+ isPersonalDetailsVerified:string;
+ isAcknowledgementCall:string;
+
  sellerUserName:string;
 }

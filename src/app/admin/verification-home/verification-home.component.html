@@ -5,12 +5,13 @@
       <div class="col-md-12">
         <div class="dashboard-section">
           <div class="row ud-header-wrapper">
-            <div class="offset-md-1 col-md-10">
+          <div class="offset-md-1 col-md-10">
             <br>
-            <div class="title-secondary-26 mb-4">Verification Department </div>
-            </div>
+            <div *ngIf="getRole()=='VerificationUser'||getRole()=='VerificationHod'" class="title-secondary-26 mb-4">Verification Department </div>
+            <div *ngIf="getRole()=='ValuationUser'||getRole()=='ValuationHod'"       class="title-secondary-26 mb-4">Valuation Department </div>
+            <div *ngIf="getRole()=='BrokerageUser'||getRole()=='BrokerageHod'" class="title-secondary-26 mb-4">Brokerage Department </div>
           </div>
-
+          </div>
           <div class="row tab-content">
             <div id="account" class="offset-md-1 col-md-10 tab-pane fade in active show">
               <div class="row ud-body-row">
@@ -21,11 +22,15 @@
                     </div> -->
                     <ul class="nav nav-tabs ud-sidebar-links-wrap">
                       <li>
-                       <a class="ud-seller side-link-no-img bg-secondary text-white" data-toggle="collapse" href="#sell-links1">Leads</a>
+                       <a class="ud-seller side-link-no-img bg-secondary text-white" data-toggle="collapse" href="#sell-links1">
+                         Leads
+                         <div *ngIf="completePropertyArr">( {{completePropertyArr.length}} )
+                          </div>
+                        </a>
                         <ul class="collapse sub-links-wrap link-wrap-no-bullets show" id="sell-links1">
 
                           <li>
-                            <a class="ud-seller side-link-active-no-bg active show" (click)="loadData()" data-toggle="tab" href="#property-list">Sell</a>
+                            <a class="ud-seller side-link-active-no-bg active show" (click)="loadData()" data-toggle="tab" href="#property-list">Seller</a>
                             <ul class="collapse sub-links-wrap pl-2" id="sell-links">
                                 <li *ngFor="let propertyArr of completePropertyArr">
                                     <a class="sub-links" data-toggle="tab" (click)="setCurrentProperty(propertyArr)" >{{propertyArr.sellerUserName}}  P_Id({{propertyArr.propertyId}})</a>
@@ -36,7 +41,7 @@
 
                           <!-- end of seller admin changes -->
                           <li>
-                            <a class="ud-seller side-link-active-no-bg" data-toggle="collapse" href="#sell-links">Buy</a>
+                            <a class="ud-seller side-link-active-no-bg" data-toggle="collapse" href="#sell-links">Buyer</a>
 
                           </li>
                         </ul>
@@ -666,7 +671,10 @@
                 <li><a data-toggle="tab" href="#owner-detail" class="sub-prop-links active show"(click)="getFirstOwner()" >Personal Details</a></li>
                 <li><a data-toggle="tab" href="#POA-detail" class="sub-prop-links" (click)="getFirstPOA()">POA Details</a></li>
                 <li><a  data-toggle="tab" href="#prop-detail" (click)="getPropertyDetails(currentProperty)" class="sub-prop-links">Property Details</a></li>
+                <!-- <li><a  data-toggle="tab" href="#prop-financials" (click)="getPropertyFinancialDetails(currentProperty)" class="sub-prop-links">Property Morgage Details</a></li> -->
+                <!-- <li><a  data-toggle="tab" href="#prop-rent" (click)="getPropertyRentalDetails(currentProperty)" class="sub-prop-links">Property Rental Details</a></li> -->
                 <li><a data-toggle="tab" href="#seller-verification"  (click)="checklistData(currentProperty)" class="sub-prop-links">Checklist</a></li>
+                <li><a data-toggle="tab" href="#seller-verification"   class="sub-prop-links">Form A</a></li>
               </ul>
             </div>
             <div  class="col-md-12 sign-in-col">
@@ -780,9 +788,13 @@
                         </div>
                         <div class="row mt-5 submit-btn-row">
                           <div class="col-md-3 mb-xs-4">
-                            <a *ngIf="ownerDto.isPersonalDetailsVerified=='false'" (click)="ownerVerified('true')" id="verifyowners"  style=color:white class="btn w-100 common-btn btn-light-black">Verify</a>
+                              <!--*ngIf="ownerDto.isPersonalDetailsVerified=='false'&&getRole()=='VerificationUser'"
+                              -->
+
+                                <a *ngIf="ownerDto.isPersonalDetailsVerified=='false'&&getRole()=='VerificationUser'" (click)="ownerVerified('true')" id="verifyowners"  style=color:white class="btn w-100 common-btn btn-light-black">Verify</a>
+                            <a *ngIf="ownerDto.isPersonalDetailsVerified=='true'&&getRole()=='VerificationHod'" (click)="ownerVerified('false')" id="verifyowners"  style=color:white class="btn w-100 common-btn btn-light-black">UnVerify</a>
                           </div>
-                          <div class="offset-md-6 col-md-3">
+                          <div *ngIf="getRole()=='VerificationUser'" class="offset-md-6 col-md-3">
                             <button (click)="grantEditAccess()" style=color:white class="btn w-100 common-btn w-100" type="submit">Edit</button>
                           </div>
                         </div>
@@ -1293,6 +1305,7 @@
                           </div>
                         </div>
                       </form>
+
                       <!-- edit form     -->
                       <form  *ngIf="!editPOA" #poaDetailsForm="ngForm" class="common-form mb-4" novalidate>
                         <div class="mb-5 page-primary-title-34">POA Details</div>
@@ -1414,9 +1427,11 @@
                         </div>
                         <div class="row mt-5 submit-btn-row">
                           <div class="col-md-3 mb-xs-4">
-                            <a *ngIf="ownerDto.isPersonalDetailsVerified=='false'" (click)="ownerVerified('true')" id="verifyowners"  style=color:white class="btn w-100 common-btn btn-light-black">Verify</a>
+                            <a *ngIf="ownerDto.isPersonalDetailsVerified=='false'&&getRole()=='VerificationUser'" (click)="ownerVerified('true')" id="verifyowners"  style=color:white class="btn w-100 common-btn btn-light-black">Verify</a>
+                            <a *ngIf="ownerDto.isPersonalDetailsVerified=='true'&&getRole()=='VerificationHod'" (click)="ownerVerified('false')" id="verifyowners"  style=color:white class="btn w-100 common-btn btn-light-black">UnVerify</a>
                           </div>
-                          <div class="offset-md-6 col-md-3">
+
+                          <div *ngIf="getRole()=='VerificationUser'"  class="offset-md-6 col-md-3">
                             <!-- [disabled]="!ownerDetailsForm.form.valid" -->
                             <button  (click)="grantEditAccessToPOA()" style=color:white class="btn w-100 common-btn" type="submit">Edit</button>
                           </div>
@@ -1993,15 +2008,16 @@
                           </label>
                         </div>
                         <div class="note-text">
-                          I Want 3rd Party Valuation also
-                          <div class="note-sub-title-text">Note: Chiragh will do the valuation. Seller is liable to pay the cost for 3rd party valuation</div>
+                           3rd Party Valuation is Requested
+                          <!-- <div class="note-sub-title-text">Note: Chiragh will do the valuation. Seller is liable to pay the cost for 3rd party valuation</div> -->
                         </div>
                       </div>
                       <div class="row mt-5 submit-btn-row">
                         <div class="col-md-3 mb-xs-4">
-                          <a *ngIf="propertyDetailsDto.isPropertyDetailsVerified=='false'" (click)="propertyDetailsVerified('true')" id="verifyowners"  style=color:white class="btn common-btn btn-light-black w-100">Verify</a>
+                          <a *ngIf="propertyDetailsDto.isPropertyDetailsVerified=='false'&&getRole()=='VerificationUser'" (click)="propertyDetailsVerified('true','false')" id="verifyowners"  style=color:white class="btn common-btn btn-light-black w-100">Verify</a>
+                          <a *ngIf="propertyDetailsDto.isPropertyDetailsVerified=='true'&&getRole()=='VerificationHod'" (click)="propertyDetailsVerified('false','false')" id="verifyowners"  style=color:white class="btn common-btn btn-light-black w-100">UnVerify</a>
                         </div>
-                        <div class="offset-md-6 col-md-3">
+                        <div *ngIf="getRole()=='VerificationUser'" class="offset-md-6 col-md-3">
                           <button  (click)="grantEditAccessToPropertyDetails()" style=color:white class="btn w-100 common-btn" type="submit">Edit</button>
                         </div>
                       </div>
@@ -2665,7 +2681,7 @@
                           </div> -->
                           <div class="offset-md-9 col-md-3">
                             <!-- [disabled]="!ownerDetailsForm.form.valid" -->
-                            <button  (click)="propertyDetailsVerified('false')" style=color:white class="btn common-btn w-100" type="submit">Update</button>
+                            <button  (click)="propertyDetailsVerified('false','false')" style=color:white class="btn common-btn w-100" type="submit">Update</button>
                           </div>
                         </div>
                     </form>
@@ -3138,7 +3154,10 @@
                   <div class="col-md-12 sign-in-col">
                     <form class="common-form mb-4">
                       <div class="row">
-                        <div class="col-md-12 form-block-heading mb-4">Verification Department</div>
+                        <div  *ngIf="getRole()=='VerificationUser'&&getRole()=='VerificationHod'" class="col-md-12 form-block-heading mb-4">Verification Department</div>
+                        <div  *ngIf="getRole()=='ValuationUser'&&getRole()=='ValuationHod'" class="col-md-12 form-block-heading mb-4">Valuation Department</div>
+                        <div  *ngIf="getRole()=='BrokerageUser'&&getRole()=='BrokerageHod'" class="col-md-12 form-block-heading mb-4">Brokerage Department</div>
+
                       </div>
                       <div class="row">
                         <div class="col-md-6 verification-list-col">
@@ -3164,12 +3183,12 @@
                           <div class="verification-list mb-3">
                             Acknowledgment call
                             <label class="common-checkbox">
-                              <input type="checkbox"><span class="checkbox-material"><span class="check mr-2"></span></span>
+                              <input name="acknowledgmentCall"  [(ngModel)]="acknowledgmentCall" type="checkbox"><span class="checkbox-material"><span class="check mr-2"></span></span>
                             </label>
                           </div>
                           <div class="row">
-                            <div class="col-md-8">
-                              <button class="btn common-btn w-100 py-2">Checklist Confirmed</button>
+                            <div *ngIf="getRole()=='VerificationUser'" class="col-md-8">
+                              <button (click)="propertyDetailsVerified('true','true')" class="btn common-btn w-100 py-2">Checklist Confirmed</button>
                             </div>
                           </div>
                         </div>
@@ -3183,7 +3202,7 @@
                           <textarea  [(ngModel)]="body"  name="body" class="form-control common-textarea" placeholder="Composing Box"></textarea>
                           <button  (click)="sentEmail()" class="btn common-btn mt-4 px-5">Send</button>
                         </div>
-                        <div class="offset-md-1 col-md-3">
+                        <div *ngIf="getRole()=='VerificationHod'" class="offset-md-1 col-md-3">
                           <button  class="btn w-100 form-btn">HOD Approved</button>
                         </div>
                       </div>

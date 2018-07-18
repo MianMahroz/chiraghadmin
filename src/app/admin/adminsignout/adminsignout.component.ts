@@ -1,6 +1,6 @@
-import { TokenStorage } from './../../core/token.storage';
+import { TokenStorage } from '../../core/token.storage';
 import { Router } from '@angular/router';
-import { ToasterServiceService } from './../../toaster-service.service';
+import { ToasterServiceService } from '../../toaster-service.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
