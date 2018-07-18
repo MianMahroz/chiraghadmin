@@ -1,6 +1,7 @@
 export class PropertyActivityLogs{
 
     id:number;
+    propertyId:number;
 	  department:string;
 	  adminUserName:string;
     task:string;

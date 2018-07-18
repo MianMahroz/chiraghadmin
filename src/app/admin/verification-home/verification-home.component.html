@@ -22,7 +22,6 @@
                     </div> -->
                     <ul class="nav nav-tabs ud-sidebar-links-wrap">
                       <li>
-<<<<<<< HEAD
                        <a class="ud-seller side-link-no-img bg-secondary text-white" data-toggle="collapse" href="#sell-links1">
                          Leads
                          <div *ngIf="completePropertyArr">( {{completePropertyArr.length}} )
@@ -32,13 +31,6 @@
 
                           <li>
                             <a class="ud-seller side-link-active-no-bg active show" (click)="loadData()" data-toggle="tab" href="#property-list">Seller</a>
-=======
-                       <a class="ud-seller side-link-no-img bg-secondary text-white" data-toggle="collapse" href="#sell-links1">Leads(10)</a>
-                        <ul class="collapse sub-links-wrap link-wrap-no-bullets show" id="sell-links1">
-
-                          <li>
-                            <a class="ud-seller side-link-active-no-bg active show" (click)="loadData()" data-toggle="tab" href="#property-list">Sell(6)</a>
->>>>>>> d4e37a284824c2f982bae0408f15da013f6d0236
                             <ul class="collapse sub-links-wrap pl-2" id="sell-links">
                                 <li *ngFor="let propertyArr of completePropertyArr">
                                     <a class="sub-links" data-toggle="tab" (click)="setCurrentProperty(propertyArr)" >{{propertyArr.sellerUserName}}  P_Id({{propertyArr.propertyId}})</a>
@@ -49,11 +41,7 @@
 
                           <!-- end of seller admin changes -->
                           <li>
-<<<<<<< HEAD
-                            <a class="ud-seller side-link-active-no-bg" data-toggle="collapse" href="#sell-links">Buyer</a>
-=======
-                            <a class="ud-seller side-link-active-no-bg" data-toggle="collapse" href="#sell-links">Buy(4)</a>
->>>>>>> d4e37a284824c2f982bae0408f15da013f6d0236
+                            <a class="ud-seller side-link-active-no-bg" data-toggle="collapse" href="#sell-links">Buyer(4)</a>
 
                           </li>
                         </ul>
@@ -623,22 +611,57 @@
 
                       <ng-container matColumnDef="lastActionPerformed">
                       <mat-header-cell *matHeaderCellDef>  Last Action Performed </mat-header-cell>
-                      <mat-cell *matCellDef="let element"> {{element.lastActionPerformed}} </mat-cell>
+                      <mat-cell *matCellDef="let element">
+
+                        <div *ngFor="let obj of element.propertyactivitylogses">
+                            <!-- {{obj.taskStatus}} -->
+                          <div *ngIf="obj.taskType=='system'">
+                              {{obj.taskStatus}}
+                          </div>
+                        </div>
+
+                        <!-- {{element.propertyactivitylogses[0].taskStatus}} -->
+                        <!-- {{obj.taskStatus}} -->
+                      </mat-cell>
+
                     </ng-container>
 
                     <ng-container matColumnDef="dateReceived">
                       <mat-header-cell *matHeaderCellDef> Date Received  </mat-header-cell>
-                      <mat-cell *matCellDef="let element"> {{element.dateReceived | date: 'dd/MM/yyyy'}} </mat-cell>
-                    </ng-container>
+                      <mat-cell *matCellDef="let element">
+
+                         <div *ngFor="let obj of element.propertyactivitylogses">
+                            <!-- {{obj.taskStatus}} -->
+                          <div *ngIf="obj.taskType=='system'">
+                              {{obj.taskStartDate | date: 'dd/MM/yyyy'}}
+                          </div>
+                        </div>
+                        </mat-cell>
+                        </ng-container>
 
                     <ng-container matColumnDef="lastAction">
                       <mat-header-cell *matHeaderCellDef> Last Action</mat-header-cell>
-                      <mat-cell *matCellDef="let element"> {{element.lastAction|date: 'dd/MM/yyyy'}} </mat-cell>
+                      <mat-cell *matCellDef="let element">
+
+                        <div *ngFor="let obj of element.propertyactivitylogses">
+                          <div *ngIf="obj.taskType=='system'">
+                              {{obj.taskCompleteDate|date: 'dd/MM/yyyy'}}
+                          </div>
+                        </div>
+                      </mat-cell>
                     </ng-container>
 
                     <ng-container matColumnDef="actionPerformedBy">
                       <mat-header-cell *matHeaderCellDef> By </mat-header-cell>
-                      <mat-cell *matCellDef="let element"> {{element.actionPerformedBy}} </mat-cell>
+                      <mat-cell *matCellDef="let element">
+                        {{element.actionPerformedBy}}
+
+                        <div *ngFor="let obj of element.propertyactivitylogses">
+                            <div *ngIf="obj.taskType=='system'">
+                                {{obj.adminUserName}}
+                            </div>
+                          </div>
+                      </mat-cell>
                     </ng-container>
 
                     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
@@ -3343,11 +3366,11 @@
               <a class="dropdown-item">Time</a>
               <a class="dropdown-item">Verification User 1</a>
               <a class="dropdown-item">Verification User 1</a>
-            </div>    
+            </div>
           </div>
         </div>
       </div>
-    </div>    
+    </div>
 
 
     <div id="task-tab" class="row tab-pane fade sign-in-row">
@@ -3405,10 +3428,10 @@
                 </nav>
               </div>
             </form>
-          </div>     
-        </div>   
+          </div>
+        </div>
       </div>
-    </div>      
+    </div>
 
   </div>
 </div>

@@ -1,3 +1,4 @@
+
 import { VerificationService } from '../../shared/verification.service';
 import { AdminDTO } from '../../Dto/adminDto';
 import { personalInfoDTO } from '../../Dto/personalInfoDTO';
@@ -149,6 +150,7 @@ poaIdCopy:string;
 poaPassportCopy:string;
 poaNotorizedCopy:string;
 pdTitleDeedCopy:string;
+currentPropertySystemLogs=new PropertyActivityLogs();
 // myclassName='row tab-pane fade sign-in-row';
 // myclassNameActive='row tab-pane fade sign-in-row-active show';
 
@@ -265,32 +267,22 @@ getRole():string{
           // this.checklistData(this.currentProperty);
          this.sellerService.updateOwner(this.ownerDto).subscribe(
            data=>{
-             if(isVerified){
-                this.mytoastr.Success('','Owner Verified Successfully');
+             if(isVerified=='true'){
+                this.mytoastr.Success('',this.ownerDto.ownerType+' Verified Successfully');
                 console.log('Owner Verified Successfully');
+                  Array.from(this.currentProperty.propertyactivitylogses).forEach(obj2 => {
+                    var obj=null;
+                    obj=JSON.parse(JSON.stringify(obj2));
+                    if(obj.taskType=='system'){
+                      this.propertyActivityLogs=obj;
+                    }
+              });//end of for each
 
-                // this.createNewTask(this.ownerDto.propertyId,this.ownerDto.propertySellerId+'Owner Verified');
+                   this.systemTask(this.ownerDto.propertyId,this.ownerDto.ownerType+' '+this.ownerDto.propertySellerId+' is Verifed');
 
-                this.verificationService.getSystemGeneratedTaskByPropertyId(this.ownerDto.propertyId).subscribe(
-                  task=>{
-                                console.log(task);
-                               this.propertyActivityLogs=task;
-                               this.propertyActivityLogs.taskStatus='Owner Verifed';
-                              //  this.propertyActivityLogs.taskCompleteDate=new Date();//current date
-               this.verificationService.createTask(this.propertyActivityLogs).subscribe(
-                  data=>{
-                               this.mytoastr.Success('',data);
-                               this.ownerDto=new OwnerDetails();
-                               this.getCompleteProperties();
-                               this.refreshDto();
-                        }//end of data of create task
-               );//end of subscription of create task
                   }//end of task
-               );//end of get system generated task  subscription
-
-              }
-                else{
-                this.mytoastr.Success('','Owner UnVerified Successfully');
+              else{
+                this.mytoastr.Success('',this.ownerDto.ownerType+' UnVerified Successfully');
                     console.log('owner unverified Successfully');
               }
 
@@ -363,18 +355,27 @@ getRole():string{
           this.propertyDetailsDto.sellerUserName=this.propertyDetailsDto.sellerUserName;
           this.propertyDetailsDto.userName=this.token.getAdminuserName();
           this.propertyDetailsDto.propertyId=this.currentPropertyId;
-
+          Array.from(this.currentProperty.propertyactivitylogses).forEach(obj2 => {
+            var obj=null;
+            obj=JSON.parse(JSON.stringify(obj2));
+            if(obj.taskType=='system'){
+              this.propertyActivityLogs=obj;
+            }
+      });//end of for each
           this.sellerService.saveDocument('/propertyId-'+this.currentPropertyId+'/','S-titleDeedCopy'+this.currentPropertyId,this.propertyDetailsDto.userName,this.scannedTitleDeedFile).subscribe(imageData=>{
             console.log(imageData);
             if(imageData.type==3){
             this.propertyDetailsDto.scannedTitleDeed=imageData.partialText;
             this.propertyService.updateProperty(this.propertyDetailsDto).subscribe(
               data=>{
-                if(isVerified=='true')
+                if(isVerified=='true'){
                    this.mytoastr.Info('Status','Property Details Verified Successfully');
-                else
+                   this.systemTask(this.propertyDetailsDto.propertyId,'Property Verifed Successfully');
+
+                  }else{
                    this.mytoastr.Info('Status','Property Details Update Successfully');
 
+                  }
                   //  this.propertyDetailsDto=new PropertyDetailsDto();
                    this.refreshDto();
                    this.getCompleteProperties();
@@ -385,11 +386,13 @@ getRole():string{
           else if(imageData=="Data"){
             this.propertyService.updateProperty(this.propertyDetailsDto).subscribe(
               data=>{
-                if(isVerified=='true')
+                if(isVerified=='true'){
                    this.mytoastr.Info('Status','Property Details Verified Successfully');
-                else
-                   this.mytoastr.Info('Status','Property Details Update Successfully');
+                   this.systemTask(this.propertyDetailsDto.propertyId,'Property Verifed Successfully');
 
+                  }else{
+                   this.mytoastr.Info('Status','Property Details Update Successfully');
+                  }
                   //  this.propertyDetailsDto=new PropertyDetailsDto();
                    this.refreshDto();
                    this.getCompleteProperties();
@@ -399,14 +402,28 @@ getRole():string{
           }//end of else if
           });
 
-
-
         }//end of if
      }//end of outer data predicate
     );//end of outer subscription
   }//end of loginChiraghUser
 
 
+  systemTask(propertyId:number,taskStatus:string):void{
+    this.propertyActivityLogs.propertyId=propertyId;
+    this.propertyActivityLogs.taskStatus=taskStatus
+    this.propertyActivityLogs.taskCompleteDate=new Date();//current date
+    this.propertyActivityLogs.adminUserName=this.token.getAdminuserName();
+    this.verificationService.createTask(this.propertyActivityLogs).subscribe(
+      data1=>{
+        console.log(data1);
+                  //  this.mytoastr.Success('',data1);
+                   this.ownerDto=new OwnerDetails();
+                   this.propertyDetailsDto=new PropertyDetailsDto();
+                   this.getCompleteProperties();
+                   this.refreshDto();
+            }//end of data of create task
+   );//end of subscription of create task
+  }
 
 
   refreshDto():void{
@@ -427,8 +444,10 @@ getRole():string{
   setCurrentProperty(prop:any){
     this.currentPropertyId=prop.propertyId;
     this.currentProperty=prop;
+
     console.log('current Property');
     console.log(this.currentProperty);
+    console.log(this.currentPropertySystemLogs);
     this.token.saveUserName(prop.sellerUserName);
   }
 
@@ -677,7 +696,7 @@ createNewTask(propertyId:number,taskStatus:string): void {
                               console.log(task);
                              this.propertyActivityLogs=task;
                              this.propertyActivityLogs.taskStatus=taskStatus;
-                            //  this.propertyActivityLogs.taskCompleteDate=new Date();//current date
+                             this.propertyActivityLogs.taskCompleteDate=new Date();//current date
              this.verificationService.createTask(this.propertyActivityLogs).subscribe(
                 data=>{
                              this.mytoastr.Success('',data);
