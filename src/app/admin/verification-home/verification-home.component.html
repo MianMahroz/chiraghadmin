@@ -15,13 +15,24 @@
           <div class="row tab-content">
             <div id="account" class="offset-md-1 col-md-10 tab-pane fade in active show">
               <div class="row ud-body-row">
-                <div class="col-md-3 p-xs-0 ud-sidebar-col">
+                <div class="col-md-2 p-xs-0 ud-sidebar-col">
                   <div class="ud-sidebar">
                     <!-- <div class="file imgae-upload my-4">
                       <input type="file" name="file"/>
                     </div> -->
                     <ul class="nav nav-tabs ud-sidebar-links-wrap">
                       <li>
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+                       <a class="ud-seller side-link-no-img bg-secondary text-white font-size-14" data-toggle="collapse" href="#sell-links1">Leads(10)</a>
+                        <ul class="collapse sub-links-wrap link-wrap-no-bullets show" id="sell-links1">
+
+                          <li>
+                            <a class="ud-seller side-link-active-no-bg active show font-size-14" (click)="loadData()" data-toggle="tab" href="#property-list">Sell(6)</a>
+=======
+<<<<<<< HEAD
+>>>>>>> 2aeb2248e5286c0770be57f6bcea8a95d98a39d2
                        <a class="ud-seller side-link-no-img bg-secondary text-white" data-toggle="collapse" href="#sell-links1">
                          Leads
                          <div *ngIf="completePropertyArr">( {{completePropertyArr.length}} )
@@ -31,9 +42,20 @@
 
                           <li>
                             <a class="ud-seller side-link-active-no-bg active show" (click)="loadData()" data-toggle="tab" href="#property-list">Seller</a>
+<<<<<<< HEAD
+=======
+=======
+                       <a class="ud-seller side-link-no-img bg-secondary text-white" data-toggle="collapse" href="#sell-links1">Leads(10)</a>
+                        <ul class="collapse sub-links-wrap link-wrap-no-bullets show" id="sell-links1">
+
+                          <li>
+                            <a class="ud-seller side-link-active-no-bg active show" (click)="loadData()" data-toggle="tab" href="#property-list">Sell(6)</a>
+>>>>>>> d4e37a284824c2f982bae0408f15da013f6d0236
+>>>>>>> 2ec00a807b1df5cc42871320d15a3762653ba7a5
+>>>>>>> 2aeb2248e5286c0770be57f6bcea8a95d98a39d2
                             <ul class="collapse sub-links-wrap pl-2" id="sell-links">
                                 <li *ngFor="let propertyArr of completePropertyArr">
-                                    <a class="sub-links" data-toggle="tab" (click)="setCurrentProperty(propertyArr)" >{{propertyArr.sellerUserName}}  P_Id({{propertyArr.propertyId}})</a>
+                                    <a class="sub-links font-size-14" data-toggle="tab" (click)="setCurrentProperty(propertyArr)" >{{propertyArr.sellerUserName}}  P_Id({{propertyArr.propertyId}})</a>
                                   </li>
                             </ul>
                           </li>
@@ -41,19 +63,23 @@
 
                           <!-- end of seller admin changes -->
                           <li>
+<<<<<<< HEAD
                             <a class="ud-seller side-link-active-no-bg" data-toggle="collapse" href="#sell-links">Buyer(4)</a>
 
+=======
+                            <a class="ud-seller side-link-active-no-bg font-size-14" data-toggle="collapse" href="#sell-links">Buy (4)</a>
+>>>>>>> 2aeb2248e5286c0770be57f6bcea8a95d98a39d2
                           </li>
                         </ul>
                       </li>
-                      <li><a class="ud-seller side-link-no-img" data-toggle="tab" href="#task-tab">Task(9)</a></li>
-                      <li><a class="ud-seller side-link-no-img" data-toggle="collapse" href="#">Notifications(16)</a></li>
-                      <li><a class="ud-seller side-link-no-img" data-toggle="tab" href="#listings-tab">Listings(3)</a></li>
-                      <li><a class="ud-seller side-link-no-img" data-toggle="collapse" href="#">Pending Deals</a></li>
-                      <li><a class="ud-seller side-link-no-img" data-toggle="collapse" href="#">Upcomming Listings</a></li>
-                      <li><a class="ud-seller side-link-no-img" data-toggle="collapse" href="#">Calendar</a></li>
-                      <li><a class="ud-seller side-link-no-img" data-toggle="collapse" href="#">Contact Search</a></li>
-                      <li><a class="ud-seller side-link-no-img" data-toggle="collapse" href="#">Property Search</a></li>
+                      <li><a class="ud-seller side-link-no-img font-size-14" data-toggle="tab" href="#task-tab">Task (9)</a></li>
+                      <li><a class="ud-seller side-link-no-img font-size-14" data-toggle="collapse" href="#">Notifications (16)</a></li>
+                      <li><a class="ud-seller side-link-no-img font-size-14" data-toggle="tab" href="#listings-tab">Listings(3)</a></li>
+                      <li><a class="ud-seller side-link-no-img font-size-14" data-toggle="collapse" href="#">Pending Deals</a></li>
+                      <li><a class="ud-seller side-link-no-img font-size-14" data-toggle="collapse" href="#">Upcomming Listings</a></li>
+                      <li><a class="ud-seller side-link-no-img font-size-14" data-toggle="collapse" href="#">Calendar</a></li>
+                      <li><a class="ud-seller side-link-no-img font-size-14" data-toggle="collapse" href="#">Contact Search</a></li>
+                      <li><a class="ud-seller side-link-no-img font-size-14" data-toggle="collapse" href="#">Property Search</a></li>
                     </ul>
                   </div>
                 </div>
@@ -61,7 +87,7 @@
 
   <!-- my code start from here -->
 
-  <div *ngIf="showsellerhome" class="col-md-9 tab-content">
+  <div *ngIf="showsellerhome" class="col-md-10 tab-content">
     <!-- in active show -->
       <div id="admin-seller-home" class="row tab-pane fade sign-in-row">
           <div class="offset-md-1 col-md-11 sign-in-col">
@@ -3365,8 +3391,13 @@
               <a class="dropdown-item">Price</a>
               <a class="dropdown-item">Time</a>
               <a class="dropdown-item">Verification User 1</a>
+<<<<<<< HEAD
               <a class="dropdown-item">Verification User 1</a>
             </div>
+=======
+              <a class="dropdown-item">Verification User 2</a>
+            </div>    
+>>>>>>> 2aeb2248e5286c0770be57f6bcea8a95d98a39d2
           </div>
         </div>
       </div>
@@ -3385,7 +3416,7 @@
           <div class="col-md-12">
             <form class="common-form">
               <div class="dsahboard-tbl">
-                <a id="insert-more" class="create-new-task"><i class="fas fa-plus mr-2"></i>Create New Task</a>
+                <a id="insert-more" class="create-new-task" data-toggle="modal" data-target="#createNewTask"><i class="fas fa-plus mr-2"></i>Create New Task</a>
                 <table id="taskTbl" class="table scroll table-fixed table-responsive">
                   <thead>
                     <tr>
@@ -3401,13 +3432,13 @@
                   <tbody>
                     <tr>
                       <td width="5%">1</td>
-                      <td width="17%"><input type="text" class="form-control form-input font-size-14" placeholder="Property ID" /></td>
-                      <td width="17%"><input type="date" class="form-control form-input font-size-14" /></td>
-                      <td width="17%"><input type="number" class="form-control form-input font-size-14" placeholder="Phone Call" /></td>
-                      <td width="17%"><input type="text" class="form-control form-input font-size-14" placeholder="Spoke to seller" /></td>
-                      <td width="17%"><input type="date" class="form-control form-input font-size-14" /></td>
+                      <td width="17%">Sell</td>
+                      <td width="17%">12/10/2018</td>
+                      <td width="17%">Call</td>
+                      <td width="17%">On this day sell property</td>
+                      <td width="17%">13/12/2018</td>
                       <td width="10%">
-                        <a class="edit-icon"><i class="fas fa-pencil-alt"></i></a>
+                        <a class="edit-icon" data-toggle="modal" data-target="#createNewTask"><i class="fas fa-pencil-alt"></i></a>
                         <a class="save-icon"><i class="far fa-save"></i></a>
                       </td>
                     </tr>
@@ -3559,34 +3590,34 @@
 <!-- Activity Code Goes here -->
 <div id="activity" class="offset-md-1 col-md-10 tab-pane fade">
 <div class="row ud-body-row">
-  <div class="col-md-3 ud-sidebar-col p-xs-0 ">
+  <div class="col-md-2 ud-sidebar-col p-xs-0 ">
     <div class="ud-sidebar">
       <!-- <div class="file imgae-upload my-4">
         <input type="file" name="file"/>
       </div> -->
       <ul class="nav nav-tabs ud-sidebar-links-wrap">
-        <li><a class="ud-pers-info active" data-toggle="tab" href="#personal-info">Personal Info</a></li>
+        <li><a class="ud-pers-info active font-size-14" data-toggle="tab" href="#personal-info">Personal Info</a></li>
         <li>
-          <a class="ud-buyers" data-toggle="collapse" href="#activity-buyers">Buy</a>
+          <a class="ud-buyers font-size-14" data-toggle="collapse" href="#activity-buyers">Buy</a>
           <ul class="collapse sub-links-wrap" id="activity-buyers">
-            <li><a data-toggle="tab" href="#bidding-link" class="sub-links">Bidding</a></li>
-            <li><a data-toggle="tab" href="#buyer-active" class="sub-links">Active</a></li>
-            <li><a data-toggle="tab" href="#unsold-link" class="sub-links">Unsold</a></li>
+            <li><a data-toggle="tab" href="#bidding-link" class="sub-links font-size-14">Bidding</a></li>
+            <li><a data-toggle="tab" href="#buyer-active" class="sub-links font-size-14">Active</a></li>
+            <li><a data-toggle="tab" href="#unsold-link" class="sub-links font-size-14">Unsold</a></li>
           </ul>
         </li>
         <li>
-          <a class="ud-seller" data-toggle="collapse" href="#activity-seller">Sell</a>
-          <ul class="collapse sub-links-wrap" id="activity-seller">
-            <li><a data-toggle="tab" href="#scheduled-link" class="sub-links">Scheduled</a></li>
-            <li><a data-toggle="tab" href="#seller-active" class="sub-links">Active</a></li>
-            <li><a data-toggle="tab" href="#seller-sold-link" class="sub-links">Sold</a></li>
-            <li><a data-toggle="tab" href="#seller-unsold-link" class="sub-links">Unsold</a></li>
+          <a class="ud-seller font-size-14" data-toggle="collapse" href="#activity-seller">Sell</a>
+          <ul class="collapse sub-links-wrap font-size-14" id="activity-seller">
+            <li><a data-toggle="tab" href="#scheduled-link" class="sub-links font-size-14">Scheduled</a></li>
+            <li><a data-toggle="tab" href="#seller-active" class="sub-links font-size-14">Active</a></li>
+            <li><a data-toggle="tab" href="#seller-sold-link" class="sub-links font-size-14">Sold</a></li>
+            <li><a data-toggle="tab" href="#seller-unsold-link" class="sub-links font-size-14">Unsold</a></li>
           </ul>
         </li>
       </ul>
     </div>
   </div>
-  <div class="col-md-9 tab-content">
+  <div class="col-md-10 tab-content">
     <div id="personal-info" class="row tab-pane fade sign-in-row in active show">
       <div class="offset-md-1 col-md-11 sign-in-col">
         <form class="common-form mb-4">
