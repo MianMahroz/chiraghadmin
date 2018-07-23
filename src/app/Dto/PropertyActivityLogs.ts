@@ -11,6 +11,7 @@ export class PropertyActivityLogs{
     changes:string;
     taskType:string;
     date:Date;
+
     constructor(){
 
 

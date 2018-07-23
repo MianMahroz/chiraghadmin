@@ -31,5 +31,16 @@ export class VerificationService {
   public getSystemGeneratedTaskByPropertyId(propertyId:number): Observable<PropertyActivityLogs> {
     return this.http.get<PropertyActivityLogs>(this.taskUrl + '/getSystemTaskGeneratedByPropertyId/'+propertyId);
   }
+  public getTaskByPropertyId(propertyId:number): Observable<PropertyActivityLogs> {
+    return this.http.get<PropertyActivityLogs>(this.taskUrl + '/getTaskByPropertyId/'+propertyId);
+  }
+  public getUserGeneratedTask(): Observable<any> {
+    return this.http.get<any>(this.taskUrl + '/getUserTaskGenerated');
+  }
+  public getSystemGeneratedTaskByUserName(userName:string): Observable<any> {
+    return this.http.get<any>(this.taskUrl + '/getSystemTaskGeneratedByUserName/'+userName);
+  }
+
+
 
 }

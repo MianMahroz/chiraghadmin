@@ -15,6 +15,11 @@ export class PropertyFinancialDTO{
  amount:number;
  morgageNoc:string;
  balanceAmount:number;
+ bankOther:string;
+
+
+
+
  isPropertyFinancialDetailsVerified:string;
    constructor(){
 

@@ -132,6 +132,6 @@ export class PropertyDetailsDto {
  isPOADetailsVerified:string;
  isPersonalDetailsVerified:string;
  isAcknowledgementCall:string;
-
+ floorPlanUpload:string;
  sellerUserName:string;
 }

@@ -707,7 +707,7 @@
 .screen-wrapper .ud-body-row .tab-content .tab-pane .property-sell-tabs-wrap li {
   margin-bottom: 1rem;
   margin-left: -1px;
-  min-width: 150px;
+  min-width: 140px;
   text-align: center;
 }
 .screen-wrapper .ud-body-row .tab-content .tab-pane .property-sell-tabs-wrap li .sub-prop-links {
@@ -782,23 +782,6 @@
 }
 .screen-wrapper .ud-body-row .tab-content .tab-pane .bid-active-row .bid-active-col .bid-active-block .bid-active-decript .prop-descript-wrap .prop-title {
   font-size: 1.375em;
-}
-.screen-wrapper .ud-body-row .tab-content .tab-pane .bid-active-row .bid-active-col .bid-active-block .bid-active-decript .prop-upload-div {
-  position: relative;
-}
-.screen-wrapper .ud-body-row .tab-content .tab-pane .bid-active-row .bid-active-col .bid-active-block .bid-active-decript .prop-upload-div .doc-upload {
-  position: absolute;
-  right: 0;
-  left: 0;
-  top: 0;
-  height: 38px;
-}
-.screen-wrapper .ud-body-row .tab-content .tab-pane .bid-active-row .bid-active-col .bid-active-block .bid-active-decript .prop-upload-div .doc-upload input {
-  width: 100%;
-  opacity: 0;
-  position: absolute;
-  bottom: 0;
-  top: 0;
 }
 .screen-wrapper .ud-body-row .tab-content .tab-pane .bid-active-row .bid-active-col .bid-active-block .bid-active-decript .prop-amount .amount {
   font-size: 1.25em;
@@ -889,20 +872,17 @@
   background: url("../../assets/images/sprite-image.png") no-repeat -622px -218px;
   margin-left: 1rem;
 }
+.screen-wrapper .ud-body-row .tab-content .sign-in-row .sign-in-col .common-form .create-new-task {
+  display: block;
+  text-align: right;
+  margin-bottom: 1.5rem;
+  cursor: pointer;
+}
 .screen-wrapper .ud-body-row .tab-content .sign-in-row .sign-in-col .common-form .dsahboard-tbl {
   height: 350px;
   overflow-y: auto;
 }
-.screen-wrapper .ud-body-row .tab-content .sign-in-row .sign-in-col .common-form .dsahboard-tbl .create-new-task {
-  float: right;
-  margin-bottom: 1.5rem;
-  cursor: pointer;
-}
-.screen-wrapper .ud-body-row .tab-content .sign-in-row .sign-in-col .common-form .dsahboard-tbl .scroll tr th {
-  white-space: nowrap;
-}
 .screen-wrapper .ud-body-row .tab-content .sign-in-row .sign-in-col .common-form .dsahboard-tbl .scroll tr td {
-  white-space: nowrap;
   vertical-align: middle;
 }
 .screen-wrapper .ud-body-row .tab-content .sign-in-row .sign-in-col .common-form .dsahboard-tbl .scroll tr td .edit-icon {
@@ -1691,6 +1671,23 @@ img {
 }
 .page-locator-wrap .page-locator .StepProgress strong {
   display: block;
+}
+.prop-upload-div {
+  position: relative;
+}
+.prop-upload-div .doc-upload {
+  position: absolute;
+  right: 0;
+  left: 0;
+  top: 0;
+  height: 38px;
+}
+.prop-upload-div .doc-upload input {
+  width: 100%;
+  opacity: 0;
+  position: absolute;
+  bottom: 0;
+  top: 0;
 }
 .page-footer .footer-wrap {
   border-bottom: 1px solid #e3e3e3;

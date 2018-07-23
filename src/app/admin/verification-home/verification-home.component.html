@@ -22,57 +22,26 @@
                     </div> -->
                     <ul class="nav nav-tabs ud-sidebar-links-wrap">
                       <li>
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
+
                        <a class="ud-seller side-link-no-img bg-secondary text-white font-size-14" data-toggle="collapse" href="#sell-links1">Leads(10)</a>
                         <ul class="collapse sub-links-wrap link-wrap-no-bullets show" id="sell-links1">
-
-                          <li>
-                            <a class="ud-seller side-link-active-no-bg active show font-size-14" (click)="loadData()" data-toggle="tab" href="#property-list">Sell(6)</a>
-=======
-<<<<<<< HEAD
->>>>>>> 2aeb2248e5286c0770be57f6bcea8a95d98a39d2
-                       <a class="ud-seller side-link-no-img bg-secondary text-white" data-toggle="collapse" href="#sell-links1">
-                         Leads
-                         <div *ngIf="completePropertyArr">( {{completePropertyArr.length}} )
-                          </div>
-                        </a>
-                        <ul class="collapse sub-links-wrap link-wrap-no-bullets show" id="sell-links1">
-
                           <li>
                             <a class="ud-seller side-link-active-no-bg active show" (click)="loadData()" data-toggle="tab" href="#property-list">Seller</a>
-<<<<<<< HEAD
-=======
-=======
-                       <a class="ud-seller side-link-no-img bg-secondary text-white" data-toggle="collapse" href="#sell-links1">Leads(10)</a>
-                        <ul class="collapse sub-links-wrap link-wrap-no-bullets show" id="sell-links1">
 
-                          <li>
-                            <a class="ud-seller side-link-active-no-bg active show" (click)="loadData()" data-toggle="tab" href="#property-list">Sell(6)</a>
->>>>>>> d4e37a284824c2f982bae0408f15da013f6d0236
->>>>>>> 2ec00a807b1df5cc42871320d15a3762653ba7a5
->>>>>>> 2aeb2248e5286c0770be57f6bcea8a95d98a39d2
-                            <ul class="collapse sub-links-wrap pl-2" id="sell-links">
-                                <li *ngFor="let propertyArr of completePropertyArr">
-                                    <a class="sub-links font-size-14" data-toggle="tab" (click)="setCurrentProperty(propertyArr)" >{{propertyArr.sellerUserName}}  P_Id({{propertyArr.propertyId}})</a>
-                                  </li>
-                            </ul>
                           </li>
 
-
                           <!-- end of seller admin changes -->
-                          <li>
-<<<<<<< HEAD
+                          <li *ngIf="getRole()=='VerificationUser'||getRole()=='VerificationHod'">
+
                             <a class="ud-seller side-link-active-no-bg" data-toggle="collapse" href="#sell-links">Buyer(4)</a>
 
-=======
-                            <a class="ud-seller side-link-active-no-bg font-size-14" data-toggle="collapse" href="#sell-links">Buy (4)</a>
->>>>>>> 2aeb2248e5286c0770be57f6bcea8a95d98a39d2
+
                           </li>
                         </ul>
                       </li>
-                      <li><a class="ud-seller side-link-no-img font-size-14" data-toggle="tab" href="#task-tab">Task (9)</a></li>
+                      <li *ngIf="getRole()=='ValuationUser'||getRole()=='VerificationUser'||getRole()=='BrokerageUser' "><a class="ud-seller side-link-no-img font-size-14" data-toggle="tab" (click)="getTaskByUserName()" href="#task-tab">Task (9)</a></li>
+                      <li *ngIf="getRole()=='ValuationHod'||getRole()=='VerificationHod'||getRole()=='BrokerageHod' "><a class="ud-seller side-link-no-img font-size-14" data-toggle="tab" (click)="getTask()" href="#task-tab">Task (9)</a></li>
+
                       <li><a class="ud-seller side-link-no-img font-size-14" data-toggle="collapse" href="#">Notifications (16)</a></li>
                       <li><a class="ud-seller side-link-no-img font-size-14" data-toggle="tab" href="#listings-tab">Listings(3)</a></li>
                       <li><a class="ud-seller side-link-no-img font-size-14" data-toggle="collapse" href="#">Pending Deals</a></li>
@@ -118,7 +87,7 @@
 
 
  <!-- Dasboard options Content Here -->
- <div class="col-md-9 tab-content">
+ <div class="col-md-10 tab-content">
     <div id="personal-info1" class="row tab-pane fade sign-in-row ">
       <div class="offset-md-1 col-md-11 sign-in-col">
         <form class="common-form mb-4">
@@ -632,7 +601,14 @@
 
                     <ng-container matColumnDef="userName">
                       <mat-header-cell *matHeaderCellDef> New Leads </mat-header-cell>
-                      <mat-cell *matCellDef="let element"> {{element.sellerUserName}} </mat-cell>
+                      <mat-cell *matCellDef="let element">
+                      <div *ngIf="getRole()=='VerificationUser'||getRole()=='VerificationHod'">
+                          {{element.sellerUserName}}
+                      </div>
+                      <div *ngIf="getRole()=='ValuationUser'||getRole()=='ValuationHod'||getRole()=='BrokerageUser'||getRole()=='BrokerageHod'">
+                          {{element.address}}
+                      </div>
+                      </mat-cell>
                     </ng-container>
 
                       <ng-container matColumnDef="lastActionPerformed">
@@ -735,8 +711,11 @@
                 <li><a  data-toggle="tab" href="#prop-detail" (click)="getPropertyDetails(currentProperty)" class="sub-prop-links">Property Details</a></li>
                 <!-- <li><a  data-toggle="tab" href="#prop-financials" (click)="getPropertyFinancialDetails(currentProperty)" class="sub-prop-links">Property Morgage Details</a></li> -->
                 <!-- <li><a  data-toggle="tab" href="#prop-rent" (click)="getPropertyRentalDetails(currentProperty)" class="sub-prop-links">Property Rental Details</a></li> -->
+
+                <li *ngIf="getRole()=='VerificationUser'||getRole()=='VerificationHod'||getRole()=='BrokerageHod'||getRole()=='BrokerageUser'"><a data-toggle="tab"   class="sub-prop-links">Form A</a></li>
+                <li><a data-toggle="tab" href="#task-tab" (click)="getTaskByPropertyId()"  class="sub-prop-links">Activity</a></li>
+                <li *ngIf="getRole()=='ValuationUser'||getRole()=='ValuationHod'"><a data-toggle="tab"   class="sub-prop-links">Valuation</a></li>
                 <li><a data-toggle="tab" href="#seller-verification"  (click)="checklistData(currentProperty)" class="sub-prop-links">Checklist</a></li>
-                <li><a data-toggle="tab" href="#seller-verification"   class="sub-prop-links">Form A</a></li>
               </ul>
             </div>
             <div  class="col-md-12 sign-in-col">
@@ -1052,34 +1031,46 @@
                             </div>
                           </div>
                         </div>
+
                         <div class="row mt-3">
-                          <div class="col-md-12 document-upload">
+                          <div class="col-md-12 document-upload form-block-heading mb-4">
                             Upload Documents
                             <div class="sub-details">jpg, png, pdf accepted with file size not exceeding 2Mb</div>
                           </div>
-                          <div class="col-md-12 upload-doc-wrap-inline">
-                            <div class="upload-btn-div mt-4">
-                              <div class="file">
-                                <input id="ownerPassCopy" #passFile type="file" name="file" (change)="selectPassport($event)" class="doc-upload" />
-                              </div>
-                              <div class="upload-instuct mt-2">Scanned passport copy<i class="fas fa-circle-notch fa-spin ml-2"></i></div>
-                              <p *ngIf="passportFile"><br>{{passportFile.name}}</p>
-                              <p *ngIf="ownerDto.passportCopyUpload&&!passportFile"><br>{{ownerDto.passportCopyUpload}}</p>
-
+                          <div class="col-md-4 upload-doc-block">
+                            <div class="upload-doc-div">
+                              <img class="w-100 thumbnail" src="{{ownerPassportCopy}}">
+                              <div id="passportCopyDiv" class="loader-div display-none"><i class="fas fa-circle-notch fa-spin ml-2"></i></div>
                             </div>
-                            <div class="upload-btn-div mt-5">
-                              <div class="file">
-                                <input id="owneIdCopy" #idFile type="file" (change)="selectIdCopy($event)" name="file" class="doc-upload" />
+                            <div class="upload-instuct mt-2">Scanned passport copy</div>
+                            <div class="upload-btn-div mt-4">
+                              <div class="doc-upload">
+                                <input id="ownerPassCopy" #passFile type="file" name="file" (change)="selectPassport($event)" class="doc-upload"accept=".jpg,.png,.gif,.jpeg"/>
                               </div>
-                              <div  class="upload-instuct mt-2">Scanned ID copy
-                                <i class="fas fa-circle-notch fa-spin ml-2"></i>
-                                <div class="upload-sub-instruct">(UAE or country of origin)</div>
+                              <span class="upload-instuct ml-3">Upload </span>
+                            </div>
+                          </div>
+                          <div class="offset-md-2 col-md-4 upload-doc-block">
+                            <div class="upload-doc-div">
+                                <img id="idCopy" class="w-100 thumbnail" src="{{ownerIdCopy}}">
+                                <div id="idCopyDiv" class="loader-div display-none"><i class="fas fa-circle-notch fa-spin ml-2"></i></div>
                               </div>
-                              <p *ngIf="idCopyFile"><br>{{idCopyFile.name}}</p>
-                              <p *ngIf="ownerDto.scannedIdCopy&&!idCopyFile"><br>{{ownerDto.scannedIdCopy}}</p>
+                            <div  class="upload-instuct mt-2">Scanned ID copy
+                              <!-- <i class="fas fa-circle-notch fa-spin ml-2"></i> -->
+                              <div class="upload-sub-instruct">(UAE or country of origin)</div>
+                            </div>
+                            <div  class="upload-btn-div mt-3">
+                              <div class="doc-upload">
+                                <input id="owneIdCopy" #idFile type="file"  (change)="selectIdCopy($event)" name="file" class="doc-upload" accept=".jpg,.png,.gif,.jpeg" />
+                              </div>
+                              <span class="upload-instuct ml-3">Upload</span>
                             </div>
                           </div>
                         </div>
+
+
+                          <!-- </div> -->
+                        <!-- </div> -->
                         <div class="row mt-5 submit-btn-row">
                           <!-- <div class="col-md-3 mb-xs-4">
                             <a *ngIf="ownerDto.isPersonalDetailsVerified=='false'" (click)="ownerVerified('true')" id="verifyowners"  style=color:white class="btn common-btn btn-light-black">Verify</a>
@@ -1315,51 +1306,57 @@
                           </div>
                         </div>
                         <div class="row mt-3">
-                          <div class="col-md-12 document-upload form-block-heading">
+                          <div class="col-md-12 document-upload form-block-heading mb-4">
                             Upload Documents
                             <div class="sub-details">jpg, png, pdf accepted with file size not exceeding 2Mb</div>
                           </div>
-                          <div class="col-md-12 upload-doc-wrap-inline">
+                          <div class="col-md-4 upload-doc-block">
+                            <div class="upload-doc-div">
+                              <img id="passportCopy" class="w-100 thumbnail" src="{{ownerPassportCopy}}">
+                              <div id="passportCopyDiv" class="loader-div display-none"><i class="fas fa-circle-notch fa-spin ml-2"></i></div>
+                            </div>
+                            <div class="upload-instuct mt-2">Scanned passport copy</div>
                             <div class="upload-btn-div mt-4">
-                              <div class="file">
-                                <input id="scanPassCopy" type="file" (change)="selectPassport($event)" name="file" class="doc-upload" />
+                              <div class="doc-upload">
+                                <input id="ownerPassCopy" #passFile type="file" name="file" (change)="selectPassport($event)" class="doc-upload"accept=".jpg,.png,.gif,.jpeg"/>
                               </div>
-                              <div class="upload-instuct mt-2">Scanned passport copy <i class="fas fa-circle-notch fa-spin ml-2"></i></div>
-                              <p *ngIf="passportFile" class="margin-bottom-20-neg"><br>{{passportFile.name}}</p>
-                              <p *ngIf="ownerDto.passportCopyUpload &&!passportFile" class="margin-bottom-20-neg"><br>{{ownerDto.passportCopyUpload}}</p>
+                              <span class="upload-instuct ml-3">Upload</span>
                             </div>
-                            <div class="upload-btn-div mt-5">
-                              <div class="file">
-                                <input id="scanIdCopy" type="file" name="file" (change)="selectIdCopy($event)" class="doc-upload" />
+                          </div>
+                          <div class="offset-md-2 col-md-4 upload-doc-block">
+                            <div class="upload-doc-div">
+                                <img id="idCopy" class="w-100 thumbnail" src="{{ownerIdCopy}}">
+                                <div id="idCopyDiv" class="loader-div display-none"><i class="fas fa-circle-notch fa-spin ml-2"></i></div>
                               </div>
-                              <div class="upload-instuct mt-2">
-                                Scanned ID copy <i class="fas fa-circle-notch fa-spin ml-2"></i>
-                                <div class="upload-sub-instruct">(UAE or country of origin)</div>
+                            <div  class="upload-instuct mt-2">Scanned ID copy
+                              <div class="upload-sub-instruct">(UAE or country of origin)</div>
+                            </div>
+                            <div  class="upload-btn-div mt-3">
+                              <div class="doc-upload">
+                                <input id="owneIdCopy" #idFile type="file"  (change)="selectIdCopy($event)" name="file" class="doc-upload" accept=".jpg,.png,.gif,.jpeg" />
                               </div>
-                              <p *ngIf="idCopyFile"><br>{{idCopyFile.name}}</p>
-                              <p *ngIf="ownerDto.scannedIdCopy&&!idCopyFile"><br>{{ownerDto.scannedIdCopy}}</p>
+                              <span class="upload-instuct ml-3">Upload</span>
+                            </div>
+                          </div>
+                          <div class="col-md-4 upload-doc-block mt-3">
+                            <div class="upload-doc-div">
+                              <img id="notorizedCopy" class="w-100 thumbnail" src="{{poaNotorizedCopy}}">
+                              <div id="notorizedCopyDiv" class="loader-div display-none"><i class="fas fa-circle-notch fa-spin ml-2"></i></div>
+                            </div>
+                            <div class="upload-instuct mt-2">Scanned NOTORIZED POA
+                              <div class="upload-sub-instruct">(International POA should have the stamp of external affairs and UAE embassy)</div>
                             </div>
                             <div class="upload-btn-div mt-4">
-                              <div class="file">
-                                <input id="scanPoa" type="file" name="file" (change)="selectScannedPoa($event)" class="doc-upload" />
+                              <div class="doc-upload">
+                                <input id="ownerPassCopy" #passFile type="file" name="file" (change)="selectScannedPoa($event)" class="doc-upload"accept=".jpg,.png,.gif,.jpeg,.pdf"/>
                               </div>
-                              <div class="upload-instuct mt-2">Scanned NOTORIZED POA <i class="fas fa-circle-notch fa-spin ml-2"></i>
-                                <div class="upload-sub-instruct">(International POA should have the stamp of external affairs and UAE embassy)</div>
-                              </div>
-                              <p *ngIf="scannedNotorizedPoaFile"><br>{{scannedNotorizedPoaFile.name}}</p>
-                              <p *ngIf="ownerDto.scannedNotorizedCopy&&!scannedNotorizedPoaFile"><br>{{ownerDto.scannedNotorizedCopy}}</p>
-
+                              <span class="upload-instuct ml-3">Upload </span>
                             </div>
-                            <!-- <div class="common-checkbox mt-5">
-                              <label>
-                                <input type="checkbox" name="isPoaAccepted" [(ngModel)]="isPoaAccepted" required><span class="checkbox-material"><span class="check mr-2"></span></span> General POA not accepted
-                              </label>
-                            </div> -->
                           </div>
                         </div>
                         <div class="row mt-5 submit-btn-row">
                           <div class="col-md-3 mb-xs-4">
-                            <a *ngIf="ownerDto.isPersonalDetailsVerified=='false'" (click)="ownerVerified('true')" id="verifyowners"  style=color:white class="btn common-btn btn-light-black">Verify</a>
+                            <!-- <a *ngIf="ownerDto.isPersonalDetailsVerified=='false'" (click)="ownerVerified('true')" id="verifyowners"  style=color:white class="btn common-btn btn-light-black">Verify</a> -->
                           </div>
                           <div class="offset-md-6 col-md-3">
                             <!-- [disabled]="!ownerDetailsForm.form.valid" -->
@@ -1453,7 +1450,7 @@
                           <div class="col-md-4">
                             <div class="upload-doc-block">
                               <div class="upload-doc-div">
-                                <img class="w-100 thumbnail" src="{{poaPassportCopy}}">
+                                <img class="w-100 thumbnail" src="{{ownerPassportCopy}}">
                               </div>
                               <div class="upload-instuct mt-2">Scanned passport copy</div>
                             </div>
@@ -1461,7 +1458,7 @@
                           <div class="offset-md-2 col-md-4">
                             <div class="upload-doc-block">
                               <div class="upload-doc-div">
-                                <img class="w-100 thumbnail" src="{{poaIdCopy}}">
+                                <img class="w-100 thumbnail" src="{{ownerIdCopy}}">
                               </div>
                               <div class="upload-instuct mt-2">
                                 Scanned ID copy<div class="ui-subtitle">(UAE or country of origin)</div>
@@ -1481,11 +1478,7 @@
                               </div>
                             </div>
                           </div>
-                          <!-- <ks-modal-gallery [modalImages]="images"
-                          [downloadable]="true"></ks-modal-gallery>
-                          <p *ngIf="ownerDto.scannedIdCopy"><br>{{ownerDto.scannedIdCopy}}</p>
-                          <p *ngIf="ownerDto.passportCopyUpload"><br>{{ownerDto.passportCopyUpload}}</p>
-                          <p *ngIf="ownerDto.scannedNotorizedCopy"><br>{{ownerDto.scannedNotorizedCopy}} </p> -->
+
                         </div>
                         <div class="row mt-5 submit-btn-row">
                           <div class="col-md-3 mb-xs-4">
@@ -1504,6 +1497,25 @@
                 </div>
                 <!-- Property Details Here -->
                 <div id="prop-detail" class="row tab-pane fade sign-in-row">
+                  <div class="col-md-12 sub-prop-mutliple">
+                    <ul *ngIf="currentProperty" class="nav nav-tabs sub-prop-tabs">
+                      <li class="d-flex">
+                        <a  data-toggle="tab" href="#prop-detail"  (click)="getPropertyDetails(currentProperty)" class="sub-prop-tabs-link">
+                          - Property Details
+                        </a>
+                      </li>
+                      <li class="d-flex">
+                        <a  data-toggle="tab" href="#prop-financials"  (click)="getPropertyFinancialDetails(currentProperty)" class="sub-prop-tabs-link">
+                          - Morgage Details
+                        </a>
+                      </li>
+                      <li class="d-flex">
+                        <a  data-toggle="tab" href="#prop-rent"  (click)="getPropertyRentalDetails(currentProperty)" class="sub-prop-tabs-link">
+                          - Rental Details
+                        </a>
+                      </li>
+                     </ul>
+                  </div>
                   <div class="col-md-12 sign-in-col">
                     <form *ngIf="!editPropertyDetails" #propertyDetailsForm="ngForm" class="common-form mb-4" novalidate>
                       <div class="mb-5 page-primary-title-34">Property Details</div>
@@ -2050,18 +2062,36 @@
                         </div>
                       </div>
                       <div class="row mt-3">
-                        <div class="col-md-12 form-block-heading mb-2">Uploaded Documents</div>
-                        <div class="col-md-4">
-                          <div class="upload-doc-block">
-                            <div class="upload-doc-div">
-                              <img class="w-100 thumbnail" src="{{pdTitleDeedCopy}}">
+                        <div class="col-md-12 document-upload form-block-heading mb-4">
+                          Upload Documents
+                          <div class="sub-details">jpg, png, pdf accepted with file size not exceeding 2Mb</div>
+                        </div>
+                        <div class="col-md-4 upload-doc-block mt-3">
+                          <div class="upload-doc-div">
+                            <img id="notorizedCopy" class="w-100 thumbnail" src="{{titleDeedCopy}}">
+                            <div id="notorizedCopyDiv" class="loader-div display-none"><i class="fas fa-circle-notch fa-spin ml-2"></i></div>
+                          </div>
+                          <div class="upload-instuct mt-2">Scanned Title Deed</div>
+                          <div class="upload-btn-div mt-4">
+                            <div class="doc-upload">
+                              <!-- <input id="ownerPassCopy" #passFile type="file" name="file"  (change)="selectScannedTitleDeed($event)" class="doc-upload"accept=".jpg,.png,.gif,.jpeg,.pdf"/> -->
                             </div>
-                            <div class="upload-instuct mt-2">Scanned Title Deed</div>
+                            <span class="upload-instuct ml-3">Upload </span>
                           </div>
                         </div>
-                        <!-- <ks-modal-gallery [modalImages]="images"
-                        [downloadable]="true"></ks-modal-gallery>
-                        <p *ngIf=propertyDetailsDto.scannedTitleDeed><br>{{propertyDetailsDto.scannedTitleDeed}}</p> -->
+                        <div class="offset-md-2 col-md-4 upload-doc-block mt-3">
+                          <div class="upload-doc-div">
+                              <img id="idCopy" class="w-100 thumbnail" src="{{floorPlanCopy}}">
+                              <div id="idCopyDiv" class="loader-div display-none"><i class="fas fa-circle-notch fa-spin ml-2"></i></div>
+                            </div>
+                          <div  class="upload-instuct mt-2">Floor Plan</div>
+                          <div  class="upload-btn-div mt-3">
+                            <div class="doc-upload">
+                              <!-- <input id="owneIdCopy" #idFile type="file"  (change)="selectFloorPlan($event)" name="file" class="doc-upload" accept=".jpg,.png,.gif,.jpeg" /> -->
+                            </div>
+                            <span class="upload-instuct ml-3">Upload </span>
+                          </div>
+                        </div>
                       </div>
                       <div class="note-block py-3 px-2 mt-5">
                         <div class="col-1 common-checkbox">
@@ -2076,13 +2106,15 @@
                       </div>
                       <div class="row mt-5 submit-btn-row">
                         <div class="col-md-3 mb-xs-4">
-                          <a *ngIf="propertyDetailsDto.isPropertyDetailsVerified=='false'&&getRole()=='VerificationUser'" (click)="propertyDetailsVerified('true','false')" id="verifyowners"  style=color:white class="btn common-btn btn-light-black w-100">Verify</a>
+
+                          <a *ngIf="propertyDetailsDto.isPropertyDetailsVerified=='false'||propertyDetailsDto.isPropertyDetailsVerified==''&&getRole()=='VerificationUser'" (click)="propertyDetailsVerified('true','false')" id="verifyowners"  style=color:white class="btn common-btn btn-light-black w-100">Verify</a>
                           <a *ngIf="propertyDetailsDto.isPropertyDetailsVerified=='true'&&getRole()=='VerificationHod'" (click)="propertyDetailsVerified('false','false')" id="verifyowners"  style=color:white class="btn common-btn btn-light-black w-100">UnVerify</a>
                         </div>
                         <div *ngIf="getRole()=='VerificationUser'" class="offset-md-6 col-md-3">
                           <button  (click)="grantEditAccessToPropertyDetails()" style=color:white class="btn w-100 common-btn" type="submit">Edit</button>
                         </div>
                       </div>
+
                     </form>
                     <!-- edit property details form -->
                     <form *ngIf="editPropertyDetails" #propertyDetailsForm="ngForm" class="common-form mb-4" novalidate>
@@ -2707,24 +2739,36 @@
                         </div>
                       </div>
                       <div class="row mt-3">
-                        <div class="col-md-12 document-upload form-block-heading">
-                          Upload Title Deed
+                        <div class="col-md-12 document-upload form-block-heading mb-4">
+                          Upload Documents
                           <div class="sub-details">jpg, png, pdf accepted with file size not exceeding 2Mb</div>
                         </div>
-                        <div class="col-md-12 upload-doc-wrap-inline">
+                        <div class="col-md-4 upload-doc-block mt-3">
+                          <div class="upload-doc-div">
+                            <img id="notorizedCopy" class="w-100 thumbnail" src="{{titleDeedCopy}}">
+                            <div id="notorizedCopyDiv" class="loader-div display-none"><i class="fas fa-circle-notch fa-spin ml-2"></i></div>
+                          </div>
+                          <div class="upload-instuct mt-2">Scanned Title Deed</div>
                           <div class="upload-btn-div mt-4">
-                            <div class="file">
-                              <input id="scanPoa" type="file" name="file" (change)="selectScannedTitleDeed($event)" class="doc-upload" required/>
+                            <div class="doc-upload">
+                              <input id="ownerPassCopy" #passFile type="file" name="file"  (change)="selectScannedTitleDeed($event)" class="doc-upload"accept=".jpg,.png,.gif,.jpeg,.pdf"/>
                             </div>
-                            <div class="upload-instuct mt-2">Scanned Title Deed <i class="fas fa-circle-notch fa-spin ml-2"></i>
-                            </div>
-                            <p *ngIf="scannedTitleDeedFile"><br>{{scannedTitleDeedFile.name}}</p>
-                            <p *ngIf="!scannedTitleDeedFile&&propertyDetailsDto.scannedTitleDeed"><br>{{propertyDetailsDto.scannedTitleDeed}}</p>
-
+                            <span class="upload-instuct ml-3">Upload </span>
                           </div>
                         </div>
-                        <!-- <p *ngIf="scannedTitleDeedFile" style="color:blue"><br>Scanned Title Deed FileName:{{scannedTitleDeedFile.name}}</p> -->
-                        <!-- <p *ngIf="propertyDetailsDto.scannedTitleDeed&&!scannedTitleDeedFile" style="color:blue"><br> Title Deed FileName:{{propertyDetailsDto.scannedTitleDeed}}</p> -->
+                        <div class="offset-md-2 col-md-4 upload-doc-block mt-3">
+                          <div class="upload-doc-div">
+                              <img id="idCopy" class="w-100 thumbnail" src="{{floorPlanCopy}}">
+                              <div id="idCopyDiv" class="loader-div display-none"><i class="fas fa-circle-notch fa-spin ml-2"></i></div>
+                            </div>
+                          <div  class="upload-instuct mt-2">Floor Plan</div>
+                          <div  class="upload-btn-div mt-3">
+                            <div class="doc-upload">
+                              <input id="owneIdCopy" #idFile type="file"  (change)="selectFloorPlan($event)" name="file" class="doc-upload" accept=".jpg,.png,.gif,.jpeg" />
+                            </div>
+                            <span class="upload-instuct ml-3">Upload </span>
+                          </div>
+                        </div>
                       </div>
                       <div class="note-block py-3 px-2 mt-5">
                         <div class="col-1 common-checkbox">
@@ -2751,227 +2795,259 @@
                 </div>
                 <!-- Property Financilas Here -->
                 <div id="prop-financials" class="row tab-pane fade sign-in-row">
+                  <div class="col-md-12 sub-prop-mutliple">
+                    <ul *ngIf="currentProperty" class="nav nav-tabs sub-prop-tabs">
+                      <li class="d-flex">
+                        <a  data-toggle="tab" href="#prop-detail"  (click)="getPropertyDetails(currentProperty)" class="sub-prop-tabs-link">
+                          - Property Details
+                        </a>
+                      </li>
+                      <li class="d-flex">
+                        <a  data-toggle="tab" href="#prop-financials"  (click)="getPropertyFinancialDetails(currentProperty)" class="sub-prop-tabs-link">
+                          - Morgage Details
+                        </a>
+                      </li>
+                      <li class="d-flex">
+                        <a  data-toggle="tab" href="#prop-rent"  (click)="getPropertyRentalDetails(currentProperty)" class="sub-prop-tabs-link">
+                          - Rental Details
+                        </a>
+                      </li>
+                     </ul>
+                  </div>
                   <div class="col-md-12 sign-in-col">
-                    <form *ngIf="!editFinancialDetails" #finanicalForm="ngForm" class="common-form mb-4" novalidate>
-                      <div class="mb-5 page-primary-title-34">Property Details</div>
-                      <div class="row">
-                        <div class="col-md-12 form-block-heading mb-3">Mortgage Details</div>
-                        <div class="col-md-6 form-label-group mb-4">
-                          <label class="form-label form-label-bold required-input-label">Mortgage Status</label>
-                          <label class="form-label form-label-value required-input-label">{{propertyFinancialDTO.morgageStatus}}</label>
-                        </div>
-                        <div class="col-md-6 form-label-group mb-4">
-                          <label class="form-label form-label-bold required-input-label">Mortgage Reg.No.</label>
-                          <label class="form-label form-label-value required-input-label">{{propertyFinancialDTO.morgageRegNo}}</label>
-                        </div>
-                        <!-- <div class="col-md-6 form-label-group mb-4">
-                          <label class="form-label">Listed Price</label>
-                          <input pattern="[0-9_]*" type="text" class="form-control form-input" [(ngModel)]="propertyFinancialDTO.listedPrice" name="listedPrice" #listedPrice="ngModel" autofocus>
-                          <div *ngIf="listedPrice.errors && (listedPrice.dirty || listedPrice.touched)" class="alert alert-danger">
-                            <div [hidden]="!listedPrice.errors.pattern">
-                              Must be a valid Listed Price!
-                            </div>
+                       <form  *ngIf="!editFinancialDetails" #finanicalForm="ngForm" class="common-form" novalidate>
+                        <div class="mb-5 page-primary-title-34">Property Details</div>
+                        <div class="row">
+                          <div class="col-md-12 form-block-heading mb-3">Mortgage Details</div>
+                          <div class="col-md-6 form-label-group mb-4">
+                            <label class="form-label form-label-bold required-input-label">Mortgage Status</label>
+                            <label class="form-label required-input-label"> {{propertyFinancialDTO.morgageStatus}}</label>
+                          </div>
+                          <div class="col-md-6 form-label-group mb-4">
+                            <label class="form-label form-label-bold required-input-label">Mortgage Reg.No.</label>
+                            <label class="form-label required-input-label">{{propertyFinancialDTO.morgageRegNo}}</label>
+                          </div>
+                          <div class="col-md-6 form-label-group mb-4">
+                            <label class="form-label form-label-bold required-input-label">Paid Amount</label>
+                            <label class="form-label">{{propertyFinancialDTO.paidAmount}}</label>
+
+                          </div>
+                          <div class="col-md-6 form-label-group mb-4">
+                            <label class="form-label form-label-bold required-input-label">Balance Amount</label>
+                            <label class="form-label required-input-label">{{propertyFinancialDTO.balanceAmount}}</label>
+                          </div>
+                          <div class="col-md-6 form-label-group mb-4">
+                            <label class="form-label form-label-bold required-input-label">Service Charge</label>
+                            <label class="form-label required-input-label">{{propertyFinancialDTO.serviceCharge}}</label>
                           </div>
                         </div>
-                        <div class="col-md-6 form-label-group mb-4">
-                          <label class="form-label">Original Price</label>
-                          <input pattern="[0-9_]*" type="text" class="form-control form-input" [(ngModel)]="propertyFinancialDTO.originalPrice" name="originalPrice" #originalPrice="ngModel">
-                          <div *ngIf="originalPrice.errors && (originalPrice.dirty ||originalPrice.touched)" class="alert alert-danger">
-                            <div [hidden]="!originalPrice.errors.required">Original Amount is required!</div>
-                            <div [hidden]="!originalPrice.errors.pattern">Must be a valid Original Amount!</div>
+                        <div class="row">
+                          <div class="col-md-6 form-label-group mb-4">
+                            <label class="form-label form-label-bold required-input-label">Financing</label>
+                            <label class="form-label">{{propertyFinancialDTO.bank}}</label>
                           </div>
-                        </div> -->
-                        <div class="col-md-6 form-label-group mb-4">
-                          <label class="form-label form-label-bold">Paid Amount</label>
-                          <label class="form-label form-label-value">{{propertyFinancialDTO.paidAmount}}</label>
-                        </div>
-                        <div class="col-md-6 form-label-group mb-4">
-                          <label class="form-label form-label-bold required-input-label">Balance Amount</label>
-                          <label class="form-label form-label-value required-input-label">{{propertyFinancialDTO.balanceAmount}}</label>
-                        </div>
-                        <div class="col-md-6 form-label-group mb-4">
-                          <label class="form-label form-label-bold required-input-label">Service Charge</label>
-                          <label class="form-label form-label-value required-input-label">{{propertyFinancialDTO.serviceCharge}}</label>
-                        </div>
-                      </div>
-                      <div class="row">
-                        <div class="col-md-6 form-label-group mb-4">
-                          <label class="form-label form-label-bold">Bank</label>
-                          <label class="form-label form-label-value">{{propertyFinancialDTO.bank}}</label>
-                        </div>
-                        <div class="col-md-6 form-label-group mb-4">
-                          <label class="form-label form-label-bold">Mortgage Amount</label>
-                          <label class="form-label form-label-value">{{propertyFinancialDTO.morgageAmount}}</label>
-                        </div>
-                        <div class="col-md-6 form-label-group mb-4">
-                          <label class="form-label form-label-bold">Pre-Closure Charges</label>
-                          <label class="form-label form-label-value">{{propertyFinancialDTO.preClosureCharges}}</label>
-                        </div>
-                        <div class="col-md-6 form-label-group mb-4">
-                          <label class="form-label form-label-bold">Payment Schedule</label>
-                          <label class="form-label form-label-value">{{propertyFinancialDTO.paymentSchedule}}</label>
-                        </div>
-                        <div class="col-md-6 form-label-group mb-4">
-                          <label class="form-label form-label-bold">Date</label>
-                          <label class="form-label form-label-value">{{propertyFinancialDTO.date}}</label>
-                        </div>
-                        <div class="col-md-6 form-label-group mb-4">
-                          <label class="form-label form-label-bold">Amount</label>
-                          <label class="form-label form-label-value">{{propertyFinancialDTO.amount}}</label>
-                        </div>
-                      </div>
-                      <div class="row mt-3">
-                        <div class="col-md-12 document-upload">
-                          Upload Documents
-                        </div>
-                        <ks-modal-gallery [modalImages]="images"
-                        [downloadable]="true"></ks-modal-gallery>
-                      </div>
-                      <div class="row mt-5 submit-btn-row">
-                        <div class="col-md-3 mb-xs-4">
-                          <a *ngIf="propertyDetailsDto.isPropertyDetailsVerified=='false'" (click)="financialDetailsVerified('true')" id="verifyowners"  style=color:white class="btn w-100 common-btn btn-light-black">Verify</a>
-                        </div>
-                        <div class="offset-md-6 col-md-3">
-                          <button  (click)="grantEditAccessToFinancialDetails()" style=color:white class="btn w-100 common-btn" type="submit">Edit</button>
-                        </div>
-                      </div>
-                    </form>
-                    <form *ngIf="editFinancialDetails" #finanicalForm="ngForm" class="common-form mb-4" novalidate>
-                      <div class="mb-5 page-primary-title-34">Property Details</div>
-                      <div class="row">
-                        <div class="col-md-12 form-block-heading mb-3">Mortgage Details</div>
-                        <div class="col-md-6 form-label-group mb-4">
-                          <label class="form-label required-input-label">Mortgage Status</label>
-                          <select [(ngModel)]="propertyFinancialDTO.morgageStatus" name="morgageStatus" class="form-control common-select placeholder">
-                            <option>Yes</option>
-                            <option>No</option>
-                          </select>
-                        </div>
-                        <div class="col-md-6 form-label-group mb-4">
-                          <label class="form-label required-input-label">Mortgage Reg.No.</label>
-                          <input pattern="[a-zA-Z0-9_]*"  type="text" class="form-control form-input" [(ngModel)]="propertyFinancialDTO.morgageRegNo" name="morgageRegNo" #morgageRegNo="ngModel" [disabled]="propertyFinancialDTO.morgageStatus=='No'" required>
-                          <div *ngIf="morgageRegNo.errors && (morgageRegNo.dirty ||morgageRegNo.touched)" class="alert alert-danger">
-                            <div [hidden]="!morgageRegNo.errors.required"> Morgage Registeration Number is required!</div>
-                            <div [hidden]="!morgageRegNo.errors.pattern">Must be a valid Morgage Registeration Number!</div>
+                          <div class="col-md-6 form-label-group mb-4">
+                            <label class="form-label form-label-bold required-input-label">Other</label>
+                            <label class="form-label">{{propertyFinancialDTO.bankOther}}</label>
                           </div>
-                        </div>
-                        <!-- <div class="col-md-6 form-label-group mb-4">
-                          <label class="form-label">Listed Price</label>
-                          <input pattern="[0-9_]*" type="text" class="form-control form-input" [(ngModel)]="propertyFinancialDTO.listedPrice" name="listedPrice" #listedPrice="ngModel" autofocus>
-                          <div *ngIf="listedPrice.errors && (listedPrice.dirty || listedPrice.touched)" class="alert alert-danger">
-                            <div [hidden]="!listedPrice.errors.pattern">
-                              Must be a valid Listed Price!
-                            </div>
+                          <div class="col-md-6 form-label-group mb-4">
+                            <label class="form-label form-label-bold required-input-label">Mortgage Amount</label>
+                            <label class="form-label">{{propertyFinancialDTO.morgageAmount}}</label>
                           </div>
-                        </div>
-                        <div class="col-md-6 form-label-group mb-4">
-                          <label class="form-label">Original Price</label>
-                          <input pattern="[0-9_]*" type="text" class="form-control form-input" [(ngModel)]="propertyFinancialDTO.originalPrice" name="originalPrice" #originalPrice="ngModel">
-                          <div *ngIf="originalPrice.errors && (originalPrice.dirty ||originalPrice.touched)" class="alert alert-danger">
-                            <div [hidden]="!originalPrice.errors.required">Original Amount is required!</div>
-                            <div [hidden]="!originalPrice.errors.pattern">Must be a valid Original Amount!</div>
+                          <div class="col-md-6 form-label-group mb-4">
+                            <label class="form-label form-label-bold required-input-label">Pre-Closure Charges</label>
+                            <label class="form-label">{{propertyFinancialDTO.preClosureCharges}}</label>
                           </div>
-                        </div> -->
-                        <div class="col-md-6 form-label-group mb-4">
-                          <label class="form-label">Paid Amount</label>
-                          <input pattern="[0-9_]*" type="text" class="form-control form-input"[(ngModel)]="propertyFinancialDTO.paidAmount" name="paidAmount" #paidAmount="ngModel" [disabled]="propertyFinancialDTO.morgageStatus=='No'">
-                          <div *ngIf="paidAmount.errors && (paidAmount.dirty ||paidAmount.touched)" class="alert alert-danger">
-                            <!-- <div [hidden]="!paidAmount.errors.required">Paid Amount is required!</div> -->
-                            <div [hidden]="!paidAmount.errors.pattern">Must be a valid Paid Amount!</div>
+                          <div class="col-md-6 form-label-group mb-4">
+                            <label class="form-label form-label-bold required-input-label">Payment Schedule</label>
+                            <label class="form-label">{{propertyFinancialDTO.paymentSchedule}}</label>
                           </div>
-                        </div>
-                        <div class="col-md-6 form-label-group mb-4">
-                          <label class="form-label required-input-label">Balance Amount</label>
-                          <input pattern="[0-9_]*" type="text" class="form-control form-input" [(ngModel)]="propertyFinancialDTO.balanceAmount" name="balanceAmount" #balanceAmount="ngModel" [disabled]="propertyFinancialDTO.morgageStatus=='No'" required>
-                          <div *ngIf="balanceAmount.errors && (balanceAmount.dirty ||balanceAmount.touched)" class="alert alert-danger">
-                            <div [hidden]="!balanceAmount.errors.required">Balance Amount is required!</div>
-                            <div [hidden]="!balanceAmount.errors.pattern">Must be a valid Balance Amount!</div>
+                          <div class="col-md-6 form-label-group mb-4">
+                            <label class="form-label form-label-bold required-input-label">Date</label>
+                            <label class="form-label">{{propertyFinancialDTO.date}}</label>
                           </div>
+                          <div class="col-md-6 form-label-group mb-4">
+                            <label class="form-label form-label-bold required-input-label">Amount</label>
+                            <label class="form-label">{{propertyFinancialDTO.amount}}</label>
                         </div>
-                        <div class="col-md-6 form-label-group mb-4">
-                          <label class="form-label required-input-label">Service Charge</label>
-                          <input pattern="[0-9_]*" type="text" class="form-control form-input" [(ngModel)]="propertyFinancialDTO.serviceCharge" name="serviceCharge" #serviceCharge="ngModel" [disabled]="propertyFinancialDTO.morgageStatus=='No'" required>
-                          <div *ngIf="serviceCharge.errors && (serviceCharge.dirty ||serviceCharge.touched)" class="alert alert-danger">
-                            <div [hidden]="!serviceCharge.errors.required">Service Charges is required!</div>
-                            <div [hidden]="!serviceCharge.errors.pattern">Must be a valid Service Charges!</div>
+                        <div class="row mt-3">
+                          <div class="col-md-12 document-upload form-block-heading mb-4">
+                            Upload Documents
+                            <div class="sub-details">jpg, png, pdf accepted with file size not exceeding 2Mb</div>
                           </div>
-                        </div>
-                      </div>
-                      <div class="row">
-                        <div class="col-md-6 form-label-group mb-4">
-                          <label class="form-label">Bank</label>
-                          <select [(ngModel)]="propertyFinancialDTO.bank" ng-disabled="all" name="bank" class="form-control common-select placeholder" [disabled]="propertyFinancialDTO.morgageStatus=='No'">
-                            <option>Islamic</option>
-                            <option>World Bank</option>
-                          </select>
-                        </div>
-                        <div class="col-md-6 form-label-group mb-4">
-                          <label class="form-label">Mortgage Amount</label>
-                          <input pattern="[0-9_]*" type="text" class="form-control form-input" ng-disabled="No" [(ngModel)]="propertyFinancialDTO.morgageAmount" name ="morgageAmount" #morgageAmount="ngModel" [disabled]="propertyFinancialDTO.morgageStatus=='No'">
-                          <div *ngIf="morgageAmount.errors && (morgageAmount.dirty ||morgageAmount.touched)" class="alert alert-danger">
-                            <!-- <div [hidden]="!morgageAmount.errors.required">Morgage Amount is required!</div> -->
-                            <div [hidden]="!morgageAmount.errors.pattern">Must be a valid Morgage Amount!</div>
-                          </div>
-                        </div>
-                        <div class="col-md-6 form-label-group mb-4">
-                          <label class="form-label">Pre-Closure Charges</label>
-                          <input pattern="[0-9_]*" type="text" class="form-control form-input" [(ngModel)]="propertyFinancialDTO.preClosureCharges" name="preClosureCharges" #preClosureCharges="ngModel" [disabled]="propertyFinancialDTO.morgageStatus=='No'">
-                          <div *ngIf="preClosureCharges.errors && (preClosureCharges.dirty ||preClosureCharges.touched)" class="alert alert-danger">
-                            <!-- <div [hidden]="!preClosureCharges.errors.required">Pre-Closure-Charges is required!</div> -->
-                            <div [hidden]="!preClosureCharges.errors.pattern">Must be a valid Pre-Closure-Charges!</div>
-                          </div>
-                        </div>
-                        <div class="col-md-6 form-label-group mb-4">
-                          <label class="form-label">Payment Schedule</label>
-                          <select  [(ngModel)]="propertyFinancialDTO.paymentSchedule" name="paymentSchedule" class="form-control common-select placeholder" [disabled]="propertyFinancialDTO.morgageStatus=='No'">
-                            <option>Quarterly</option>
-                            <option>Monthly</option>
-                            <option>Yearly</option>
-                          </select>
-                        </div>
-                        <div class="col-md-6 form-label-group mb-4">
-                          <label class="form-label">Date</label>
-                          <input type="text" for="date" class="form-control form-input"  [(ngModel)]="propertyFinancialDTO.date" name="date" #date="ngModel" [disabled]="propertyFinancialDTO.morgageStatus=='No'">
-                        </div>
-                        <div class="col-md-6 form-label-group mb-4">
-                          <label class="form-label">Amount</label>
-                          <input pattern="[0-9_]*" type="text" class="form-control form-input" [(ngModel)]="propertyFinancialDTO.amount" name="amount" #amount="ngModel" [disabled]="propertyFinancialDTO.morgageStatus=='No'">
-                          <div *ngIf="amount.errors && (amount.dirty ||amount.touched)" class="alert alert-danger">
-                            <div [hidden]="!amount.errors.required">Amount is required!</div>
-                            <div [hidden]="!amount.errors.pattern">Must be a valid Amounts !</div>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="row mt-3">
-                        <div class="col-md-12 document-upload">
-                          Upload Documents
-                          <div class="sub-details">jpg, png, pdf accepted with file size not exceeding 2Mb</div>
-                        </div>
-                        <div class="col-md-12 upload-doc-block">
-                          <div class="upload-btn-div mt-4">
-                            <div class="file">
-                              <input type="file" (change)="selectMorgageNoc($event)" name="file" class="doc-upload" [disabled]="propertyFinancialDTO.morgageStatus=='No'">
+                          <div class="col-md-4 upload-doc-block mt-3">
+                            <div class="upload-doc-div">
+                              <img id="notorizedCopy" class="w-100 thumbnail" src="{{morgageNocCopy}}">
+                              <div id="notorizedCopyDiv" class="loader-div display-none"><i class="fas fa-circle-notch fa-spin ml-2"></i></div>
                             </div>
                             <div class="upload-instuct mt-2">Scanned NOC from<br>Mortgage Company</div>
-                            <p *ngIf="morgageNocFile" style="color:blue"><br>Morgage Noc FileName:{{morgageNocFile.name}}</p>
-                            <p *ngIf="propertyFinancialDTO.morgageNoc&&!morgageNocFile" style="color:blue"><br>Morgage Noc FileName:{{propertyFinancialDTO.morgageNoc}}</p>
+                            <!-- <div class="upload-btn-div mt-4">
+                              <div class="doc-upload">
+                                <input id="ownerPassCopy" #passFile type="file" name="file" (change)="selectMorgageNoc($event)" class="doc-upload"accept=".jpg,.png,.gif,.jpeg,.pdf" [disabled]="propertyFinancialDTO.morgageStatus=='No'">
+                              </div>
+                              <span class="upload-instuct ml-3">Upload</span>
+
+                            </div> -->
+                     </div>
                           </div>
                         </div>
-                      </div>
-                      <div class="row mt-5 submit-btn-row">
+
+                        <div class="row mt-5 submit-btn-row">
                           <div class="col-md-3 mb-xs-4">
-                              <!-- <a *ngIf="propertyDetailsDto.isPropertyDetailsVerified=='false'" (click)="financialDetailsVerified('true')" id="verifyowners"  style=color:white class="btn common-btn btn-light-black">Verify</a> -->
+                            <a *ngIf="propertyFinancialDTO.isPropertyFinancialDetailsVerified=='false'&&getRole()=='VerificationUser'" (click)="financialDetailsVerified('true')" id="verifyowners"  style=color:white class="btn common-btn btn-light-black w-100">Verify</a>
+                            <a *ngIf="propertyFinancialDTO.isPropertyFinancialDetailsVerified=='true'&&getRole()=='VerificationHod'" (click)="financialDetailsVerified('false')" id="verifyowners"  style=color:white class="btn common-btn btn-light-black w-100">UnVerify</a>
                           </div>
-                          <div class="offset-md-6 col-md-3">
-                              <!-- [disabled]="!ownerDetailsForm.form.valid" -->
-                              <button  (click)="financialDetailsVerified('false')" style=color:white class="btn common-btn w-100" type="submit">Update</button>
+                          <div *ngIf="getRole()=='VerificationUser'" class="offset-md-6 col-md-3">
+                            <button  (click)="grantEditAccessToFinancialDetails()" style=color:white class="btn w-100 common-btn" type="submit">Edit</button>
                           </div>
-                      </div>
-                    </form>
+                        </div>
+                     </form>
+
+                       <form  *ngIf="editFinancialDetails" #finanicalForm="ngForm" class="common-form" novalidate>
+                        <div class="mb-5 page-primary-title-34">Property Details</div>
+                        <div class="row">
+                          <div class="col-md-12 form-block-heading mb-3">Mortgage Details</div>
+                          <div class="col-md-6 form-label-group mb-4">
+                            <label class="form-label required-input-label">Mortgage Status</label>
+                            <select [(ngModel)]="propertyFinancialDTO.morgageStatus" name="morgageStatus" class="form-control common-select placeholder">
+                              <option>Yes</option>
+                              <option>No</option>
+                            </select>
+                          </div>
+                          <div class="col-md-6 form-label-group mb-4">
+                            <label class="form-label required-input-label">Mortgage Reg.No.</label>
+                            <input pattern="[a-zA-Z0-9_]*"  type="text" class="form-control form-input" [(ngModel)]="propertyFinancialDTO.morgageRegNo" name="morgageRegNo" #morgageRegNo="ngModel" [disabled]="propertyFinancialDTO.morgageStatus=='No'" required>
+                            <div *ngIf="morgageRegNo.errors && (morgageRegNo.dirty ||morgageRegNo.touched)" class="alert alert-danger">
+                              <div [hidden]="!morgageRegNo.errors.required"> Morgage Registeration Number is required!</div>
+                              <div [hidden]="!morgageRegNo.errors.pattern">Must be a valid Morgage Registeration Number!</div>
+                            </div>
+                          </div>
+                          <div class="col-md-6 form-label-group mb-4">
+                            <label class="form-label">Paid Amount</label>
+                            <input pattern="[0-9_]*" type="text" class="form-control form-input"[(ngModel)]="propertyFinancialDTO.paidAmount" name="paidAmount" #paidAmount="ngModel" [disabled]="propertyFinancialDTO.morgageStatus=='No'">
+                            <div *ngIf="paidAmount.errors && (paidAmount.dirty ||paidAmount.touched)" class="alert alert-danger">
+                              <!-- <div [hidden]="!paidAmount.errors.required">Paid Amount is required!</div> -->
+                              <div [hidden]="!paidAmount.errors.pattern">Must be a valid Paid Amount!</div>
+                            </div>
+                          </div>
+                          <div class="col-md-6 form-label-group mb-4">
+                            <label class="form-label required-input-label">Balance Amount</label>
+                            <input pattern="[0-9_]*" type="text" class="form-control form-input" [(ngModel)]="propertyFinancialDTO.balanceAmount" name="balanceAmount" #balanceAmount="ngModel" [disabled]="propertyFinancialDTO.morgageStatus=='No'" required>
+                            <div *ngIf="balanceAmount.errors && (balanceAmount.dirty ||balanceAmount.touched)" class="alert alert-danger">
+                              <div [hidden]="!balanceAmount.errors.required">Balance Amount is required!</div>
+                              <div [hidden]="!balanceAmount.errors.pattern">Must be a valid Balance Amount!</div>
+                            </div>
+                          </div>
+                          <div class="col-md-6 form-label-group mb-4">
+                            <label class="form-label required-input-label">Service Charge</label>
+                            <input pattern="[0-9_]*" type="text" class="form-control form-input" [(ngModel)]="propertyFinancialDTO.serviceCharge" name="serviceCharge" #serviceCharge="ngModel" [disabled]="propertyFinancialDTO.morgageStatus=='No'" required>
+                            <div *ngIf="serviceCharge.errors && (serviceCharge.dirty ||serviceCharge.touched)" class="alert alert-danger">
+                              <div [hidden]="!serviceCharge.errors.required">Service Charges is required!</div>
+                              <div [hidden]="!serviceCharge.errors.pattern">Must be a valid Service Charges!</div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-md-6 form-label-group mb-4">
+                            <label class="form-label">Financing</label>
+                            <select [(ngModel)]="propertyFinancialDTO.bank" ng-disabled="all" name="bank" class="form-control common-select placeholder" [disabled]="propertyFinancialDTO.morgageStatus=='No'">
+                              <option *ngFor="let obj of bankList">{{obj}}</option>
+                              <!-- <option>World Bank</option> -->
+                            </select>
+
+                          </div>
+                          <div class="col-md-6 form-label-group mb-4">
+                            <label class="form-label">Other</label>
+                            <input pattern="[0-9_]*" type="text" class="form-control form-input"  [(ngModel)]="propertyFinancialDTO.bankOther" name="bankOther" #bankOther="ngModel" [disabled]="propertyFinancialDTO.bank!=='Other'" >
+                          </div>
+                          <div class="col-md-6 form-label-group mb-4">
+                            <label class="form-label">Mortgage Amount</label>
+                            <input pattern="[0-9_]*" type="text" class="form-control form-input" ng-disabled="No" [(ngModel)]="propertyFinancialDTO.morgageAmount" name ="morgageAmount" #morgageAmount="ngModel" [disabled]="propertyFinancialDTO.morgageStatus=='No'">
+                            <div *ngIf="morgageAmount.errors && (morgageAmount.dirty ||morgageAmount.touched)" class="alert alert-danger">
+                              <!-- <div [hidden]="!morgageAmount.errors.required">Morgage Amount is required!</div> -->
+                              <div [hidden]="!morgageAmount.errors.pattern">Must be a valid Morgage Amount!</div>
+                            </div>
+                          </div>
+                          <div class="col-md-6 form-label-group mb-4">
+                            <label class="form-label">Pre-Closure Charges</label>
+                            <input pattern="[0-9_]*" type="text" class="form-control form-input" [(ngModel)]="propertyFinancialDTO.preClosureCharges" name="preClosureCharges" #preClosureCharges="ngModel" [disabled]="propertyFinancialDTO.morgageStatus=='No'">
+                            <div *ngIf="preClosureCharges.errors && (preClosureCharges.dirty ||preClosureCharges.touched)" class="alert alert-danger">
+                              <!-- <div [hidden]="!preClosureCharges.errors.required">Pre-Closure-Charges is required!</div> -->
+                              <div [hidden]="!preClosureCharges.errors.pattern">Must be a valid Pre-Closure-Charges!</div>
+                            </div>
+                          </div>
+                          <div class="col-md-6 form-label-group mb-4">
+                            <label class="form-label">Payment Schedule</label>
+                            <select  [(ngModel)]="propertyFinancialDTO.paymentSchedule" name="paymentSchedule" class="form-control common-select placeholder" [disabled]="propertyFinancialDTO.morgageStatus=='No'">
+                              <option *ngFor="let obj of paymentScheduleList">{{obj}}</option>
+                            </select>
+                          </div>
+                          <div class="col-md-6 form-label-group mb-4">
+                            <label class="form-label">Date</label>
+                            <input type="date" class="form-control form-input"  [(ngModel)]="propertyFinancialDTO.date" name="date" #date="ngModel" [disabled]="propertyFinancialDTO.morgageStatus=='No'">
+                          </div>
+                          <div class="col-md-6 form-label-group mb-4">
+                            <label class="form-label">Amount</label>
+                            <input pattern="[0-9_]*" type="text" class="form-control form-input" [(ngModel)]="propertyFinancialDTO.amount" name="amount" #amount="ngModel" [disabled]="propertyFinancialDTO.morgageStatus=='No'">
+                            <div *ngIf="amount.errors && (amount.dirty ||amount.touched)" class="alert alert-danger">
+                              <div [hidden]="!amount.errors.required">Amount is required!</div>
+                              <div [hidden]="!amount.errors.pattern">Must be a valid Amounts !</div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="row mt-3">
+                          <div class="col-md-12 document-upload form-block-heading mb-4">
+                            Upload Documents
+                            <div class="sub-details">jpg, png, pdf accepted with file size not exceeding 2Mb</div>
+                          </div>
+
+                          <div class="col-md-4 upload-doc-block mt-3">
+                            <div class="upload-doc-div">
+                              <img id="notorizedCopy" class="w-100 thumbnail" src="{{morgageNocCopy}}">
+                              <div id="notorizedCopyDiv" class="loader-div display-none"><i class="fas fa-circle-notch fa-spin ml-2"></i></div>
+                            </div>
+                            <div class="upload-instuct mt-2">Scanned NOC from<br>Mortgage Company</div>
+                            <div class="upload-btn-div mt-4">
+                              <div class="doc-upload">
+                                <input id="ownerPassCopy" #passFile type="file" name="file" (change)="selectMorgageNoc($event)" class="doc-upload"accept=".jpg,.png,.gif,.jpeg,.pdf" [disabled]="propertyFinancialDTO.morgageStatus=='No'">
+                              </div>
+                              <span class="upload-instuct ml-3">Upload</span>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div class="row mt-5 submit-btn-row">
+                          <div class="offset-md-6 col-md-3 mb-xs-4">
+                            <!-- <a  routerLink="/propertyDetails/back" class="btn common-btn btn-light-black">Back</a> -->
+                          </div>
+                          <div class="col-md-3">
+                            <button (click)="financialDetailsVerified('true')" style=color:white class="btn common-btn" type="submit">Update</button>
+                          </div>
+                        </div>
+                      </form>
                   </div>
                 </div>
                 <!-- Property Rent Here -->
                 <div id="prop-rent" class="row tab-pane fade sign-in-row">
+                  <div class="col-md-12 sub-prop-mutliple">
+                    <ul *ngIf="currentProperty" class="nav nav-tabs sub-prop-tabs">
+                      <li class="d-flex">
+                        <a  data-toggle="tab" href="#prop-detail"  (click)="getPropertyDetails(currentProperty)" class="sub-prop-tabs-link">
+                          - Property Details
+                        </a>
+                      </li>
+                      <li class="d-flex">
+                        <a  data-toggle="tab" href="#prop-financials"  (click)="getPropertyFinancialDetails(currentProperty)" class="sub-prop-tabs-link">
+                          - Morgage Details
+                        </a>
+                      </li>
+                      <li class="d-flex">
+                        <a  data-toggle="tab" href="#prop-rent"  (click)="getPropertyRentalDetails(currentProperty)" class="sub-prop-tabs-link">
+                          - Rental Details
+                        </a>
+                      </li>
+                     </ul>
+                  </div>
                   <div class="col-md-12 sign-in-col">
                     <form *ngIf="!editRentalDetails" #rentalForm="ngForm" class="common-form mb-4" novalidate>
                       <div class="mb-5 page-primary-title-34">Property Details</div>
@@ -2979,43 +3055,57 @@
                         <div class="col-md-12 form-block-heading mb-3">Rent Details</div>
                         <div class="col-md-6 form-label-group mb-4">
                           <label class="form-label form-label-bold required-input-label">Property Rented</label>
-                          <label class="form-label form-label-value required-input-label">{{propertyRentalDetailDTO.isRented}}</label>
+                          <label class="form-label required-input-label">{{propertyRentalDetailDTO.isRented}}</label>
                         </div>
                         <div class="col-md-6 form-label-group mb-4">
-                          <label class="form-label form-label-bold">Tenant Name</label>
-                          <label class="form-label form-label-value">{{propertyRentalDetailDTO.tenantName}}</label>
+                          <label class="form-label form-label-bold required-input-label">Tenant Name</label>
+                          <label class="form-label">{{propertyRentalDetailDTO.tenantName}}</label>
                         </div>
                         <div class="col-md-6 form-label-group mb-4">
-                          <label class="form-label form-label-bold">Payment Structure</label>
-                          <label class="form-label form-label-value">{{propertyRentalDetailDTO.paymentStructure}}</label>
+                          <label class="form-label form-label-bold required-input-label">Payment Structure</label>
+                          <label class="form-label">{{propertyRentalDetailDTO.paymentStructure}}</label>
                         </div>
                         <div class="col-md-6 form-label-group mb-4">
                           <label class="form-label form-label-bold required-input-label">Ejari Number</label>
-                          <label class="form-label form-label-value required-input-label">{{propertyRentalDetailDTO.rentalEjariNo}}</label>
+                          <label class="form-label required-input-label">{{propertyRentalDetailDTO.rentalEjariNo}}</label>
                         </div>
                         <div class="col-md-6 form-label-group mb-4">
-                          <label class="form-label form-label-bold">Annual Rent</label>
-                          <label class="form-label form-label-value">{{propertyRentalDetailDTO.rentalAnnualRent}}</label>
+                          <label class="form-label form-label-bold required-input-label">Annual Rent</label>
+                          <label class="form-label">{{propertyRentalDetailDTO.rentalAnnualRent}}</label>
                         </div>
                         <div class="col-md-6 form-label-group mb-4">
                           <label class="form-label form-label-bold required-input-label">Lease Start Date</label>
-                          <label class="form-label form-label-value required-input-label">{{propertyRentalDetailDTO.leaseStartDate}}</label>
+                          <label class="form-label required-input-label">{{propertyRentalDetailDTO.leaseStartDate}}</label>
                         </div>
                         <div class="col-md-6 form-label-group mb-4">
                           <label class="form-label form-label-bold required-input-label">Lease Expiry Date</label>
-                          <label class="form-label form-label-value required-input-label">{{propertyRentalDetailDTO.leaseExpiryDate}}</label>
+                          <label class="form-label required-input-label">{{propertyRentalDetailDTO.leaseExpiryDate}}</label>
                         </div>
                       </div>
                       <div class="row mt-3">
-                        <div class="col-md-12 document-upload">
+                        <div class="col-md-12 document-upload form-block-heading mb-4">
                           Upload Documents
+                          <div class="sub-details">jpg, png, pdf accepted with file size not exceeding 2Mb</div>
                         </div>
-                        <ks-modal-gallery [modalImages]="images"
-                        [downloadable]="true"></ks-modal-gallery>
+                        <div class="col-md-4 upload-doc-block mt-3">
+                          <div class="upload-doc-div">
+                            <img id="notorizedCopy" class="w-100 thumbnail" src="{{tenancyContractCopy}}">
+                            <div id="notorizedCopyDiv" class="loader-div display-none"><i class="fas fa-circle-notch fa-spin ml-2"></i></div>
+                          </div>
+
+                          <div class="upload-instuct mt-2">Scanned Tenancy Contract</div>
+                          <div class="upload-btn-div mt-4">
+                            <div class="doc-upload">
+                              <!-- <input id="ownerPassCopy" #passFile type="file" name="file" (change)="scannedTenantContract($event)" class="doc-upload"accept=".jpg,.png,.gif,.jpeg,.pdf"  [disabled]="propertyRentalDetailDTO.isRented=='No'"> -->
+                            </div>
+                            <!-- <span class="upload-instuct ml-3">Upload </span> -->
+                          </div>
+                        </div>
                       </div>
-                      <div class="row mt-5 submit-btn-row">
+                          <div class="row mt-5 submit-btn-row">
                           <div class="col-md-3 mb-xs-4">
-                              <a *ngIf="propertyRentalDetailDTO.isPropertyRentalDetailsVerified=='false'" (click)="financialDetailsVerified('true')" id="verifyowners"  style=color:white class="btn w-100 common-btn btn-light-black">Verify</a>
+                            <a *ngIf="propertyRentalDetailDTO.isPropertyRentalDetailsVerified=='true'&&getRole()=='VerificationHod'" (click)="rentalDetailsVerified('true')" id="verifyowners"  style=color:white class="btn common-btn btn-light-black w-100">UnVerify</a>
+                            <a *ngIf="propertyRentalDetailDTO.isPropertyRentalDetailsVerified=='false'&&getRole()=='VerificationUser'" (click)="rentalDetailsVerified('false')" id="verifyowners"  style=color:white class="btn w-100 common-btn btn-light-black">Verify</a>
                           </div>
                           <div class="offset-md-6 col-md-3">
                               <!-- [disabled]="!ownerDetailsForm.form.valid" -->
@@ -3056,24 +3146,6 @@
                             <option>10</option>
                             <option>11</option>
                             <option>12</option>
-                            <option>13</option>
-                            <option>14</option>
-                            <option>15</option>
-                            <option>16</option>
-                            <option>17</option>
-                            <option>18</option>
-                            <option>19</option>
-                            <option>20</option>
-                            <option>21</option>
-                            <option>22</option>
-                            <option>23</option>
-                            <option>24</option>
-                            <option>25</option>
-                            <option>26</option>
-                            <option>27</option>
-                            <option>28</option>
-                            <option>29</option>
-                            <option>30</option>
                           </select>
                         </div>
                         <div class="col-md-6 form-label-group mb-4">
@@ -3088,47 +3160,43 @@
                           <label class="form-label">Annual Rent</label>
                           <input  pattern="[0-9_]*" type="text" class="form-control form-input" [(ngModel)]="propertyRentalDetailDTO.rentalAnnualRent" name="rentalAnnualRent" #rentalAnnualRent="ngModel" [disabled]="propertyRentalDetailDTO.isRented=='No'">
                           <div *ngIf="rentalAnnualRent.errors && (rentalAnnualRent.dirty ||rentalAnnualRent.touched)" class="alert alert-danger">
-                              <!-- <div [hidden]="!rentalAnnualRent.errors.required">Rental Annual Aent is required!</div> -->
                               <div [hidden]="!rentalAnnualRent.errors.pattern"> Must be a valid Rental Annual Rent !</div>
                           </div>
                         </div>
                         <div class="col-md-6 form-label-group mb-4">
                           <label class="form-label required-input-label">Lease Start Date</label>
-                          <input type="text" for="date" class="form-control form-input" [(ngModel)]="propertyRentalDetailDTO.leaseStartDate" name="leaseStartDate" #leaseStartDate="ngModel" [disabled]="propertyRentalDetailDTO.isRented=='No'"  required>
-                          <!-- <div *ngIf="leaseStartDate.errors" class="alert alert-danger">
-                            <div [hidden]="!leaseStartDate.errors.required">Date is required! </div>
-                          </div> -->
+                          <input type="date" class="form-control form-input" [(ngModel)]="propertyRentalDetailDTO.leaseStartDate" name="leaseStartDate" #leaseStartDate="ngModel" [disabled]="propertyRentalDetailDTO.isRented=='No'"  required>
                         </div>
                         <div class="col-md-6 form-label-group mb-4">
                           <label class="form-label required-input-label">Lease Expiry Date</label>
-                          <input type="text" for="date" class="form-control form-input" [(ngModel)]="propertyRentalDetailDTO.leaseExpiryDate" name="leaseExpiryDate"  #leaseExpiryDate="ngModel" [disabled]="propertyRentalDetailDTO.isRented=='No'"  required>
-                          <!-- <div *ngIf="leaseExpiryDate.errors" class="alert alert-danger">
-                            <div [hidden]="!leaseExpiryDate.errors.required">Date is required! </div>
-                          </div> -->
+                          <input type="date" class="form-control form-input" [(ngModel)]="propertyRentalDetailDTO.leaseExpiryDate" name="leaseExpiryDate"  #leaseExpiryDate="ngModel" [disabled]="propertyRentalDetailDTO.isRented=='No'"  required>
                         </div>
                       </div>
+
                       <div class="row mt-3">
-                        <div class="col-md-12 document-upload">
+                        <div class="col-md-12 document-upload form-block-heading mb-4">
                           Upload Documents
                           <div class="sub-details">jpg, png, pdf accepted with file size not exceeding 2Mb</div>
                         </div>
-                        <div class="col-md-12 upload-doc-block">
+                        <div class="col-md-4 upload-doc-block mt-3">
+                          <div class="upload-doc-div">
+                            <img id="notorizedCopy" class="w-100 thumbnail" src="{{tenancyContractCopy}}">
+                            <div id="notorizedCopyDiv" class="loader-div display-none"><i class="fas fa-circle-notch fa-spin ml-2"></i></div>
+                          </div>
+                          <div class="upload-instuct mt-2">Scanned Tenancy Contract</div>
                           <div class="upload-btn-div mt-4">
-                            <div class="file">
-                              <input (change)="scannedTenantContract($event)" type="file" name="file" class="doc-upload" [disabled]="propertyRentalDetailDTO.isRented=='No'">
+                            <div class="doc-upload">
+                              <input id="ownerPassCopy" #passFile type="file" name="file" (change)="scannedTenantContract($event)" class="doc-upload"accept=".jpg,.png,.gif,.jpeg,.pdf"  [disabled]="propertyRentalDetailDTO.isRented=='No'">
                             </div>
-                            <div class="upload-instuct mt-2">Scanned Tenancy Contract</div>
-                            <p *ngIf="scannedTenentContractFile" style="color:blue"><br>Tanent Contract FileName:{{scannedTenentContractFile.name}}</p>
-                            <p *ngIf="propertyRentalDetailDTO.tenancyContractUpload&&!scannedTenentContractFile" style="color:blue"><br>Tanent Contract FileName:{{propertyRentalDetailDTO.tenancyContractUpload}}</p>
+                            <span class="upload-instuct ml-3">Upload </span>
                           </div>
                         </div>
                       </div>
+
                       <div class="row mt-5 submit-btn-row">
                           <div class="col-md-3 mb-xs-4">
-                              <!-- <a *ngIf="propertyRentalDetailDTO.isPropertyRentalDetailsVerified=='false'" (click)="financialDetailsVerified('true')" id="verifyowners"  style=color:white class="btn common-btn btn-light-black">Verify</a> -->
                           </div>
                           <div class="offset-md-6 col-md-3">
-                              <!-- [disabled]="!ownerDetailsForm.form.valid" -->
                               <button  (click)="rentalDetailsVerified('false')" style=color:white class="btn common-btn w-100" type="submit">Update</button>
                           </div>
                       </div>
@@ -3216,12 +3284,12 @@
                   <div class="col-md-12 sign-in-col">
                     <form class="common-form mb-4">
                       <div class="row">
-                        <div  *ngIf="getRole()=='VerificationUser'&&getRole()=='VerificationHod'" class="col-md-12 form-block-heading mb-4">Verification Department</div>
-                        <div  *ngIf="getRole()=='ValuationUser'&&getRole()=='ValuationHod'" class="col-md-12 form-block-heading mb-4">Valuation Department</div>
-                        <div  *ngIf="getRole()=='BrokerageUser'&&getRole()=='BrokerageHod'" class="col-md-12 form-block-heading mb-4">Brokerage Department</div>
+                        <div  *ngIf="getRole()=='VerificationUser'||getRole()=='VerificationHod'" class="col-md-12 form-block-heading mb-4">Verification Department</div>
+                        <div  *ngIf="getRole()=='ValuationUser'||getRole()=='ValuationHod'" class="col-md-12 form-block-heading mb-4">Valuation Department</div>
+                        <div  *ngIf="getRole()=='BrokerageUser'||getRole()=='BrokerageHod'" class="col-md-12 form-block-heading mb-4">Brokerage Department</div>
 
                       </div>
-                      <div class="row">
+                      <div  *ngIf="getRole()=='VerificationUser'||getRole()=='VerificationHod'"class="row">
                         <div class="col-md-6 verification-list-col">
                           <div class="verification-list mb-3">
                             Personal details verified
@@ -3258,9 +3326,45 @@
                           <button class="btn common-btn w-100 py-2">Print</button>
                         </div>
                       </div>
+                      <div  *ngIf="getRole()=='ValuationUser'||getRole()=='ValuationHod'"class="row">
+                          <div class="col-md-6 verification-list-col">
+                            <div class="verification-list mb-3">
+                             Valuation Completed
+                              <label class="common-checkbox">
+                                <input name="isPersonalDetailsVerified"   type="checkbox"><span class="checkbox-material"><span class="check mr-2"></span></span>
+                              </label>
+                            </div>
+                            <div class="verification-list mb-3">
+                             3rd Party Valuation Completed
+                              <label class="common-checkbox">
+                                <input name="isPOADetailsVerified"   type="checkbox"><span class="checkbox-material"><span class="check mr-2"></span></span>
+                              </label>
+
+                            </div>
+
+
+                            <div class="row">
+                              <div *ngIf="getRole()=='VerificationUser'" class="col-md-8">
+                                <button (click)="propertyDetailsVerified('true','true')" class="btn common-btn w-100 py-2">Checklist Confirmed</button>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="offset-md-3 col-md-3">
+                            <button class="btn common-btn w-100 py-2">Print</button>
+                          </div>
+                      </div>
+
                       <div class="row align-items-end mt-5">
                         <div class="col-md-8">
-                          <div class="form-block-heading mb-2">Request Change</div>
+                          <div class="d-flex justify-content-between mb-3">
+                            <div class="form-block-heading mb-2">Request Change</div>
+                            <div class="upload-btn-div prop-upload-div">
+                              <div class="file doc-upload">
+                                <input  type="file"  (change)="selectValuationReport($event)" class="doc-upload" />
+                              </div>
+                              <button *ngIf="getRole()=='ValuationUser'||getRole()=='BrokerageUser'" class="btn common-btn">Upload Valuation Report</button>{{valuationReportPath}}
+                            </div>
+                          </div>
                           <textarea  [(ngModel)]="body"  name="body" class="form-control common-textarea" placeholder="Composing Box"></textarea>
                           <button  (click)="sentEmail()" class="btn common-btn mt-4 px-5">Send</button>
                         </div>
@@ -3271,9 +3375,112 @@
                     </form>
                   </div>
                 </div>
+                <!-- Task Tab Here -->
+                <div id="task-tab" class="row tab-pane fade sign-in-row">
+                  <div class="col-md-12 sign-in-col mb-4">
+
+                    <div class="modal fade" id="createNewTask">
+                      <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                          <div class="container-fluid py-4 px-4">
+                            <div class="row mb-3">
+                              <div class="col-md-12">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                  <span aria-hidden="true">&times;</span>
+                                </button>
+                              </div>
+                            </div>
+                            <div class="row">
+                              <div class="col-md-12 mb-4 text-center title-secondary-26">Create New Task</div>
+                              <!-- <div class="col-md-12 form-label-group mb-4">
+                                <label class="form-label">Property ID</label>
+                                <input  [(ngModel)]="userPropertyActivityLogs.propertyId"  name="propertyId" pattern="[0-9_]*" type="text" class="form-control form-input" placeholder="Enter Property ID here">
+                              </div> -->
+                              <div class="col-md-12 form-label-group mb-4">
+                                <label class="form-label">Set a date</label>
+                                <input type="date" [(ngModel)]="userPropertyActivityLogs.date"  name="date" class="form-control form-input">
+                              </div>
+                              <div class="col-md-12 form-label-group mb-4">
+                                <label class="form-label">Action</label>
+                                <select [(ngModel)]="userPropertyActivityLogs.task" name="task" class="form-control common-select">
+                                  <option>Call</option>
+                                  <option>SMS</option>
+                                  <option>Email</option>
+                                  <option>Visit</option>
+                                  <option>Appointment</option>
+                                </select>
+                              </div>
+                              <div class="col-md-12 form-label-group mb-4">
+                                <label class="form-label">Notes</label>
+                                <textarea  [(ngModel)]="userPropertyActivityLogs.changes" name="changes" class="form-control common-textarea" placeholder="Enter Notes Here">
+                                </textarea>
+                              </div>
+                              <div class="col-md-12 form-label-group mb-4">
+                                <label class="form-label">Action taken date</label>
+                                <input  [(ngModel)]="userPropertyActivityLogs.taskStartDate" type="date" class="form-control form-input">
+                              </div>
+                              <div class="col-md-12">
+                                <button type="button" (click)="CreateUserTask()" class="btn common-btn btn-lg w-100" data-dismiss="modal" aria-label="Close">Save & Exit</button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-12">
+                        <form class="common-form">
+                            <div class="title-secondary-26 text-center">Task list</div>
+                            <a id="insert-more" class="create-new-task" data-toggle="modal" data-target="#createNewTask"><i class="fas fa-plus mr-2"></i>Create New Task</a>
+                          <div class="dsahboard-tbl">
+                            <table id="taskTbl" class="table scroll table-fixed table-responsive">
+                              <thead>
+                                <tr>
+                                  <th width="5%">#</th>
+                                  <th width="17%">Property Id</th>
+                                  <th width="17%">Set a date</th>
+                                  <th width="17%">Action</th>
+                                  <th width="17%">Notes</th>
+                                  <th width="17%">Action taken date</th>
+                                  <th width="10%"></th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                <tr *ngFor="let task1 of taskArr;let myIndex = index">
+                                  <td width="5%">{{myIndex+1}}</td>
+                                  <td width="17%">{{task1.propertyId}}</td>
+                                  <td width="17%">{{task1.date}}</td>
+                                  <td width="17%">{{task1.task}}</td>
+                                  <td width="17%">{{task1.changes}}</td>
+                                  <td width="17%">{{task1.taskStartDate| date: 'dd/MM/yyyy'}}</td>
+                                  <td width="10%">
+                                    <a class="edit-icon" data-toggle="modal" data-target="#createNewTask"><i class="fas fa-pencil-alt"></i></a>
+                                    <a class="save-icon"></a>
+                                  </td>
+                                </tr>
+                              </tbody>
+                            </table>
+                          </div>
+                          <div class="pagination-wrap pb-4 mt-3">
+                            <nav>
+                              <ul class="pagination justify-content-center mb-0">
+                                <li class="page-item"><a class="page-link prev-link mr-2" href="#"><i class="fas fa-chevron-left"></i></a></li>
+                                <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                <li class="page-item"><a class="page-link" href="#">4</a></li>
+                                <li class="page-item"><a class="page-link" href="#">5</a></li>
+                                <li class="page-item"><a class="page-link next-link ml-2" href="#"><i class="fas fa-chevron-right"></i></a></li>
+                              </ul>
+                            </nav>
+                          </div>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
-
           </div>
       </div>
 
@@ -3391,78 +3598,13 @@
               <a class="dropdown-item">Price</a>
               <a class="dropdown-item">Time</a>
               <a class="dropdown-item">Verification User 1</a>
-<<<<<<< HEAD
               <a class="dropdown-item">Verification User 1</a>
             </div>
-=======
-              <a class="dropdown-item">Verification User 2</a>
-            </div>    
->>>>>>> 2aeb2248e5286c0770be57f6bcea8a95d98a39d2
           </div>
         </div>
       </div>
     </div>
 
-
-    <div id="task-tab" class="row tab-pane fade sign-in-row">
-      <div class="col-md-12 sign-in-col mb-4">
-        <div class="row">
-          <div class="offset-md-6 col-md-6 d-flex align-items-center mb-5">
-            <input type="text" class="form-control bg-light" placeholder="Keyword, Property ID, Name etc">
-            <label class="ml-3 mb-0">Search</label>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-12">
-            <form class="common-form">
-              <div class="dsahboard-tbl">
-                <a id="insert-more" class="create-new-task" data-toggle="modal" data-target="#createNewTask"><i class="fas fa-plus mr-2"></i>Create New Task</a>
-                <table id="taskTbl" class="table scroll table-fixed table-responsive">
-                  <thead>
-                    <tr>
-                      <th width="5%">#</th>
-                      <th width="17%">Tasks</th>
-                      <th width="17%">Set a date</th>
-                      <th width="17%">Action</th>
-                      <th width="17%">Notes</th>
-                      <th width="17%">Action taken date</th>
-                      <th width="10%"></th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td width="5%">1</td>
-                      <td width="17%">Sell</td>
-                      <td width="17%">12/10/2018</td>
-                      <td width="17%">Call</td>
-                      <td width="17%">On this day sell property</td>
-                      <td width="17%">13/12/2018</td>
-                      <td width="10%">
-                        <a class="edit-icon" data-toggle="modal" data-target="#createNewTask"><i class="fas fa-pencil-alt"></i></a>
-                        <a class="save-icon"><i class="far fa-save"></i></a>
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-              <div class="pagination-wrap pb-4 mt-3">
-                <nav>
-                  <ul class="pagination justify-content-center mb-0">
-                    <li class="page-item"><a class="page-link prev-link mr-2" href="#"><i class="fas fa-chevron-left"></i></a></li>
-                    <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                    <li class="page-item"><a class="page-link" href="#">4</a></li>
-                    <li class="page-item"><a class="page-link" href="#">5</a></li>
-                    <li class="page-item"><a class="page-link next-link ml-2" href="#"><i class="fas fa-chevron-right"></i></a></li>
-                  </ul>
-                </nav>
-              </div>
-            </form>
-          </div>
-        </div>
-      </div>
-    </div>
 
   </div>
 </div>
