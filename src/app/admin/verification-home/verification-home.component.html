@@ -43,7 +43,6 @@
                       <li *ngIf="getRole()=='ValuationHod'||getRole()=='VerificationHod'||getRole()=='BrokerageHod' "><a class="ud-seller side-link-no-img font-size-14" data-toggle="tab" (click)="getTask()" href="#task-tab">Task (9)</a></li>
 
                       <li><a class="ud-seller side-link-no-img font-size-14" data-toggle="collapse" href="#">Notifications (16)</a></li>
-                      <li><a class="ud-seller side-link-no-img font-size-14" data-toggle="tab" href="#listings-tab">Listings(3)</a></li>
                       <li><a class="ud-seller side-link-no-img font-size-14" data-toggle="collapse" href="#">Pending Deals</a></li>
                       <li><a class="ud-seller side-link-no-img font-size-14" data-toggle="collapse" href="#">Upcomming Listings</a></li>
                       <li><a class="ud-seller side-link-no-img font-size-14" data-toggle="collapse" href="#">Calendar</a></li>
@@ -712,9 +711,11 @@
                 <!-- <li><a  data-toggle="tab" href="#prop-financials" (click)="getPropertyFinancialDetails(currentProperty)" class="sub-prop-links">Property Morgage Details</a></li> -->
                 <!-- <li><a  data-toggle="tab" href="#prop-rent" (click)="getPropertyRentalDetails(currentProperty)" class="sub-prop-links">Property Rental Details</a></li> -->
 
-                <li *ngIf="getRole()=='VerificationUser'||getRole()=='VerificationHod'||getRole()=='BrokerageHod'||getRole()=='BrokerageUser'"><a data-toggle="tab"   class="sub-prop-links">Form A</a></li>
+                <!-- <li *ngIf="getRole()=='VerificationUser'||getRole()=='VerificationHod'||getRole()=='BrokerageHod'||getRole()=='BrokerageUser'"><a data-toggle="tab"   class="sub-prop-links">Form A</a></li> -->
                 <li><a data-toggle="tab" href="#task-tab" (click)="getTaskByPropertyId()"  class="sub-prop-links">Activity</a></li>
                 <li *ngIf="getRole()=='ValuationUser'||getRole()=='ValuationHod'"><a data-toggle="tab"   class="sub-prop-links">Valuation</a></li>
+                <li><a class="sub-prop-links" data-toggle="tab" href="#listings-tab">Listings (3)</a></li>
+                <li><a data-toggle="tab" *ngIf="getRole()=='VerificationUser'||getRole()=='VerificationHod'||getRole()=='BrokerageHod'||getRole()=='BrokerageUser'"    class="sub-prop-links">Form A</a></li>
                 <li><a data-toggle="tab" href="#seller-verification"  (click)="checklistData(currentProperty)" class="sub-prop-links">Checklist</a></li>
               </ul>
             </div>
@@ -3375,6 +3376,56 @@
                     </form>
                   </div>
                 </div>
+
+                <!--Listings-->
+                <div id="listings-tab" class="row tab-pane fade sign-in-row">
+                  <div class="col-md-12 sign-in-col mb-4">
+                    <div class="row bid-active-row">
+                      <div class="col-md-12 bid-active-col">
+                        <div class="bid-active-block py-3">
+                          <div class="row">
+                            <div class="col-md-4 bid-active-img">
+                              <div class="prop-thumbnail"></div>
+                              <div class="font-size-14 mt-2">Performed by: Verification Officer 1 </div>
+                            </div>
+                            <div class="col-md-7 bid-active-decript justify-content-start">
+                              <div class="d-flex justify-content-between">
+                                <div class="prop-descript-wrap">
+                                  <div class="prop-title">Property Title</div>
+                                  <div class="prop-id">Property ID</div>
+                                  <div class="prop-id">Location</div>
+                                </div>
+                                <div class="upload-btn-div prop-upload-div">
+                                  <div class="file doc-upload">
+                                    <input type="file" class="doc-upload" />
+                                  </div>
+                                  <button class="btn common-btn">Upload Images</button>
+                                </div>
+                              </div>
+                              <div class="prop-amount">
+                                <div class="amount font-size-16">Starting Price: 50,000,00</div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="pagination-wrap mt-5">
+                          <nav>
+                            <ul class="pagination justify-content-center mb-0 ">
+                              <li class="page-item d-none"><a class="page-link prev-link mr-2" href="#"><i class="fas fa-chevron-left"></i></a></li>
+                              <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                              <li class="page-item"><a class="page-link" href="#">2</a></li>
+                              <li class="page-item"><a class="page-link" href="#">3</a></li>
+                              <li class="page-item"><a class="page-link" href="#">4</a></li>
+                              <li class="page-item"><a class="page-link" href="#">5</a></li>
+                              <li class="page-item"><a class="page-link next-link ml-2" href="#"><i class="fas fa-chevron-right"></i></a></li>
+                            </ul>
+                          </nav>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
                 <!-- Task Tab Here -->
                 <div id="task-tab" class="row tab-pane fade sign-in-row">
                   <div class="col-md-12 sign-in-col mb-4">
@@ -3483,132 +3534,13 @@
             </div>
           </div>
       </div>
-
-
-    </div>
-
-    <div id="listings-tab" class="row tab-pane fade sign-in-row">
-      <div class="col-md-12 sign-in-col mb-4">
-        <div class="row">
-          <div class="offset-md-6 col-md-6 d-flex align-items-center mb-5">
-            <input type="text" class="form-control bg-light" placeholder="Keyword, Property ID, Name etc">
-            <label class="ml-3 mb-0">Search</label>
-          </div>
-        </div>
-        <div class="row bid-active-row">
-          <div class="col-md-10 bid-active-col">
-            <div class="bid-active-block py-3">
-              <div class="row">
-                <div class="col-md-5 bid-active-img">
-                  <div class="prop-thumbnail"></div>
-                  <div class="font-size-14 mt-2">Performed by: Verification Officer 1 </div>
-                </div>
-                <div class="col-md-7 bid-active-decript justify-content-start">
-                  <div class="d-flex justify-content-between">
-                    <div class="prop-descript-wrap">
-                      <div class="prop-title">Property Title</div>
-                      <div class="prop-id">Property ID</div>
-                      <div class="prop-id">Location</div>
-                    </div>
-                    <div class="upload-btn-div prop-upload-div">
-                      <div class="file doc-upload">
-                        <input type="file" class="doc-upload" />
-                      </div>
-                      <button class="btn common-btn">Upload Images</button>
-                    </div>
-                  </div>
-                  <div class="prop-amount">
-                    <div class="amount font-size-16">Starting Price: 50,000,00</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="bid-active-block py-3">
-              <div class="row">
-                <div class="col-md-5 bid-active-img">
-                  <div class="prop-thumbnail"></div>
-                  <div class="font-size-14 mt-2">Performed by: Verification Officer 1 </div>
-                </div>
-                <div class="col-md-7 bid-active-decript justify-content-start">
-                  <div class="d-flex justify-content-between">
-                    <div class="prop-descript-wrap">
-                      <div class="prop-title">Property Title</div>
-                      <div class="prop-id">Property ID</div>
-                      <div class="prop-id">Location</div>
-                    </div>
-                    <div class="upload-btn-div prop-upload-div">
-                      <div class="file doc-upload">
-                        <input type="file" class="doc-upload" />
-                      </div>
-                      <button class="btn common-btn">Upload Images</button>
-                    </div>
-                  </div>
-                  <div class="prop-amount">
-                    <div class="amount font-size-16">Starting Price: 50,000,00</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="bid-active-block py-3">
-              <div class="row">
-                <div class="col-md-5 bid-active-img">
-                  <div class="prop-thumbnail"></div>
-                  <div class="font-size-14 mt-2">Performed by: Verification Officer 1 </div>
-                </div>
-                <div class="col-md-7 bid-active-decript justify-content-start">
-                  <div class="d-flex justify-content-between">
-                    <div class="prop-descript-wrap">
-                      <div class="prop-title">Property Title</div>
-                      <div class="prop-id">Property ID</div>
-                      <div class="prop-id">Location</div>
-                    </div>
-                    <div class="upload-btn-div prop-upload-div">
-                      <div class="file doc-upload">
-                        <input type="file" class="doc-upload" />
-                      </div>
-                      <button class="btn common-btn">Upload Images</button>
-                    </div>
-                  </div>
-                  <div class="prop-amount">
-                    <div class="amount font-size-16">Starting Price: 50,000,00</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="pagination-wrap mt-5">
-              <nav>
-                <ul class="pagination justify-content-center mb-0 ">
-                  <li class="page-item d-none"><a class="page-link prev-link mr-2" href="#"><i class="fas fa-chevron-left"></i></a></li>
-                  <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                  <li class="page-item"><a class="page-link" href="#">2</a></li>
-                  <li class="page-item"><a class="page-link" href="#">3</a></li>
-                  <li class="page-item"><a class="page-link" href="#">4</a></li>
-                  <li class="page-item"><a class="page-link" href="#">5</a></li>
-                  <li class="page-item"><a class="page-link next-link ml-2" href="#"><i class="fas fa-chevron-right"></i></a></li>
-                </ul>
-              </nav>
-            </div>
-          </div>
-          <div class="col-md-2 property-sort dropdown">
-            <a class="user-id-link dropdown-toggle" data-toggle="dropdown">
-              Sort by:
-            </a>
-            <div class="dropdown-menu">
-              <a class="dropdown-item">Date</a>
-              <a class="dropdown-item">Price</a>
-              <a class="dropdown-item">Time</a>
-              <a class="dropdown-item">Verification User 1</a>
-              <a class="dropdown-item">Verification User 1</a>
-            </div>
-          </div>
-        </div>
-      </div>
     </div>
 
 
   </div>
 </div>
 </div>
+
 
 
 <!-- Property Rent Here -->
@@ -3726,6 +3658,8 @@
         </form>
   </div>
 </div>
+
+
 
 
 
@@ -3991,12 +3925,11 @@
   </div>
 </div>
 </div>
-</div>
-</div>
-</div>
-</div>
+
+
 <!-- <app-footer></app-footer> -->
 </div>
+
 
 <script>
   $(document).ready(function(){

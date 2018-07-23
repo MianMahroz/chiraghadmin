@@ -635,7 +635,7 @@ ownerVerified(isVerified:string):void{
         if(this.token.getToken()!=null){
           // var randomString = require('random-string');
           // var x = randomString(); // x contains now a random String with the length of 8
-          this.sellerService.saveDocument('/propertyId-'+this.currentPropertyId+'/','-'+imageOf+'-'+this.currentPropertyId+'-'+this.currentPropertyId+10,this.token.getAdminuserName(),file).subscribe(
+          this.sellerService.saveDocument('/propertyId-'+this.currentPropertyId+'/','-'+imageOf+'-'+this.currentPropertyId+'-'+Math.random().toString(12),this.token.getAdminuserName(),file).subscribe(
             image=>{
                    if(image.type==3){
                          this.mytoastr.Success('','Image Saved Successfully');
