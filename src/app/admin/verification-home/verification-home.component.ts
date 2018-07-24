@@ -115,6 +115,10 @@ titleDeedFileName:string;
 floorPlanFileName:string;
 morgageNocFileName:string;
 tenancyContractFileName:string;
+count1:number;
+count2:number;
+poaCount1:number;
+poaCount2:number;
 
 // myclassName='row tab-pane fade sign-in-row';
 // myclassNameActive='row tab-pane fade sign-in-row-active show';
@@ -200,16 +204,27 @@ private loadScript(scriptUrl: string) {
       this.myclassName='row tab-pane fade sign-in-row';
       console.log('admin data')
       this.isPersonalDetailsVerified=null;
+      this.count1=0;
+      this.count2=0;
       Array.from(data.propertysellerdetailses).forEach(obj2 => {
       var obj= JSON.parse(JSON.stringify(obj2));
       console.log(obj);
       if(obj.ownerType=='owner'){
+        this.count1=this.count1+1;
         console.log('owner');
+        if(obj.isPersonalDetailsVerified=='true'){
+            this.count2=this.count2+1;
+        }
         this.isPersonalDetailsVerified=obj.isPersonalDetailsVerified;
         console.log(this.isPersonalDetailsVerified);
     }
     else if(obj.ownerType=='poa'){
       console.log('poa');
+      this.poaCount1=this.poaCount1+1;
+      console.log('owner');
+      if(obj.isPOADetailsVerified=='true'){
+          this.poaCount2=this.poaCount2+1;
+      }
       this.isPOADetailsVerified=obj.isPersonalDetailsVerified;
       console.log(this.isPOADetailsVerified);
     }
@@ -223,13 +238,13 @@ private loadScript(scriptUrl: string) {
     if(data.isAcknowledgementCall=='true')
       this.acknowledgmentCall=data.isAcknowledgementCall;
 
-    if(this.isPersonalDetailsVerified=='false'){
+    if(this.count1!=this.count2){
       this.isPersonalDetailsVerified='';
     }
     if(this.isPOADetailsVerified=='false'){
       this.isPOADetailsVerified='';
     }
-    if(this.isPropertyDetailsVerified=='false'){
+    if(this.poaCount1!=this.poaCount2){
       this.isPropertyDetailsVerified='';
     }
 

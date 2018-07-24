@@ -26,7 +26,7 @@
                        <a class="ud-seller side-link-no-img bg-secondary text-white font-size-14" data-toggle="collapse" href="#sell-links1">Leads(10)</a>
                         <ul class="collapse sub-links-wrap link-wrap-no-bullets show" id="sell-links1">
                           <li>
-                            <a class="ud-seller side-link-active-no-bg active show" (click)="loadData()" data-toggle="tab" href="#property-list">Seller</a>
+                            <a class="ud-seller side-link-active-no-bg active show" (click)="loadData()" data-toggle="tab" href="#property-list">Seller(6)</a>
 
                           </li>
 
@@ -714,7 +714,7 @@
                 <!-- <li *ngIf="getRole()=='VerificationUser'||getRole()=='VerificationHod'||getRole()=='BrokerageHod'||getRole()=='BrokerageUser'"><a data-toggle="tab"   class="sub-prop-links">Form A</a></li> -->
                 <li><a data-toggle="tab" href="#task-tab" (click)="getTaskByPropertyId()"  class="sub-prop-links">Activity</a></li>
                 <li *ngIf="getRole()=='ValuationUser'||getRole()=='ValuationHod'"><a data-toggle="tab"   class="sub-prop-links">Valuation</a></li>
-                <li><a class="sub-prop-links" data-toggle="tab" href="#listings-tab">Listings (3)</a></li>
+                <li><a class="sub-prop-links" data-toggle="tab" href="#listings-tab">Listing</a></li>
                 <li><a data-toggle="tab" *ngIf="getRole()=='VerificationUser'||getRole()=='VerificationHod'||getRole()=='BrokerageHod'||getRole()=='BrokerageUser'"    class="sub-prop-links">Form A</a></li>
                 <li><a data-toggle="tab" href="#seller-verification"  (click)="checklistData(currentProperty)" class="sub-prop-links">Checklist</a></li>
               </ul>
@@ -3293,7 +3293,7 @@
                       <div  *ngIf="getRole()=='VerificationUser'||getRole()=='VerificationHod'"class="row">
                         <div class="col-md-6 verification-list-col">
                           <div class="verification-list mb-3">
-                            Personal details verified
+                            Personal details verified{{isPersonalDetailsVerified}}
                             <label class="common-checkbox">
                               <input name="isPersonalDetailsVerified"  [(ngModel)]="isPersonalDetailsVerified" type="checkbox"><span class="checkbox-material"><span class="check mr-2"></span></span>
                             </label>
